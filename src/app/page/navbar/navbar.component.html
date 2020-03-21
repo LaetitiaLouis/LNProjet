@@ -1,0 +1,29 @@
+<mat-toolbar fxHide.xs="true" class="mat-elevation-z6 navbar">
+  <img src="../../../assets/Logo.jpg" alt="" class="logo">
+  <div fxLayout="row" fxLayout.gt-sm="flex-end center" class="navigation" fxLayoutAlign="center center">
+    <a mat-button routerLink="/">
+      <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Accueil</span>
+    </a>
+    <a mat-button routerLink="/prestations">
+      <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Prestations</span>
+    </a>
+    <a mat-button routerLink="/projets">
+      <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Projets</span>
+    </a>
+    <a mat-button routerLink="/contact">
+      <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Contact</span>
+    </a>
+  </div>
+</mat-toolbar>
+
+<mat-toolbar class="mat-elevation-z6" fxHide.gt-xs="true">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+    <mat-icon>menu</mat-icon>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/">Accueil</button>
+      <button mat-menu-item routerLink="/">Prestations</button>
+      <button mat-menu-item routerLink="/">Projets</button>
+      <button mat-menu-item routerLink="/">Contact</button>
+    </mat-menu>
+  </button>
+</mat-toolbar>
