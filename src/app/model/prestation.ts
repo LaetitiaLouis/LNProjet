@@ -1,4 +1,5 @@
 import {Projet} from './projet';
+import {Client} from './client';
 
 export class Prestation {
   id: number;
