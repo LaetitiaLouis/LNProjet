@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {ExtendedModule, FlexModule} from '@angular/flex-layout';
+import {ExtendedModule, FlexModule } from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -16,6 +16,7 @@ import { ProjetComponent } from './projet/projet.component';
 import { ContactComponent } from './contact/contact.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { CarouselComponent } from './accueil/carousel/carousel.component';
 const routes: any[] = [
   {path: '', component: AccueilComponent},
   {path: 'prestations', component: PrestationComponent},
@@ -32,7 +33,8 @@ const routes: any[] = [
     AccueilComponent,
     PrestationComponent,
     ProjetComponent,
-    ContactComponent
+    ContactComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
