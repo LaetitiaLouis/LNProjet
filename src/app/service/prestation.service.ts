@@ -11,7 +11,7 @@ import {Client} from '../model/client';
   providedIn: 'root'
 })
 export class PrestationService {
-  BASE_URL = 'http:localhost:8080/api/prestation';
+  BASE_URL = 'http:localhost:8080/prestation';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

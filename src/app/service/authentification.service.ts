@@ -24,7 +24,7 @@ export class AuthentificationService {
    * @param password Le champ mot de passe du formulaire
    */
   auth(login, password): Observable<Admin> {
-    return this.http.post<Admin>('http://localhost:8080/api/admin/connect', {login, password}).
+    return this.http.post<Admin>('http://localhost:8080/admin/connect', {login, password}).
       pipe(
         tap(admin => sessionStorage.setItem('login', admin.login)),
         map(result => this.router.navigate(['/Authentification'])),

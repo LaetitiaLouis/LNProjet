@@ -11,7 +11,7 @@ import {ErrorService} from './error.service';
   providedIn: 'root'
 })
 export class MessageService {
-  BASE_URL = 'http://loclahost:8080/api/message';
+  BASE_URL = 'http://loclahost:8080/message';
   constructor(private http: HttpClient,
               private es: ErrorService) {
   }

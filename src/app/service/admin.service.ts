@@ -9,7 +9,7 @@ import {catchError, map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AdminService {
-  BASE_URL = 'http:localhost:8080/api/admin';
+  BASE_URL = 'http:localhost:8080/admin';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

@@ -9,7 +9,7 @@ import {catchError, map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TypeService {
-  BASE_URL = 'http://localhost:8080/api/type';
+  BASE_URL = 'http://localhost:8080/type';
   constructor(private http: HttpClient,
               private es: ErrorService) {
   }

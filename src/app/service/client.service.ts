@@ -10,7 +10,7 @@ import {catchError, map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ClientService {
-  BASE_URL = 'http://localhost:8080/api/client';
+  BASE_URL = 'http://localhost:8080/client';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

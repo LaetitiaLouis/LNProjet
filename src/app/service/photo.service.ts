@@ -10,7 +10,7 @@ import {Projet} from '../model/projet';
   providedIn: 'root'
 })
 export class PhotoService {
-  BASE_URL = 'http://localhost/api/photo';
+  BASE_URL = 'http://localhost/photo';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

@@ -10,7 +10,7 @@ import {Type} from '../model/type';
   providedIn: 'root'
 })
 export class ProjetService {
-  BASE_URL = 'http://localhost:8080/api/projet';
+  BASE_URL = 'http://localhost:8080/projet';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

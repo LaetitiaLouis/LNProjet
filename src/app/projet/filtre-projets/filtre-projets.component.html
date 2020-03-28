@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-label>Projets</mat-label>
+  <mat-select (selectionChange)="onTypesChange($event)" [formControl]="types" multiple>
+    <mat-option [value]="item.libelle" *ngFor="let item of typeList">{{item.libelle}}</mat-option>
+  </mat-select>
+</mat-form-field>

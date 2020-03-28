@@ -3,14 +3,17 @@ mat-toolbar {
   top: 0;
   width: 100%;
   z-index: 20;
-  padding-left: 0;
   color: white;
-  background: rgba(134, 130, 136, 0.3);
+  padding-left: 0;
+  }
+
+
+
+.navigation{
+  text-align: right;
+  justify-content: right !important;
 }
 
-/*.navigation{
-  justify-content: right;
-}*/
 .mat-button{
 }
 

@@ -17,6 +17,15 @@ import { ContactComponent } from './contact/contact.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { CarouselComponent } from './accueil/carousel/carousel.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FiltreProjetsComponent } from './projet/filtre-projets/filtre-projets.component';
+import { ListeProjetsComponent } from './projet/liste-projets/liste-projets.component';
+import {MatSelectModule} from '@angular/material/select';
+import {HttpClientModule} from '@angular/common/http';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { SyntheseProjetComponent } from './projet/synthese-projet/synthese-projet.component';
+import {MatCardModule} from '@angular/material/card';
 const routes: any[] = [
   {path: '', component: AccueilComponent},
   {path: 'prestations', component: PrestationComponent},
@@ -34,7 +43,10 @@ const routes: any[] = [
     PrestationComponent,
     ProjetComponent,
     ContactComponent,
-    CarouselComponent
+    CarouselComponent,
+    FiltreProjetsComponent,
+    ListeProjetsComponent,
+    SyntheseProjetComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +57,14 @@ const routes: any[] = [
     MatButtonModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule,
+    FormsModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
