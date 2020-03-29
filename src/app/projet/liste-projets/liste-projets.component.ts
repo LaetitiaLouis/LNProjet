@@ -12,26 +12,33 @@ import {Observable} from 'rxjs';
 })
 export class ListeProjetsComponent implements OnInit {
   public projetsList: Projet[] = null;
-  @Input() public typesList: Observable <Type[]> = null;
-  public machin: any;
+  @Input() public typesList: Observable<Type[]> = null;
 
-  constructor(private projetService: ProjetService) { }
+
+  constructor(private projetService: ProjetService) {
+  }
 
   public ngOnInit(): void {
-    // this.projetService.getAllProjets().pipe(take(1)).subscribe(
-    //   {
-    //     next: data => {
-    //       this.projetsList  = data;
-    //     },
-    //     error: (data) => {
-    //       console.log(data);
-    //     },
-    //     complete: () => {
-    //     }
-    //   });
+    //
     if (this.typesList) {
-      console.log('saucisse');
     }
   }
 
+  public onTypeChange(event: any) {
+    console.log(event);
+    // vide l'existant
+    this.projetsList = [];
+    // parcours tous les nouveaux types
+    this.projetService.getProjetsByType(event.id).pipe(take(1)).subscribe(
+      {
+        next: data => {
+          this.projetsList = data;
+        },
+        error: (data) => {
+          console.log(data);
+        },
+        complete: () => {
+        }
+      });
+  }
 }

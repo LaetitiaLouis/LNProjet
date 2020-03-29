@@ -13,6 +13,7 @@ export class FiltreProjetsComponent implements OnInit {
   public types = new FormControl();
   typeList: Type[] = [];
   @Output() typesChangeEmitter = new EventEmitter<string[]>();
+  readonly ITEM_ALL = 'Tous';
 
   constructor(private typeService: TypeService) {
   }
@@ -21,7 +22,11 @@ export class FiltreProjetsComponent implements OnInit {
     this.typeService.getAllTypes().pipe(take(1)).subscribe(
        {
          next: data => {
+           let typeAll = new Type();
+           typeAll.libelle = this.ITEM_ALL;
+           typeAll.id = -1;
            this.typeList = data;
+           this.typeList.push(typeAll);
          },
          error: (data) => {
            console.log(data);
@@ -33,5 +38,7 @@ export class FiltreProjetsComponent implements OnInit {
 
   public onTypesChange(event: any): void {
     this.typesChangeEmitter.emit(event.value);
+
     }
+
 }
