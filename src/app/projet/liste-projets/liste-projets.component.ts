@@ -19,13 +19,9 @@ export class ListeProjetsComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    //
-    if (this.typesList) {
-    }
   }
 
   public onTypeChange(event: any) {
-    console.log(event);
     // vide l'existant
     this.projetsList = [];
     // parcours tous les nouveaux types

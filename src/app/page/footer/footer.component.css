@@ -1,9 +1,10 @@
 .grid{
-  background: rgba(134, 130, 136, 0.3);
+  background: #17657D;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(14, 1fr);
   grid-template-rows: 10px 30px 10px;
+  color: white;
 }
 
 .copy{

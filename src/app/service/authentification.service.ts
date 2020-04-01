@@ -23,7 +23,7 @@ export class AuthentificationService {
    * @param login dans le champ login du formulaire
    * @param password Le champ mot de passe du formulaire
    */
-  auth(login, password): Observable<Admin> {
+  login(login, password): Observable<Admin> {
     return this.http.post<Admin>('http://localhost:8080/admin/connect', {login, password}).
       pipe(
         tap(admin => sessionStorage.setItem('login', admin.login)),

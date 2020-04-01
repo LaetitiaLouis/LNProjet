@@ -4,7 +4,7 @@ import {Projet} from '../model/projet';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {ErrorService} from './error.service';
-import {Type} from '../model/type';
+
 
 @Injectable({
   providedIn: 'root'
@@ -55,9 +55,14 @@ export class ProjetService {
    * Requête : Rechercher une liste de projets par type
    * @param type Le type souhaité
    */
-  getProjetsByType(type: Type): Observable<Projet[]> {
-    return this.http.get<Projet[]>(`${this.BASE_URL}/findByType?type=${type}`)
+  getProjetsByType(typeId: number): Observable<Projet[]> {
+    console.log(typeId);
+    if (typeId === -1) {
+      return this.getAllProjets();
+    } else {
+    return this.http.get<Projet[]>(`${this.BASE_URL}/findByType?type=${typeId}`)
       .pipe(catchError(this.es.handleError('Aucun projet ne correspond à ce type'))
       );
+    }
   }
 }

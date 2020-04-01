@@ -1,9 +1,7 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{projet?.intitule}}</mat-card-title>
-    </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo du projet">
+<div fxLayout="" fxLayout.gt-sm="flex-center center" class="navigation" fxLayoutAlign="center center">
+<mat-card class="card" >
+    <div class="photo">{{projet?.photo}}</div>
+  <mat-card-title>{{projet?.intitule}}</mat-card-title>
   <mat-card-content>
     <p>
       {{projet?.description}}

@@ -1,8 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TypeService} from '../../service/type.service';
 import {take} from 'rxjs/operators';
 import {Type} from '../../model/type';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-filtre-projets',
@@ -13,20 +14,20 @@ export class FiltreProjetsComponent implements OnInit {
   public types = new FormControl();
   typeList: Type[] = [];
   @Output() typesChangeEmitter = new EventEmitter<string[]>();
-  readonly ITEM_ALL = 'Tous';
+  readonly ITEM_ALL = 'Tous les projets';
+  private subscription: Subscription = null;
 
   constructor(private typeService: TypeService) {
   }
+  // public ngOnDestroy(): void {
+  // this.subscription.unsubscribe();
+  // }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.typeService.getAllTypes().pipe(take(1)).subscribe(
        {
          next: data => {
-           let typeAll = new Type();
-           typeAll.libelle = this.ITEM_ALL;
-           typeAll.id = -1;
            this.typeList = data;
-           this.typeList.push(typeAll);
          },
          error: (data) => {
            console.log(data);

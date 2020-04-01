@@ -1,18 +1,29 @@
-<!--<mat-toolbar fxHide.xs="true" class="mat-elevation-z6 navbar">
-  <img src="../../../assets/Logo.jpg" alt="" class="logo">
-  <div fxLayout="row" fxLayout.gt-sm="flex-end end" class="navigation" fxLayoutAlign="flex-end">
-    <a mat-button routerLink="/">
-  <    <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Accueil</span>
+<mat-toolbar fxHide.xs="true">
+  <a class="logo">
+  <img src="../../../assets/Logo%204%20(blanc).png" alt="" fxLayoutAlign="start center">
+  </a>
+   <div fxLayout="row" fxLayout.gt-sm="flex-end center" class="navigation" fxLayoutAlign="end center">
+     <a mat-button routerLink="/">
+   <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Accueil</span>
     </a>
-    <a mat-button routerLink="/prestations">
+    <a mat-button routerLink="/prestation">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Prestations</span>
     </a>
-    <a mat-button routerLink="/projets">
+    <a mat-button routerLink="/projet">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Projets</span>
     </a>
     <a mat-button routerLink="/contact">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Contact</span>
     </a>
+     <a mat-button routeLink="/admin">
+       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Connexion</span>
+     </a>
+<!-- <div class="search-container">-->
+<!--    <form action="/">-->
+<!--      <input type="text" placeholder="Search.." name="search">-->
+<!--      <button type="submit"><i class=""></i></button>-->
+<!--    </form>-->
+<!--  </div>-->
   </div>
 </mat-toolbar>
 
@@ -21,10 +32,10 @@
     <mat-icon>menu</mat-icon>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/">Accueil</button>
-      <button mat-menu-item routerLink="/">Prestations</button>
-      <button mat-menu-item routerLink="/">Projets</button>
-      <button mat-menu-item routerLink="/">Contact</button>
+      <button mat-menu-item routerLink="/prestations">Prestations</button>
+      <button mat-menu-item routerLink="/projets">Projets</button>
+      <button mat-menu-item routerLink="/contact">Contact</button>
     </mat-menu>
   </button>
 </mat-toolbar>
--->
+

@@ -18,7 +18,17 @@ export class TypeService {
    * Requête : Obtenir la liste de tous les types
    */
   getAllTypes(): Observable<Type[]> {
-    return this.http.get<Type[]>(`${this.BASE_URL}/`);
+    // Creation du Type ALL (spécifique au Front car inexistant à ce jour dans le Back)
+    const typeAll = new Type();
+    typeAll.id = -1;
+    typeAll.libelle = 'Tous';
+    const typeAllArray = [typeAll];
+
+    return this.http.get<Type[]>(`${this.BASE_URL}/`).pipe(
+      map(val =>
+        (val.concat(typeAllArray))
+      )
+    );
   }
 
   /**

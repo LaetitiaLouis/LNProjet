@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {MatCarouselModule} from '@ngmodule/material-carousel';
 import { AppComponent } from './app.component';
-import {ExtendedModule, FlexModule } from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -25,12 +25,24 @@ import {MatSelectModule} from '@angular/material/select';
 import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { SyntheseProjetComponent } from './projet/synthese-projet/synthese-projet.component';
-import {MatCardModule} from '@angular/material/card';
+import {MatCardImage, MatCardModule} from '@angular/material/card';
+import { DetailPrestationComponent } from './prestation/detail-prestation/detail-prestation.component';
+import { RegisterComponent } from './register/register.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MessageComponent } from './message/message.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { ProfilComponent } from './connexion/profil/profil.component';
+import {FlexLayoutModule, FlexModule, ExtendedModule} from '@angular/flex-layout';
+import {MatInputModule} from '@angular/material/input';
+
 const routes: any[] = [
   {path: '', component: AccueilComponent},
-  {path: 'prestations', component: PrestationComponent},
-  {path: 'projets', component: ProjetComponent},
-  {path: 'contact', component: ContactComponent}
+  {path: 'prestation', component: PrestationComponent},
+  {path: 'projet', component: ProjetComponent},
+ // {path: 'projet/id', component: DetailProjet},
+  {path: 'contact', component: ContactComponent},
+  {path: 'admin', component: ConnexionComponent},
+  {path: 'profil', component: ProfilComponent}
 ];
 
 @NgModule({
@@ -46,12 +58,15 @@ const routes: any[] = [
     CarouselComponent,
     FiltreProjetsComponent,
     ListeProjetsComponent,
-    SyntheseProjetComponent
+    SyntheseProjetComponent,
+    DetailPrestationComponent,
+    RegisterComponent,
+    MessageComponent,
+    ConnexionComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
-    FlexModule,
-    ExtendedModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -64,7 +79,14 @@ const routes: any[] = [
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCarouselModule,
+    MatCarouselModule.forRoot(),
+    MatCardModule,
+    MatButtonToggleModule,
+    FlexLayoutModule,
+    ExtendedModule,
+    FlexModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,62 @@
+.page {
+  height: 80vh;
+}
+
+.form-container {
+  border-radius: 10px;
+  max-width: 400px;
+  padding-bottom: 20px;
+}
+
+.form-content {
+  padding: 30px;
+}
+mat-form-field {
+  width: 100%;
+}
+
+.form-title {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #999999;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.mat-small {
+  text-align: right;
+  color: red;
+  cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .page{
+    width: 250px;
+    margin: 0 auto;
+  }
+  .form-container{
+    margin: 0 auto;
+  }
+  .form-title{
+    font-size: 20px;
+  }
+  mat-form-field {
+    width: 100%;
+    font-size: 10px;
+    margin: 0 auto;
+  }
+  .mat-small{
+    font-size: 10px;
+  }
+  button {
+    padding: 6px 0 6px 0;
+    font: bold 10px Arial;
+    background: #478bf9;
+    color: #fff;
+    border-radius: 2px;
+    width: 100px;
+    border: none;
+    margin: 0 auto;
+  }
+}

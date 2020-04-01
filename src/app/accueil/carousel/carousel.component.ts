@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Injectable, Input, OnInit} from '@angular/core';
 import { Photo} from '../../model/photo';
 import {PhotoService} from '../../service/photo.service';
 
@@ -8,16 +8,17 @@ import {PhotoService} from '../../service/photo.service';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  @Input() photos: Photo[];
-  photoList;
-  constructor(private photoService: PhotoService) { }
-
-  ngOnInit(): void {
-    if (!this.photos) {
-      this.photoService.getAllPhotos().subscribe(photoResult => this.photoList = photoResult);
-    } else {
-      this.photoList = this.photos;
-    }
+  // @Injectable()
+  // @Input() photos: Photo[];
+  // photoList;
+  // constructor(private photoService: PhotoService) { }
+  //
+  public ngOnInit(): void {
+  //    if (!this.photos) {
+  //      this.photoService.getAllPhotos().subscribe(photoResult => this.photoList = photoResult);
+  //    } else {
+  //      this.photoList = this.photos;
+  //    }
   }
 
 }
