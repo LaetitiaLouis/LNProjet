@@ -1,0 +1,19 @@
+.card {
+  cursor: pointer;
+  padding: 0;
+  width: 250px;
+  margin:0;
+}
+
+.photo {
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  text-align: center;
+  padding: 15px 0;
+}

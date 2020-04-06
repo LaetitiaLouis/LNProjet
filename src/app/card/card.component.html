@@ -1,0 +1,7 @@
+<div class="card mat-elevation-z4">
+  <div (click)="showDetails()" title="Voir détail">
+    <div class="photo" [style.background-image]="getTrustedUrl(photo)"></div>
+    <div class="title">{{text | titlecase}}</div>
+  </div>
+  <ng-content></ng-content>
+</div>

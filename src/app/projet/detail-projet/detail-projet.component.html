@@ -1,0 +1,5 @@
+<mat-card class="mat-card" *ngFor="let item of projet" fxLayout.gt-md="column" fxLayoutAlign="center center">
+  <mat-card-header><app-carousel [photos]="item"></app-carousel></mat-card-header>
+  <mat-card-title>{{projet?.intitule}}</mat-card-title>
+  <mat-card-content><p>{{projet?.description}}</p></mat-card-content>
+</mat-card>

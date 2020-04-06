@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs';
 export class FiltreProjetsComponent implements OnInit {
   public types = new FormControl();
   typeList: Type[] = [];
-  @Output() typesChangeEmitter = new EventEmitter<string[]>();
+  @Output() typesChangeEmitter = new EventEmitter<any>();
   readonly ITEM_ALL = 'Tous les projets';
   private subscription: Subscription = null;
 
@@ -38,8 +38,9 @@ export class FiltreProjetsComponent implements OnInit {
   }
 
   public onTypesChange(event: any): void {
-    this.typesChangeEmitter.emit(event.value);
-
-    }
-
+    // this.typesChangeEmitter.emit(event.value);
+    // console.log(event.target.innerText);
+    const item = this.typeList.filter(typeItem => typeItem.libelle === event.target.innerText)[0];
+    this.typesChangeEmitter.emit(item);
+  }
 }

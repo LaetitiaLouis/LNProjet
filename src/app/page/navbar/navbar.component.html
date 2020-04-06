@@ -1,9 +1,10 @@
-<mat-toolbar fxHide.xs="true">
-  <a class="logo">
-  <img src="../../../assets/Logo%204%20(blanc).png" alt="" fxLayoutAlign="start center">
-  </a>
-   <div fxLayout="row" fxLayout.gt-sm="flex-end center" class="navigation" fxLayoutAlign="end center">
-     <a mat-button routerLink="/">
+<mat-toolbar fxHide.xs="true" class="card mat-elevation-z6">
+    <a class="logo">
+    <img src="../../../assets/Logo%204%20(blanc).png" alt="" fxLayoutAlign="start center">
+    </a>
+  <div fxLayout="row" fxLayout.gt-sm="flex-end end" class="navigation" fxLayoutAlign="end end">
+
+  <a mat-button routerLink="/">
    <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Accueil</span>
     </a>
     <a mat-button routerLink="/prestation">
@@ -15,7 +16,7 @@
     <a mat-button routerLink="/contact">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Contact</span>
     </a>
-     <a mat-button routeLink="/admin">
+     <a mat-button routerLink="/connexion">
        <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Connexion</span>
      </a>
 <!-- <div class="search-container">-->
@@ -24,7 +25,7 @@
 <!--      <button type="submit"><i class=""></i></button>-->
 <!--    </form>-->
 <!--  </div>-->
-  </div>
+   </div>
 </mat-toolbar>
 
 <mat-toolbar class="mat-elevation-z6" fxHide.gt-xs="true">
@@ -35,6 +36,7 @@
       <button mat-menu-item routerLink="/prestations">Prestations</button>
       <button mat-menu-item routerLink="/projets">Projets</button>
       <button mat-menu-item routerLink="/contact">Contact</button>
+      <button mat-menu-item routerLink="/connexion">Connexion</button>
     </mat-menu>
   </button>
 </mat-toolbar>

@@ -1,12 +1,12 @@
-<!--<div class="grid grid-pad">-->
-<!--  <a *ngFor="let item of projet" class="col-1-4"-->
-<!--     routerLink="/detail/{{hero.id}}">-->
-<!--    <div class="module hero">-->
-<!--      <h4>{{hero.name}}</h4>-->
-<!--    </div>-->
-<!--  </a>-->
-<!--</div>-->
 
 
 <app-filtre-projets (typesChangeEmitter)="projet.onTypeChange($event)"></app-filtre-projets>
 <app-liste-projets #projet></app-liste-projets>
+
+<div class="card-list" *ngIf="projet$ | async as projet">
+  <app-card *ngFor="let item of projet"
+            [link]="['/projet',item.id]"
+            [text]="item?.intitule"
+            [photo]="item?.photo">
+  </app-card>
+</div>

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Projet} from '../../model/projet';
 
 
+
 @Component({
   selector: 'app-synthese-projet',
   templateUrl: './synthese-projet.component.html',

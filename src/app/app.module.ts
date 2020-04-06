@@ -34,15 +34,18 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './connexion/profil/profil.component';
 import {FlexLayoutModule, FlexModule, ExtendedModule} from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
+import { DetailProjetComponent } from './projet/detail-projet/detail-projet.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { CardComponent } from './card/card.component';
 
 const routes: any[] = [
   {path: '', component: AccueilComponent},
   {path: 'prestation', component: PrestationComponent},
   {path: 'projet', component: ProjetComponent},
- // {path: 'projet/id', component: DetailProjet},
   {path: 'contact', component: ContactComponent},
-  {path: 'admin', component: ConnexionComponent},
-  {path: 'profil', component: ProfilComponent}
+  {path: 'connexion', component: ConnexionComponent},
+  {path: 'profil', component: ProfilComponent},
+  {path: 'projet/:id', component: DetailProjetComponent}
 ];
 
 @NgModule({
@@ -63,7 +66,9 @@ const routes: any[] = [
     RegisterComponent,
     MessageComponent,
     ConnexionComponent,
-    ProfilComponent
+    ProfilComponent,
+    DetailProjetComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +91,8 @@ const routes: any[] = [
     FlexLayoutModule,
     ExtendedModule,
     FlexModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

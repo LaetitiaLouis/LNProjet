@@ -3,13 +3,12 @@
   top: 0;
   width: 100%;
   z-index: 20;
-  background: #17657D;
-  justify-content: right;
-  margin: auto;
+  background: #206679;
   }
 
 .navigation {
   justify-content: right;
+  margin-left: auto;
   }
 
 .logo img{

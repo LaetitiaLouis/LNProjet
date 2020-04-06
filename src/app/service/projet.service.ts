@@ -65,4 +65,10 @@ export class ProjetService {
       );
     }
   }
+  getProjetsById(id: number): Observable<Projet> {
+    console.log(id);
+    return this.http.get<Projet>(`${this.BASE_URL}/findById?id=${id}`)
+      .pipe(catchError(this.es.handleError())
+      );
+  }
 }

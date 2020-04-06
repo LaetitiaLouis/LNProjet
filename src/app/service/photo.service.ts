@@ -10,7 +10,7 @@ import {Projet} from '../model/projet';
   providedIn: 'root'
 })
 export class PhotoService {
-  BASE_URL = 'http://localhost/photo';
+  BASE_URL = 'http://localhost:8080/photo';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {
@@ -50,6 +50,16 @@ export class PhotoService {
   getPhotosByProjet(projet: Projet): Observable<Photo[]> {
     return this.http.get<Photo[]>(`${this.BASE_URL}/findByProjet?projet=${projet}`)
       .pipe(catchError(this.es.handleError('Aucune photo trouvée pour ce projet'))
+      );
+  }
+
+  /**
+   * Requête : Obtenir la liste des photos d'une categorie
+   * @param  categorie La categorie souhaitée
+   */
+  getPhotosByCategorie(categorie: number): Observable<Photo[]> {
+    return this.http.get<Photo[]>(`${this.BASE_URL}/findByCategorie?categorie=${categorie}`)
+      .pipe(catchError(this.es.handleError('Aucune photo trouvée pour cette catégorie'))
       );
   }
 }
