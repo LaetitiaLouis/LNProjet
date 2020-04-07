@@ -2,11 +2,8 @@
 
 <app-filtre-projets (typesChangeEmitter)="projet.onTypeChange($event)"></app-filtre-projets>
 <app-liste-projets #projet></app-liste-projets>
+<app-card *ngFor="let item of projetsList"
+[text]="item?.intitule"
+[photo]="item?.photo">
+</app-card>
 
-<div class="card-list" *ngIf="projet$ | async as projet">
-  <app-card *ngFor="let item of projet"
-            [link]="['/projet',item.id]"
-            [text]="item?.intitule"
-            [photo]="item?.photo">
-  </app-card>
-</div>

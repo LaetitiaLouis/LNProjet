@@ -8,6 +8,7 @@
 <!--<mat-menu (click)="onTypesChange($event)" [formControl]="types">-->
 <!--  <mat-button [value]="item" *ngFor="let item of typeList">{{item.libelle}}</mat-button>-->
 <!--</mat-menu>-->
-
-<button mat-flat-button (click)="onTypesChange($event)" *ngFor="let item of typeList">{{item.libelle}}</button>
+<div class="menu-filtre">
+  <button mat-flat-button (click)="onTypesChange($event)" *ngFor="let item of typeList">{{item.libelle}}</button>
+</div>
 

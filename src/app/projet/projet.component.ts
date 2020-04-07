@@ -14,6 +14,7 @@ import {ActivatedRoute} from '@angular/router';
 export class ProjetComponent implements OnInit {
   projet$: Observable<Projet>;
   photos$: Observable<Photo[]>;
+  public projetsList: Projet[] = null;
 
   constructor(private projetService: ProjetService,
               private route: ActivatedRoute,
@@ -24,8 +25,8 @@ export class ProjetComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
         const projetId = +params.get('id');
         this.projet$ = this.projetService.getProjetsById(projetId);
-        this.photos$ = this.photoService.getPhotosByCategorie(projetId);
-      }
+        this.photos$ = this.photoService.getPhotosByCategorie(projetId)
+       }
     );
   }
 }

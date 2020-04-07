@@ -1,1 +1,6 @@
+.menu-filtre {
+  display: flex;
+  justify-content: center;
+  padding: 35px 0 20px 0;
+}
 

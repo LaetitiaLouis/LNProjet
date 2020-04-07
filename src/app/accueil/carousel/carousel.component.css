@@ -1,4 +1,5 @@
 mat-carousel {
+  padding-top: 0px;
   display: flex;
   justify-content: center;
   }
