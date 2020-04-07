@@ -19,9 +19,9 @@ export class FiltreProjetsComponent implements OnInit {
 
   constructor(private typeService: TypeService) {
   }
-  // public ngOnDestroy(): void {
-  // this.subscription.unsubscribe();
-  // }
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   public ngOnInit(): void {
     this.typeService.getAllTypes().pipe(take(1)).subscribe(

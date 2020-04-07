@@ -1,13 +1,10 @@
-<!--<mat-form-field>-->
+<!--<mat-form-field fxShow.xs="true">-->
 <!--<mat-label>Projets</mat-label>-->
 <!--<mat-select (selectionChange)="onTypesChange($event)" [formControl]="types">-->
 <!--  <mat-option [value]="item" *ngFor="let item of typeList">{{item.libelle}}</mat-option>-->
 <!--</mat-select>-->
 <!--</mat-form-field>-->
 
-<!--<mat-menu (click)="onTypesChange($event)" [formControl]="types">-->
-<!--  <mat-button [value]="item" *ngFor="let item of typeList">{{item.libelle}}</mat-button>-->
-<!--</mat-menu>-->
 <div class="menu-filtre">
   <button mat-flat-button (click)="onTypesChange($event)" *ngFor="let item of typeList">{{item.libelle}}</button>
 </div>
