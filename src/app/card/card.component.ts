@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Photo} from "../model/photo";
 
 @Component({
   selector: 'app-card',
@@ -8,7 +9,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  @Input() photo;
+  @Input() photos: Photo[];
   @Input() link;
   @Input() text;
 

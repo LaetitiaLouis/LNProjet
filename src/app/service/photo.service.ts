@@ -47,7 +47,7 @@ export class PhotoService {
    * Requête : Obtenir la liste des photos d'un projet
    * @param  projet Le projet souhaité
    */
-  getPhotosByProjet(projet: Projet): Observable<Photo[]> {
+  getPhotosByProjet(projet: Photo[]): Observable<Photo[]> {
     return this.http.get<Photo[]>(`${this.BASE_URL}/findByProjet?projet=${projet}`)
       .pipe(catchError(this.es.handleError('Aucune photo trouvée pour ce projet'))
       );
@@ -57,7 +57,7 @@ export class PhotoService {
    * Requête : Obtenir la liste des photos d'une categorie
    * @param  categorie La categorie souhaitée
    */
-  getPhotosByCategorie(categorie: number): Observable<Photo[]> {
+  getPhotosByCategorie(categorie: string): Observable<Photo[]> {
     return this.http.get<Photo[]>(`${this.BASE_URL}/findByCategorie?categorie=${categorie}`)
       .pipe(catchError(this.es.handleError('Aucune photo trouvée pour cette catégorie'))
       );

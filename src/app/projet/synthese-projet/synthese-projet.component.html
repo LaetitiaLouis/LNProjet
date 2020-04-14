@@ -1,13 +1,7 @@
-
-<!--  <mat-card-content fxLayout="row" fxLayoutAlign.gt-sm="space around-center">-->
-<!--    <img mat-card-image src="../../../assets/plan-maison-plans.fr_.jpg" alt="photo  de présentation du projet">-->
-<!--    <mat-card-title>{{projet?.intitule}}</mat-card-title>-->
-<!--  </mat-card-content>-->
-<!--<mat-card class="card" fxLayout="row" fxLayoutAlign.gt-sm="space around-center" >-->
 <app-card
   [link]="['/detailProjet',projet.id]"
-  [photo]="projet.photos" alt="photos du projet"
+  [photos]="projet.photos" alt="photo du projet"
   [text]="projet?.intitule">
 </app-card>
-<!--</mat-card>-->
+
 

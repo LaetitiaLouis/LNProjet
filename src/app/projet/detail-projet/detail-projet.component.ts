@@ -2,9 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProjetService} from '../../service/projet.service';
 import {PhotoService} from '../../service/photo.service';
-import {Observable} from 'rxjs';
 import {Projet} from '../../model/projet';
-import {Photo} from '../../model/photo';
+import {Photo} from "../../model/photo";
 
 @Component({
   selector: 'app-detail-projet',
@@ -12,21 +11,25 @@ import {Photo} from '../../model/photo';
   styleUrls: ['./detail-projet.component.css']
 })
 export class DetailProjetComponent implements OnInit {
-  projet$: Observable<Projet>;
-  photos$: Observable<Photo[]>;
-  @Input() public projet: Projet = null;
+  public projet: Projet;
+  public photosList: Photo [];
+
+
 
   constructor(private route: ActivatedRoute,
               private projetService: ProjetService,
-              private photoService: PhotoService) { }
+              private photoService: PhotoService) {
+  }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const projetId = +params.get('id');
-      this.projet$ = this.projetService.getProjetsById(projetId);
-      this.photos$ = this.photoService.getPhotosByCategorie(projetId);
-    }
+    this.route.paramMap.subscribe(params =>
+      this.projetService.getProjetsById(+params.get('id')).subscribe(projet => this.projet = projet)
     );
   }
 
+  findPhotosByProjet(photos: Photo[]) {
+    this.photoService.getPhotosByProjet(photos).subscribe(photo => this.photosList= photo);
+  }
 }
+
+

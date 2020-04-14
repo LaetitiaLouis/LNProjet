@@ -4,17 +4,21 @@ import {ErrorService} from './error.service';
 import {Admin} from '../model/admin';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+import {Client} from "../model/client";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  BASE_URL = 'http:localhost:8080/admin';
+  BASE_URL = 'http://localhost:8080/admin';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {
   }
 
+  getAllAdmins(): Observable<Admin[]> {
+    return this.http.get<Admin[]>(`${this.BASE_URL}/`);
+  }
   /**
    * Requête : Enregistrer un nouvel administrateur
    * @param admin L'objet admin à enregistrer

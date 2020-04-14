@@ -1,7 +1,7 @@
-<mat-carousel proportion ="40" [autoplay]="true" [loop]="true"
+<mat-carousel proportion ="30" [autoplay]="true" [loop]="true"
               timings="250ms ease-in"
-              interval="1500"
+              interval="5000"
               color="accent">
-  <mat-carousel-slide *ngFor="let item of photoList" [image]="item.lien"></mat-carousel-slide>
+  <mat-carousel-slide *ngFor="let photo of photoList" [image]="photo.lien"></mat-carousel-slide>
 </mat-carousel>
-<!--<img [src]='photo.lien' *ngFor='let photo of photos'>-->
+

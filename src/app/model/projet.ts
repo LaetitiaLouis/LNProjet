@@ -15,4 +15,5 @@ export class Projet {
   prestation: Prestation;
   prestations: Prestation[];
   client: Client;
+  photoId: number;
 }

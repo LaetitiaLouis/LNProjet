@@ -1,5 +1,14 @@
-<mat-card class="mat-card" *ngFor="let item of projet" fxLayout.gt-md="column" fxLayoutAlign="center center">
-  <mat-card-header><app-carousel [photos]="item"></app-carousel></mat-card-header>
+<!--<div class="container" *ngFor="let photo of projet">-->
+<!--<app-carousel *ngIf="projet" [photos]="projet.photos"></app-carousel>-->
+<!--<mat-carousel-slide *ngFor="let projet of projet" [pt]="photoList.projet"></mat-carousel-slide>-->
+<!--</div>-->
+<mat-carousel proportion ="30" [autoplay]="true" [loop]="true"
+              timings="250ms ease-in"
+              interval="5000"
+              color="accent">
+  <mat-carousel-slide *ngIf="projet" [image]="projet.photos"></mat-carousel-slide>
+</mat-carousel>
+<div class="description">
   <mat-card-title>{{projet?.intitule}}</mat-card-title>
   <mat-card-content><p>{{projet?.description}}</p></mat-card-content>
-</mat-card>
+</div>

@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Projet} from '../model/projet';
 import {Client} from '../model/client';
+import {Photo} from "../model/photo";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,9 @@ export class PrestationService {
               private es: ErrorService) {
   }
 
+  getAllPrestations(): Observable<Prestation[]> {
+    return this.http.get<Prestation[]>(`${this.BASE_URL}/`);
+  }
   /**
    * Requête : Enregistrer une nouvelle prestation
    * @param prestation L'objet prestation à enregistrer

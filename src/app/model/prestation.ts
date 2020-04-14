@@ -4,7 +4,7 @@ import {Client} from './client';
 export class Prestation {
   id: number;
   intitule: string;
-  contenu: string;
+  categorie: string;
   projet: Projet;
   projets: Projet[];
 }

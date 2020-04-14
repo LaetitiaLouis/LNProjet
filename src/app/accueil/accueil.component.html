@@ -1,3 +1,17 @@
 <app-carousel></app-carousel>
-<!--<app-presentation></app-presentation>-->
+<div class="presentation" fxLayout="row" fxLayoutAlign="space-around center">
+  <div class="grid" *ngFor="let admin of admin">
+    <img mat-card-image src="https://www.dropbox.com/s/mvvv8v4cdrm28z9/Laurence%20portrait%201%20NB.jpeg?dl=1"
+         alt="Photo de Laurence">
+    <!--<div class="photo" [ngStyle]="admin.photo"></div>-->
+    <div class="detailPresentation">
+      <p>{{admin.presentation}}</p></div>
+  </div>
+</div>
+<!--<mat-card class="présentation" fxLayout="column" *ngFor="let admin of admin">-->
+<!--  <mat-card-content class="description présentation">-->
+<!--  <p>{{admin.presentation}}</p>-->
+<!--  </mat-card-content>-->
+<!-- </mat-card>-->
+
 

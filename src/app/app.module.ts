@@ -45,7 +45,7 @@ const routes: any[] = [
   {path: 'contact', component: ContactComponent},
   {path: 'connexion', component: ConnexionComponent},
   {path: 'profil', component: ProfilComponent},
-  {path: 'projet/:id', component: DetailProjetComponent}
+  {path: 'detailProjet/:id', component: DetailProjetComponent}
 ];
 
 @NgModule({
