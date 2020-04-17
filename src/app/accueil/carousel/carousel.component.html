@@ -1,7 +1,18 @@
-<mat-carousel proportion ="30" [autoplay]="true" [loop]="true"
+<mat-carousel proportion="40" [autoplay]="true" [loop]="true"
               timings="250ms ease-in"
               interval="5000"
               color="accent">
-  <mat-carousel-slide *ngFor="let photo of photoList" [image]="photo.lien"></mat-carousel-slide>
+  <div *ngFor="let categorie of categories">
+    <div *ngFor="let photo of photosList"><mat-carousel-slide *ngIf="photo.categorie === categorie" [image]="photo.lien"></mat-carousel-slide></div></div>
 </mat-carousel>
 
+<!--<div class="container" fxLayout="row" fxLayoutAlign="space-around ">-->
+<!--  <div class="grid" *ngFor="let categorie of categories">-->
+<!--    <mat-card-title>{{categorie}}</mat-card-title>-->
+<!--    <mat-card-content>-->
+<!--      <div *ngFor="let prestation of prestations">-->
+<!--        <div class="detail" *ngIf="prestation.categorie === categorie">{{prestation.intitule}}</div>-->
+<!--      </div>-->
+<!--    </mat-card-content>-->
+<!--  </div>-->
+<!--</div>-->

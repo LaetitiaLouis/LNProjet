@@ -21,7 +21,7 @@ export class ListeProjetsComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  public onTypeChange(event: any) {
+  public onClickTypes(event: any) {
     // vide l'existant
     this.projetsList = [];
     // affiche tous les projets

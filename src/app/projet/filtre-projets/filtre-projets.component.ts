@@ -38,7 +38,7 @@ export class FiltreProjetsComponent implements OnInit {
     this.typesChangeEmitter.emit('Tous');
   }
 
-  public onTypesChange(event: any): void {
+  public onClickTypes(event: any): void {
     // this.typesChangeEmitter.emit(event.value);
     // console.log(event.target.innerText);
     // if(event.target.innerText==='Tous') {}

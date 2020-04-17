@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Projet} from '../model/projet';
 import {Observable} from 'rxjs';
@@ -10,7 +10,7 @@ import {ErrorService} from './error.service';
   providedIn: 'root'
 })
 export class ProjetService {
-  BASE_URL = 'http://localhost:8080/projet';
+  BASE_URL = 'http://localhost:8080/projets';
 
   constructor(private http: HttpClient,
               private es: ErrorService) {
@@ -20,7 +20,7 @@ export class ProjetService {
    * Requête : Obtenir la liste de tous les projets
    */
   getAllProjets(): Observable<Projet[]> {
-    return this.http.get<Projet[]>(`${this.BASE_URL}/`);
+    return this.http.get<Projet[]>(`${this.BASE_URL}`);
   }
 
   /**
@@ -28,7 +28,7 @@ export class ProjetService {
    * @param projet L'objet projet à enregistrer
    */
   saveProjetInfos(projet: Projet): Observable<Projet> {
-    return this.http.post<Projet>(`${this.BASE_URL}/new`, projet);
+    return this.http.post<Projet>(`${this.BASE_URL}`, projet);
   }
 
   /**
@@ -36,7 +36,7 @@ export class ProjetService {
    * @param projet L'objet projet à modifier
    */
   updateProjet(projet: Projet): Observable<Projet> {
-    return this.http.put<Projet>(`${this.BASE_URL}/update`, projet)
+    return this.http.put<Projet>(`${this.BASE_URL}`, projet)
       .pipe(catchError(this.es.handleError()));
   }
 
@@ -45,10 +45,10 @@ export class ProjetService {
    * @param id L'id du projet à supprimer
    */
   deleteProjet(id: number) {
-    return this.http.delete(`${this.BASE_URL}/delete?id=${id}`, {responseType: 'text'})
+    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
       .pipe(
         map(this.es.handleSuccess()), catchError(this.es.handleError())
-    );
+      );
   }
 
   /**
@@ -60,15 +60,27 @@ export class ProjetService {
     if (typeId === -1) {
       return this.getAllProjets();
     } else {
-    return this.http.get<Projet[]>(`${this.BASE_URL}/findByType?type=${typeId}`)
-      .pipe(catchError(this.es.handleError('Aucun projet ne correspond à ce type'))
-      );
+      return this.http.get<Projet[]>(`${this.BASE_URL}/types/${typeId}`)
+        .pipe(catchError(this.es.handleError('Aucun projet ne correspond à ce type'))
+        );
     }
   }
+
   getProjetsById(id: number): Observable<Projet> {
     console.log(id);
     return this.http.get<Projet>(`${this.BASE_URL}/findById?id=${id}`)
       .pipe(catchError(this.es.handleError())
       );
+  }
+
+  getProjetsByPrestation(prestationId: number): Observable<Projet[]> {
+    console.log(prestationId);
+    if (prestationId === -1) {
+      return this.getAllProjets();
+    } else {
+      return this.http.get<Projet>(`${this.BASE_URL}/prestations/${prestationId}`)
+        .pipe(catchError(this.es.handleError())
+        );
+    }
   }
 }

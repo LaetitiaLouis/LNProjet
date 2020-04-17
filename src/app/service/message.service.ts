@@ -11,16 +11,15 @@ import {ErrorService} from './error.service';
   providedIn: 'root'
 })
 export class MessageService {
-  BASE_URL = 'http://loclahost:8080/message';
+  BASE_URL = 'http://loclahost:8080/messages';
   constructor(private http: HttpClient,
               private es: ErrorService) {
   }
   /**
    * Requête : Obtenir la liste des messages
-   *
    */
   getAllMessages(): Observable<Message[]> {
-    return this.http.get<Message[]>(`${this.BASE_URL}/`);
+    return this.http.get<Message[]>(`${this.BASE_URL}`);
   }
 
   /**
@@ -28,7 +27,7 @@ export class MessageService {
    * @param client L'objet message à enregistrer
    */
   saveNewMessage(message: Message): Observable<Message> {
-    return this.http.post<Message>(`${this.BASE_URL}/new`, message);
+    return this.http.post<Message>(`${this.BASE_URL}`, message);
   }
 
   /**
@@ -36,7 +35,7 @@ export class MessageService {
    * @param message L'objet message à modifier
    */
   updateMessage(message: Message): Observable<Message> {
-    return this.http.put<Message>(`${this.BASE_URL}/update`, message)
+    return this.http.put<Message>(`${this.BASE_URL}`, message)
       .pipe(catchError(this.es.handleError()));
   }
 
@@ -45,7 +44,7 @@ export class MessageService {
    * @param id L'id du message à supprimer
    */
   deleteMessage(id: number) {
-    return this.http.delete(`${this.BASE_URL}/delete?id=${id}`, {responseType: 'text'})
+    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
       .pipe(
         map(this.es.handleSuccess()), catchError(this.es.handleError())
       );

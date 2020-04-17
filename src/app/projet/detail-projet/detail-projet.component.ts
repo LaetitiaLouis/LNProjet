@@ -4,6 +4,7 @@ import {ProjetService} from '../../service/projet.service';
 import {PhotoService} from '../../service/photo.service';
 import {Projet} from '../../model/projet';
 import {Photo} from "../../model/photo";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-detail-projet',
@@ -27,8 +28,18 @@ export class DetailProjetComponent implements OnInit {
     );
   }
 
-  findPhotosByProjet(photos: Photo[]) {
-    this.photoService.getPhotosByProjet(photos).subscribe(photo => this.photosList= photo);
+  findPhotosByProjet(event: any) {
+    this.photoService.getPhotosByProjet(event.id).pipe(take(1)).subscribe(
+      {
+        next: data => {
+          this.photosList = data;
+        },
+        error: (data) => {
+          console.log(data);
+        },
+        complete: () => {
+        }
+      });
   }
 }
 
