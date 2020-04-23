@@ -6,7 +6,7 @@
               timings="250ms ease-in"
               interval="5000"
               color="accent">
-  <mat-carousel-slide *ngIf="projet" [image]="projet.photos"></mat-carousel-slide>
+  <mat-carousel-slide *ngIf="projet" [image]="photosList"></mat-carousel-slide>
 </mat-carousel>
 <div class="description">
   <mat-card-title>{{projet?.intitule}}</mat-card-title>

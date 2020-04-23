@@ -19,6 +19,12 @@ export class AdminService {
     return this.http.get<Admin[]>(`${this.BASE_URL}`);
   }
 
+  getAdminByLogin(login:string): Observable<Admin> {
+    return this.http.get<Admin>(`${this.BASE_URL}/${login}`)
+      .pipe(catchError(this.es.handleError('Erreur login'))
+      );
+  }
+
   /**
    * Requête : Enregistrer un nouvel administrateur
    * @param admin L'objet admin à enregistrer
@@ -35,23 +41,23 @@ export class AdminService {
     return this.http.put<Admin>(`${this.BASE_URL}`, admin);
   }
 
-  /**
-   * Requête : Supprimer un administrateur
-   * @param id L'id de l'administrateur à supprimer
-   */
-  deleteAdmin(id: number) {
-    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
-      .pipe(
-        map(this.es.handleSuccess()),
-        catchError(this.es.handleError())
-      );
-  }
+  // /**
+  //  * Requête : Supprimer un administrateur
+  //  * @param id L'id de l'administrateur à supprimer
+  //  */
+  // deleteAdmin(id: number) {
+  //   return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
+  //     .pipe(
+  //       map(this.es.handleSuccess()),
+  //       catchError(this.es.handleError())
+  //     );
+  // }
 
   /**
    * Requête : Vérifier si le login existe
    * @param login Le login à vérifier
    */
   checkIfLoginExists(login: string) {
-    return this.http.get(`${this.BASE_URL}/${login}`);
+    return this.http.get(`${this.BASE_URL}/loginExists?login=${login}`);
   }
 }

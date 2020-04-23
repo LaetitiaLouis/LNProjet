@@ -22,20 +22,6 @@ export class TypeService {
     return this.http.get<Type[]>(`${this.BASE_URL}`);
   }
 
-  // getAllTypes(): Observable<Type[]> {
-  //   // Creation du Type ALL (spécifique au Front car inexistant à ce jour dans le Back)
-  //   const typeAll = new Type();
-  //   typeAll.id = -1;
-  //   typeAll.libelle = 'Tous';
-  //   const typeAllArray = [typeAll];
-  //
-  //   return this.http.get<Type[]>(`${this.BASE_URL}/`).pipe(
-  //     map(val =>
-  //       (val.concat(typeAllArray))
-  //     )
-  //   );
-  // }
-
   /**
    * Requête : Enregistrer un nouveau type
    * @param  type L'objet type à enregistrer

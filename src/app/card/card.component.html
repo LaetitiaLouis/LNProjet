@@ -1,7 +1,7 @@
 <div class="card mat-elevation-z4">
-  <div (click)="showDetails()" title="Voir le détail du projet">
-    <div class="photo" [style.background-image]="getTrustedUrl(photos[0].lien)"></div>
+  <mat-card (click)="showDetails()" class="message" [title]="title">
+    <img mat-card-image [src]="photos?photos[0].lien: photo">
     <div class="title">{{text | titlecase}}</div>
-  </div>
+  </mat-card>
   <ng-content></ng-content>
 </div>

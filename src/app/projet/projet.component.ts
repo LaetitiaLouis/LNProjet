@@ -3,6 +3,8 @@ import {Projet} from '../model/projet';
 import {ProjetService} from '../service/projet.service';
 import {PhotoService} from '../service/photo.service';
 import {ActivatedRoute} from '@angular/router';
+import {JwtService} from "../jwt/jwt.service";
+import {AdminService} from "../service/admin.service";
 
 @Component({
   selector: 'app-projet',
@@ -14,9 +16,30 @@ export class ProjetComponent implements OnInit {
 
   constructor(private projetService: ProjetService,
               private route: ActivatedRoute,
-              private photoService: PhotoService) {
+              private photoService: PhotoService,
+              public jwtService: JwtService,
+              private adminService: AdminService) {
   }
 
   public ngOnInit(): void {
-    }
+  }
+
+
+  getAllProjets() {
+    this.projetService.getAllProjets();
+  }
+
+  getProjetByAdmin(){
+    this.projetService.getProjetsByAdmin('login');
+  }
+
+  getPhotosByProjet(id: number){
+    this.photoService.getPhotosByProjet(0);
+  }
+
+  updateProjet(projet: Projet){
+    this.projetService.updateProjet(projet);
+  }
+
+
 }

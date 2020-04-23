@@ -1,29 +1,16 @@
-<mat-carousel proportion="40" [autoplay]="true" [loop]="true"
+<mat-carousel proportion="50" [autoplay]="true" [loop]="true"
               timings="250ms ease-in"
               interval="5000"
               color="accent">
-<!--  <div *ngFor="let categorie of categories">-->
-<div *ngFor="let photo of photos">
-      <mat-carousel-slide *ngIf="photos" [image]="photo.lien"></mat-carousel-slide>
-<!--      categorie === categorie"-->
-<!--                          [ngClass]="filterCategoriePhotosCarousel()" </div>-->
-</div>
+      <mat-carousel-slide *ngFor="let photo of photos" [image]="photo.lien"></mat-carousel-slide>
 </mat-carousel>
 
 
 <div class="presentation" fxLayout="row" fxLayoutAlign="space-around center">
   <div class="grid" *ngFor="let admin of admin">
-    <img mat-card-image src="https://www.dropbox.com/s/1wuvh05xq9uh7jf/Laurence%20portrait%201%20NB.jpeg?dl=1"
-         alt="Photo de Laurence">
-    <!--<div class="photo" [ngStyle]="admin.photo"></div>-->
-    <div class="detailPresentation">
-      <p>{{admin.presentation}}</p></div>
-  </div>
+    <img mat-card-image [src]="admin.photo" [alt]="'photo de '+admin.login">
+      <div class="detailPresentation">
+      <p>{{admin.presentation}}</p></div>  </div>
 </div>
-<!--<mat-card class="présentation" fxLayout="column" *ngFor="let admin of admin">-->
-<!--  <mat-card-content class="description présentation">-->
-<!--  <p>{{admin.presentation}}</p>-->
-<!--  </mat-card-content>-->
-<!-- </mat-card>-->
 
 

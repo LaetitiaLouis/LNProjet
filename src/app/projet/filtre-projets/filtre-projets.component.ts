@@ -14,14 +14,8 @@ export class FiltreProjetsComponent implements OnInit {
   @Output() typesChangeEmitter = new EventEmitter<any>();
   readonly ITEM_ALL = 'Tous les projets';
 
-  // private subscription: Subscription = null;
-
   constructor(private typeService: TypeService) {
   }
-
-  // public ngOnDestroy(): void {
-  //   this.subscription.unsubscribe();
-  // }
 
   public ngOnInit(): void {
     this.typeService.getAllTypes().pipe(take(1)).subscribe(

@@ -1,19 +1,22 @@
-.card {
+.card, .mat-card {
   cursor: pointer;
   padding: 0;
-  width: 150px;
+  width: 130px;
+  height: 145px;
   margin:0;
 }
 
-.photo {
-  height: 150px;
-  width: 150px;
+img {
+  height: 120px;
+  width: 130px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  margin: 0;
+  padding-top: 16px;
 }
 
 .title {
   text-align: center;
-  padding: 2px 0;
+  padding: 0;
 }

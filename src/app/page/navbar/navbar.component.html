@@ -2,7 +2,8 @@
     <a class="logo">
     <img src="../../../assets/Logo%204%20(blanc).png" alt="" fxLayoutAlign="start center">
     </a>
-  <div fxLayout="row" fxLayout.gt-sm="flex-end end" class="navigation" fxLayoutAlign="end end">
+
+  <div fxLayout="row" fxLayout.gt-sm="flex" class="navigation" fxLayoutAlign="center center" *ngIf="!jwtService.isLogged()">
 
   <a mat-button routerLink="/">
    <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Accueil</span>
@@ -16,7 +17,7 @@
     <a mat-button routerLink="/contact">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Contact</span>
     </a>
-     <a mat-button routerLink="/connexion">
+     <a mat-button routerLink="/admins">
        <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Connexion</span>
      </a>
 <!-- <div class="search-container">-->

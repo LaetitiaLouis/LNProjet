@@ -1,17 +1,17 @@
 <div class="page" fxLayout="" fxLayoutAlign="center center">
-  <form [formGroup]="connexionForm" (ngSubmit)="onSubmit(connexionForm.value)" class="form-container mat-elevation-z2">
+  <form [formGroup]="connexionForm" (ngSubmit)="onSubmit()" class="form-container mat-elevation-z2">
     <div class="form-title mat-headline">Connexion</div>
     <div class="form-content">
       <mat-form-field>
-        <input type="text" matInput placeholder="Saisir votre login" formArrayName="login">
+        <input type="text" matInput placeholder="Saisir votre login" formControlName="login">
         <mat-error *ngIf="submitted && f.login.errors">Vous devez saisir un login</mat-error>
       </mat-form-field>
       <mat-form-field>
-      <input type="password" matInput placeholder="Saisir votre mot de passe" formArrayName="password">
-      <mat-error *ngIf="submitted && f.password.errors">Vous devez saisir un mot de passe</mat-error>
+        <input type="password" matInput placeholder="Saisir votre mot de passe" formControlName="password">
+        <mat-error *ngIf="submitted && f.password.errors">Vous devez saisir un mot de passe</mat-error>
       </mat-form-field>
       <div fxLayout fxLayoutAlign="center center">
-        <button mat-raised-button type="submit" color="primary">Se connecter</button>
+        <button mat-raised-button type="submit">Se connecter</button>
       </div>
     </div>
   </form>

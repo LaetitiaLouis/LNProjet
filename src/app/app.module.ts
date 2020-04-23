@@ -37,15 +37,25 @@ import {MatInputModule} from '@angular/material/input';
 import { DetailProjetComponent } from './projet/detail-projet/detail-projet.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CardComponent } from './card/card.component';
+import {JwtModule} from "@auth0/angular-jwt";
+import {environment} from "../environments/environment";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {AdminGuard} from "./guards/admin.guard";
+import { DetailProfilComponent } from './connexion/profil/detail-profil/detail-profil.component';
+import { ClientComponent } from './client/client.component';
 
 const routes: any[] = [
   {path: '', component: AccueilComponent},
   {path: 'prestation', component: PrestationComponent},
   {path: 'projet', component: ProjetComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'connexion', component: ConnexionComponent},
+  {path: 'admins', component: ConnexionComponent},
   {path: 'profil', component: ProfilComponent},
-  {path: 'detailProjet/:id', component: DetailProjetComponent}
+  {path: 'detailProjet/:id', component: DetailProjetComponent},
+  {path: 'detailProfil/:login', component: DetailProfilComponent, canActivate:[AdminGuard]},
+  {path: 'messages', component: MessageComponent, canActivate:[AdminGuard]},
+  {path: 'clients', component: ClientComponent, canActivate:[AdminGuard]}
 ];
 
 @NgModule({
@@ -68,9 +78,20 @@ const routes: any[] = [
     ConnexionComponent,
     ProfilComponent,
     DetailProjetComponent,
-    CardComponent
+    CardComponent,
+    DetailProfilComponent,
+    ClientComponent
   ],
   imports: [
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function tokenGetter() {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: [environment.server],
+        blacklistedRoutes: [`${environment.apiUrl}/sign-in`]
+      }
+    }),
     BrowserModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
@@ -93,6 +114,8 @@ const routes: any[] = [
     FlexModule,
     MatInputModule,
     MatGridListModule,
+    MatExpansionModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

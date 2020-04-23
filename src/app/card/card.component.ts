@@ -12,6 +12,8 @@ export class CardComponent implements OnInit {
   @Input() photos: Photo[];
   @Input() link;
   @Input() text;
+  @Input() title
+  @Input() photo;
 
   constructor(private router: Router,
               private sanitizer: DomSanitizer) { }

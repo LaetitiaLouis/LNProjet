@@ -1,16 +1,26 @@
 .page {
-  height: 80vh;
+  height: 90vh;
+  background-image: url("../../assets/photoNB.jpeg");
+}
+
+img{
+  display: flex;
+  justify-content: center;
+  max-width: 900px;
 }
 
 .form-container {
   border-radius: 10px;
   max-width: 400px;
   padding-bottom: 20px;
+
 }
 
 .form-content {
   padding: 30px;
+  background: white;
 }
+
 mat-form-field {
   width: 100%;
 }
@@ -18,10 +28,20 @@ mat-form-field {
 .form-title {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #999999;
+  background-color: grey;
+  opacity: 0.6;
+  /*color: #206679;*/
+  /*#999999;*/
   padding: 10px;
+  margin-bottom: 0;
   text-align: center;
+  /*color: #696969;*/
+  /*background-color: #206679;*/
   color: white;
+  /*opacity: 0.7;*/
+  font-weight: 400;
+  /*background-image:url("") ;*/
+
 }
 
 .mat-small {
@@ -30,25 +50,39 @@ mat-form-field {
   cursor: pointer;
 }
 
+button {
+  margin-top: 20px;
+  color: white;
+  font-weight: 400;
+  /*background-color: lightgrey;*/
+  background-color: black;
+  opacity: 0.6;
+}
+
 @media (max-width: 450px) {
-  .page{
+  .page {
     width: 250px;
+    margin: auto;
+  }
+
+  .form-container {
     margin: 0 auto;
   }
-  .form-container{
-    margin: 0 auto;
-  }
-  .form-title{
+
+  .form-title {
     font-size: 20px;
   }
+
   mat-form-field {
     width: 100%;
     font-size: 10px;
     margin: 0 auto;
   }
-  .mat-small{
+
+  .mat-small {
     font-size: 10px;
   }
+
   button {
     padding: 6px 0 6px 0;
     font: bold 10px Arial;
@@ -58,5 +92,7 @@ mat-form-field {
     width: 100px;
     border: none;
     margin: 0 auto;
+    background-color: black;
+    opacity: 0.6;
   }
 }

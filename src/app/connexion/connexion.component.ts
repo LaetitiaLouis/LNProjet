@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthentificationService} from '../service/authentification.service';
+import {JwtService} from "../jwt/jwt.service";
 
 @Component({
   selector: 'app-connexion',
@@ -12,7 +12,8 @@ export class ConnexionComponent implements OnInit {
   submitted = false;
 
   constructor(private fb: FormBuilder,
-              private auth: AuthentificationService) { }
+              private jwtService: JwtService) {
+  }
 
   ngOnInit(): void {
     this.connexionForm = this.fb.group({
@@ -21,15 +22,13 @@ export class ConnexionComponent implements OnInit {
     });
   }
 
-  /**
-   * Requête : Vérification du login et du password
-   * @param form Le formuliare de connexion
-   */
-  onSubmit(form) {
-    this.submitted = true;
-    if (this.connexionForm.invalid) {return; }
-    this.auth.login(form.login, form.password).subscribe();
-  }
+  onSubmit() {
+    const login = this.connexionForm.controls.login.value;
+    const password = this.connexionForm.controls.password.value;
+    this.jwtService.login(login, password).subscribe(data => console.log(data));
+     }
 
-  get f() {return this.connexionForm.controls; }
+  get f() {
+    return this.connexionForm.controls;
+  }
 }

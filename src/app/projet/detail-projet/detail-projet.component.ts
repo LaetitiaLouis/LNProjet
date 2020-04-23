@@ -26,21 +26,22 @@ export class DetailProjetComponent implements OnInit {
     this.route.paramMap.subscribe(params =>
       this.projetService.getProjetsById(+params.get('id')).subscribe(projet => this.projet = projet)
     );
+    this.photoService.getPhotosByProjet(0).subscribe(photos => this.photosList = photos);
   }
 
-  findPhotosByProjet(event: any) {
-    this.photoService.getPhotosByProjet(event.id).pipe(take(1)).subscribe(
-      {
-        next: data => {
-          this.photosList = data;
-        },
-        error: (data) => {
-          console.log(data);
-        },
-        complete: () => {
-        }
-      });
-  }
+  // findPhotosByProjet(event: any) {
+  //   this.photoService.getPhotosByProjet(event.id).pipe(take(1)).subscribe(
+  //     {
+  //       next: data => {
+  //         this.photosList = data;
+  //       },
+  //       error: (data) => {
+  //         console.log(data);
+  //       },
+  //       complete: () => {
+  //       }
+  //     });
+  // }
 }
 
 

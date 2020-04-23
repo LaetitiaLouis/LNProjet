@@ -68,7 +68,7 @@ export class ProjetService {
 
   getProjetsById(id: number): Observable<Projet> {
     console.log(id);
-    return this.http.get<Projet>(`${this.BASE_URL}/findById?id=${id}`)
+    return this.http.get<Projet>(`${this.BASE_URL}/${id}`)
       .pipe(catchError(this.es.handleError())
       );
   }
@@ -79,6 +79,17 @@ export class ProjetService {
       return this.getAllProjets();
     } else {
       return this.http.get<Projet>(`${this.BASE_URL}/prestations/${prestationId}`)
+        .pipe(catchError(this.es.handleError())
+        );
+    }
+  }
+
+  getProjetsByAdmin(adminLogin: string): Observable<Projet[]> {
+    console.log(adminLogin);
+    if (adminLogin === "") {
+      return this.getAllProjets();
+    }else{
+      return this.http.get<Projet[]>(`${this.BASE_URL}/admins/${adminLogin}`)
         .pipe(catchError(this.es.handleError())
         );
     }

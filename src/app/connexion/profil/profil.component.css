@@ -1,0 +1,43 @@
+.container {
+  padding-top: 100px;
+}
+
+.TAB {
+  width: 840px;
+  height: 400px;
+  margin: 10px;
+  border: 1px solid lightgrey;
+  /*margin: auto;*/
+}
+
+.detailTAB {
+  padding: 100px 20px 0px 20px;
+}
+
+.mat-drawer {
+  font-size: 20px;
+  color: #17657D;
+}
+
+.navbar {
+  padding-top: 30px;
+  width: 150px;
+  text-align: center;
+  background-color: #e5e5e5;
+  /*opacity: 0.6;*/
+}
+
+app-card {
+  padding: 10px;
+}
+
+.deconnexion {
+  padding-top: 250px;
+}
+
+button {
+  border: 1px solid lightgrey;
+  background-color: #17657D;
+  color: white;
+  font-size: 12px;
+}

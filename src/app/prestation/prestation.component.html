@@ -1,9 +1,9 @@
-<div class="container" fxLayout="row" fxLayoutAlign="space-around center">
+<div class="container" fxLayout="row" fxLayoutAlign="space-around">
   <div class="grid" *ngFor="let categorie of categories">
     <mat-card-title>{{categorie}}</mat-card-title>
     <mat-card-content><div *ngFor="let prestation of prestations">
       <div class="detail" *ngIf="prestation.categorie === categorie">{{prestation.intitule}}</div>
-      </div></mat-card-content>
+    </div></mat-card-content>
   </div>
 </div>
 
