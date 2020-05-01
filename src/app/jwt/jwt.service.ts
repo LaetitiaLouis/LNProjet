@@ -19,6 +19,10 @@ export class JwtService {
     return Boolean(JwtService.getToken());
   }
 
+  isUnactived(): boolean {
+    return Boolean(JwtService.getToken());
+  }
+
   getUsername(): string {
     if (this.isLogged()) {
       return JwtService.userFromToken(JwtService.getToken()).login;
@@ -83,10 +87,25 @@ export class JwtService {
   register(name: string, password: string) {
     const user = {name: name, password: password};
 
-    this.httpClient.post<{ access_token: string }>(`${environment.apiUrl}/sign-up`, user).pipe(tap(_ => {
+    this.httpClient.post<{ access_token: string }>(`${environment.apiUrl}/admins/sign-up`, user).pipe(tap(_ => {
       this.login(name, password);
+      // this.getAdmin();
     }));
+  //   register(admin: Admin) {
+  //     const user = Admin;
+  //
+  //     this.httpClient.post<{ access_token: string }>(`${environment.apiUrl}/admins/sign-up`, user).pipe(tap(_ => {
+  //       // this.login(name, password);
+  //       this.getAdmin();
+  //     }));
   }
+
+  // registerAdmin(admin: Admin) {
+  //      const adminN = new Admin;
+  //   this.httpClient.post<{ access_token: string }>(`${environment.apiUrl}/admins/sign-up`, adminN).pipe(tap(_ => {
+  //     this.login(Admin);
+  //   }));
+  // }
 
   logout() {
     if (this.isLogged()) {
@@ -111,13 +130,6 @@ export class JwtService {
 
   private static userFromToken(token: string): any{
     const decodedToken = jwt_decode(token);
-
-    // const name = decodedToken.sub;
-    // const roles = decodedToken.auth;
-    // const photo = decodedToken.photo;
-    // const prenom = decodedToken.prenom;
-    // const presentation = decodedToken.presentation;
-
     return decodedToken;
   }
 }

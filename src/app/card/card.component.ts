@@ -9,11 +9,11 @@ import {Photo} from "../model/photo";
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  @Input() photos: Photo[];
-  @Input() link;
-  @Input() text;
-  @Input() title
-  @Input() photo;
+  @Input() public photos: Photo[];
+  @Input() public link;
+  @Input() public text;
+  @Input() public title;
+  @Input() public photo;
 
   constructor(private router: Router,
               private sanitizer: DomSanitizer) { }

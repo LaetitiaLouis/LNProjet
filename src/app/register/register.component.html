@@ -1,1 +1,69 @@
-<p>register works!</p>
+<div class="registerAdmin">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmitForm()">
+  <div class="form-content">
+    <mat-form-field class="login" (click)="f.login.enable()">
+      <input type="text" matInput [placeholder]="!update && 'Entrez un login'"
+             [value]="update && admin ? admin.login : '' " formControlName="login">
+      <mat-error *ngIf="f.login.errors && (f.login.dirty || f.login.touched)">
+        <span *ngIf="f.login.errors.required">Vous devez saisir un login</span>
+        <span *ngIf="f.login.errors?.loginExists">Ce login est déjà utilisé</span>
+      </mat-error>
+      <!--        <input type="text" matInput [placeholder]=admin.login>-->
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="password" (click)="f.confirmPassword.enable() && f.password.enable()">
+      <input type="password" matInput [placeholder]="!update && 'Entrez un mot de passe'"
+             [value]="update && admin ? admin.password : '' " formControlName="password">
+      <mat-error *ngIf="f.password.errors && (f.password.dirty || f.password.touched)">
+        <span *ngIf="f.password.errors.required">Vous devez saisir un mot de passe</span>
+        <span *ngIf="f.password.errors.minlenght">Votre mot de passe doit contenir 6 caractères au minimum</span>
+      </mat-error>
+      <!--            <input type="text" matInput [placeholder]=admin.password>-->
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="passwordOk" (click)="f.confirmPassword.enable() && f.password.enable()">
+      <input type="password" matInput [placeholder]="!update && 'Vérifier le mot de passe'"
+             [value]="update && admin ? admin.password : '' " formControlName="confirmPassword">
+      <mat-error *ngIf="f.confirmPassword.errors && (f.confirmPassword.dirty || f.confirmPassword.touched)">
+        <span *ngIf="f.confirmPassword.errors.required">Vous devez confirmer votre mot de passe</span>
+        <span *ngIf="f.confirmPassword.errors.passwordMismatch">Le mot de passe est différent</span>
+      </mat-error>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="prenom" (click)="f.prenom.enable()">
+      <input type="text" matInput [placeholder]="!update && 'Entrez votre prénom'"
+             [value]="update && admin ? admin.prenom : '' " formControlName="prenom">
+      <mat-error *ngIf="f.prenom.errors && (f.prenom.dirty || f.prenom.touched)">
+        <span *ngIf="f.prenom.errors.required">Le champ prénom est requis</span>
+      </mat-error>
+      <!--            <input type="text" matInput [placeholder]=admin.prenom>-->
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <!--          <mat-form-field class="role" (click)="f.role.enable()">-->
+    <!--            <input type="text" matInput [placeholder]="!update && 'Entrez votre prénom'"-->
+    <!--                   [value]="update && admin ? admin.prenom : '' " formControlName="prenom">-->
+    <!--            <mat-error *ngIf="f.prenom.errors && (f.prenom.dirty || f.prenom.touched)">-->
+    <!--              <span *ngIf="f.prenom.errors.required">Le champ prénom est requis</span>-->
+    <!--            </mat-error>-->
+
+    <!--&lt;!&ndash;            <input type="text" matInput [placeholder]=admin.role>&ndash;&gt;-->
+    <!--            <mat-icon matSuffix>mode_edit</mat-icon>-->
+    <!--          </mat-form-field>-->
+
+    <mat-form-field appearance="outline" class="presentation" (click)="f.presentation.enable()">
+      <input type="text" matInput [placeholder]="!update && 'Entrez votre présentation'"
+             [value]="update && admin ? admin.presentation : '' " formControlName="presentation">
+      <mat-error *ngIf="f.presentation.errors && (f.presentation.dirty || f.presentation.touched)">
+        <span *ngIf="f.presentation.errors.required">Le champ presentation est requis</span>
+      </mat-error>
+      <!--            <input type="text" matInput [placeholder]=admin.presentation>-->
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+  </div>
+</form>
+</div>
+

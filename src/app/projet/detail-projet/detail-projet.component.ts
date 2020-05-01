@@ -5,6 +5,7 @@ import {PhotoService} from '../../service/photo.service';
 import {Projet} from '../../model/projet';
 import {Photo} from "../../model/photo";
 import {take} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-detail-projet',
@@ -16,32 +17,18 @@ export class DetailProjetComponent implements OnInit {
   public photosList: Photo [];
 
 
-
   constructor(private route: ActivatedRoute,
               private projetService: ProjetService,
               private photoService: PhotoService) {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params =>
-      this.projetService.getProjetsById(+params.get('id')).subscribe(projet => this.projet = projet)
-    );
-    this.photoService.getPhotosByProjet(0).subscribe(photos => this.photosList = photos);
+    this.route.paramMap.subscribe(params => {
+        const projetId = +params.get('id');
+        this.photoService.getPhotosByProjet(projetId).subscribe(photo => this.photosList = photo);
+        this.projetService.getProjetsById(projetId).subscribe(projet => this.projet = projet)
+      }
+    )
   }
-
-  // findPhotosByProjet(event: any) {
-  //   this.photoService.getPhotosByProjet(event.id).pipe(take(1)).subscribe(
-  //     {
-  //       next: data => {
-  //         this.photosList = data;
-  //       },
-  //       error: (data) => {
-  //         console.log(data);
-  //       },
-  //       complete: () => {
-  //       }
-  //     });
-  // }
 }
-
 

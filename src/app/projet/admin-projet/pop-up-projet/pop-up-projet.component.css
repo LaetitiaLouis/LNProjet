@@ -1,0 +1,14 @@
+.mat-form-field {
+  margin : 10px;
+}
+
+.card {
+  /*display: flex;*/
+  /*justify-content: center;*/
+  width: 600px;
+  margin: 20px;
+}
+
+button{
+  margin: 20px;
+}

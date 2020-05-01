@@ -1,0 +1,45 @@
+<app-card-admin>
+  <!--  [link]="['/modifProfil',admin.login]">-->
+  <!--  [text]="'Modifier mon profil'">-->
+  <div class="grid">
+    <form [formGroup]="formBody">
+      <mat-form-field>
+        <input type="text" matInput formControlName="prenom" ngModel required>
+        <mat-hint>Prénom</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput formControlName="login" ngModel required>
+        <mat-hint>Login</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput formControlName="password" ngModel required>
+        <mat-hint>Mot de passe</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput formControlName="confirmPassword" ngModel required>
+        <mat-hint>Confirmez mot de passe</mat-hint>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input type="text" matInput formControlName="presentation" ngModel required>
+        <mat-hint>Présentation</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="photo" matInput formControlName="photo" ngModel required>
+        <mat-hint>Photo</mat-hint>
+      </mat-form-field>
+    </form>
+
+    <div fxLayout fxLayoutAlign="center center">
+      <form (ngSubmit)="onSubmit()">
+        <button mat-raised-button color="primary" type="submit">Envoyer</button>
+      </form>
+    </div>
+
+  </div>
+</app-card-admin>

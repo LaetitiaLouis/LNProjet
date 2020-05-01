@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AdminService} from "../../service/admin.service";
 import {Admin} from "../../model/admin";
 import {JwtService} from "../../jwt/jwt.service";
@@ -11,6 +11,7 @@ import {JwtService} from "../../jwt/jwt.service";
 export class ProfilComponent implements OnInit {
   public admin: Admin;
 
+
   constructor(private adminService: AdminService,
               private jwtService: JwtService) {
   }
@@ -19,8 +20,8 @@ export class ProfilComponent implements OnInit {
     this.admin = this.jwtService.getAdmin();
     }
 
-  onSubmit() {
-    this.jwtService.logout();
-  }
+  // onSubmit() {
+  //   this.jwtService.logout();
+  // }
 
 }

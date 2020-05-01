@@ -1,6 +1,9 @@
 .container {
-  padding-top: 50px;
+  padding-top: 100px;
   margin-bottom: 0px;
-  min-height: calc(100vh - 110px);
-
+  min-height: calc(80vh - 110px);
+  /*background-color: whitesmoke ;*/
+  /*background: black;*/
+  /*background-size: cover;*/
+  /*width: 100%;*/
 }

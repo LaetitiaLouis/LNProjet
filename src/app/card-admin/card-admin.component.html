@@ -1,0 +1,15 @@
+<div class="container" fxLayout="gt-md" fxLayoutAlign="center center">
+
+  <mat-drawer-container class="TAB">
+
+    <mat-drawer class="navbar" mode="side" opened>
+      <div class="title" *ngIf="admin">{{text | titlecase}}</div>
+<!--      <div class="bienvenue" *ngIf="admin">{{'Bienvenue ' + admin.prenom + ' !' | titlecase}}</div>-->
+<!--      <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">-->
+      <button mat-button class="titleButton" (click)="showDetails()">{{text}}</button>
+      <ng-content></ng-content>
+<!--      <app-deconnexion></app-deconnexion>-->
+    </mat-drawer>
+  <ng-content></ng-content>
+  </mat-drawer-container>
+</div>

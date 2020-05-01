@@ -32,7 +32,7 @@ export class PhotoService {
 
   /**
    * Requête : Supprimer une photo
-   * @param photoId L'id de l'objet photo à supprimer
+   * @param id de l'objet photo à supprimer
    */
   deletePhoto(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
@@ -44,15 +44,15 @@ export class PhotoService {
 
   /**
    * Requête : Obtenir la liste des photos d'un projet
-   * @param  projet Le projet souhaité
+   * @param  projetId du projet souhaité
    */
   getPhotosByProjet(projetId: number): Observable<Photo[]> {
-    console.log(projetId)
-    if (projetId = -1) {
+    if (projetId === -1) {
       return this.getAllPhotos()
     } else {
       return this.http.get<Photo[]>(`${this.BASE_URL}/projets/${projetId}`)
         .pipe(catchError(this.es.handleError('Aucune photo trouvée pour ce projet'))
+
         );
     }
   }

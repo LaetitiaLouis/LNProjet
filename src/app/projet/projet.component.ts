@@ -24,22 +24,4 @@ export class ProjetComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-
-  getAllProjets() {
-    this.projetService.getAllProjets();
-  }
-
-  getProjetByAdmin(){
-    this.projetService.getProjetsByAdmin('login');
-  }
-
-  getPhotosByProjet(id: number){
-    this.photoService.getPhotosByProjet(0);
-  }
-
-  updateProjet(projet: Projet){
-    this.projetService.updateProjet(projet);
-  }
-
-
 }

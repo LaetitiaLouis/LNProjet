@@ -12,8 +12,7 @@ img{
 .form-container {
   border-radius: 10px;
   max-width: 400px;
-  padding-bottom: 20px;
-
+  padding-bottom: 10px;
 }
 
 .form-content {

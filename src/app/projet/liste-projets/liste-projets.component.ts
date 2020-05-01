@@ -11,8 +11,8 @@ import {Observable} from 'rxjs';
   styleUrls: ['./liste-projets.component.css']
 })
 export class ListeProjetsComponent implements OnInit {
-  public projetsList: Projet[] = null;
-  @Input() public typesList: Observable<Type[]> = null;
+  public projetsList: Projet[];
+  @Input() public typesList: Observable<Type[]>;
 
 
   constructor(private projetService: ProjetService) {

@@ -1,0 +1,26 @@
+table {
+  margin: 20px;
+  width: 100%;
+}
+/*.grid{*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  justify-content: flex-start;*/
+/* }*/
+/*.grid > *{*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/*.grid > *:not(:last-child) {*/
+/*  margin-right: 32px;*/
+/*}*/
+.creation {
+  margin-left: 20px;
+  width: 18%;
+}
+
+.recherche {
+  width: 82%;
+  margin-left: auto;
+}
+

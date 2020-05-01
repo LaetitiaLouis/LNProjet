@@ -1,0 +1,32 @@
+.container {
+  padding-top: 136px;
+  padding-bottom: 135px;
+  background-image: url("../../assets/photoNB.jpeg");
+}
+
+.TAB {
+  width: 840px;
+  height: 400px;
+  margin: 10px;
+  border: 1px solid lightgrey;
+}
+
+.mat-drawer {
+  font-size: 20px;
+  color: #17657D;
+}
+
+.photoAdmin {
+  margin-top: 40px;
+  heigth: 130px;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.navbar {
+  padding-top: 30px;
+  width: 150px;
+  text-align: center;
+  background-color: #e5e5e5;
+}

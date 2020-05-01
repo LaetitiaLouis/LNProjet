@@ -39,4 +39,8 @@ export class FiltreProjetsComponent implements OnInit {
     const item = this.typeList.filter(typeItem => typeItem.libelle === event.target.innerText)[0];
     this.typesChangeEmitter.emit(item);
   }
+
+  public onClickProjets(): void{
+    this.typesChangeEmitter.emit('Tous');
+  }
 }

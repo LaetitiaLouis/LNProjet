@@ -1,4 +1,10 @@
-<app-filtre-projets *ngIf="!jwtService.isLogged()" (typesChangeEmitter)="projet.onClickTypes($event)"></app-filtre-projets>
-<app-liste-projets #projet></app-liste-projets>
 
+<!--<div *ngIf="jwtService.isLogged()">-->
+<!--  <app-admin-projet></app-admin-projet>-->
+<!--  <button mat-button routerLink="/prestation">Modifier les prestations</button>-->
+<!--  <button mat-button>Modifier les types de projets</button>-->
+<!--</div>-->
+
+<app-filtre-projets (typesChangeEmitter)="projet.onClickTypes($event)"></app-filtre-projets>
+<app-liste-projets #projet></app-liste-projets>
 

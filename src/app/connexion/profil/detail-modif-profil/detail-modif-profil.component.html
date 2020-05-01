@@ -1,0 +1,38 @@
+<app-card-admin
+  [link]="['/modifProfil',admin.login]">
+<!--  [text]="'Modifier mon profil'">-->
+  <div class="grid">
+    <form [formGroup]="formBody">
+      <mat-form-field>
+        <input type="text" matInput formControlName="prenom">
+        <mat-icon matSuffix (click)="enable('prenom')">mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput formControlName="login">
+        <mat-icon matSuffix (click)="enable('login')">mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput formControlName="password">
+        <mat-icon matSuffix (click)="enable('password')">mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput formControlName="presentation">
+        <mat-icon matSuffix (click)="enable('presentation')">mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="photo" matInput formControlName="photo">
+        <mat-icon matSuffix (click)="enable('photo')">mode_edit</mat-icon>
+      </mat-form-field>
+    </form>
+      <div fxLayout fxLayoutAlign="center center">
+        <form (ngSubmit)="onSubmit()">
+        <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+        </form>
+      </div>
+
+  </div>
+</app-card-admin>

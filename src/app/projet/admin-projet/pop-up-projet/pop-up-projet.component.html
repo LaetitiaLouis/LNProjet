@@ -1,0 +1,61 @@
+<div class="card mat-elevation-z4" fxLayoutAlign="center center">
+  <mat-card-content>
+    <form [formGroup]="formBody">
+      <mat-form-field class="intitule" (click)="enable('intitule')">
+        <input type="text" matInput [placeholder]="!data.update && 'intitule'" formControlName="intitule">
+        <mat-hint>Nom du projet</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="description" (click)="enable('description')">
+        <input type="text" matInput [placeholder]="!data.update && 'description'" formControlName="description">
+        <mat-hint>Description</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="photos" (click)="enable('photos')">
+        <input type="text" matInput [placeholder]="!data.update && 'photos'" formControlName="photos">
+        <mat-hint>Insérez vos photos</mat-hint>
+      </mat-form-field>
+
+      <div fxLayout fxLayoutAlign="center center">
+        <form (ngSubmit)="onSubmitUpdate()" *ngIf="data.update">
+          <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+        </form>
+      </div>
+
+      <div fxLayout fxLayoutAlign="center center">
+        <form (ngSubmit)="onSubmitCreate()" *ngIf="!data.update">
+          <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+        </form>
+      </div>
+    </form>
+  </mat-card-content>
+</div>
+
+<!--<div class="card mat-elevation-z4" fxLayoutAlign="center center">-->
+<!--    <mat-card-content>-->
+<!--      <form [formGroup]="formBody">-->
+<!--        <mat-form-field>-->
+<!--          <input type="text" matInput formControlName="intitule">-->
+<!--          <mat-hint>Nom du projet</mat-hint>-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field>-->
+<!--          <input type="text" matInput formControlName="description">-->
+<!--          <mat-hint>Description</mat-hint>-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field>-->
+<!--          <input type="photo" matInput formControlName="photos">-->
+<!--          <mat-hint>Insérez vos photos</mat-hint>-->
+<!--        </mat-form-field>-->
+
+<!--      <div fxLayout fxLayoutAlign="center center">-->
+<!--        <form (ngSubmit)="onSubmitCreate()">-->
+<!--          <button mat-raised-button color="primary" type="submit">Enregistrer</button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--      </form>-->
+<!--    </mat-card-content>-->
+<!--</div>-->
+
+

@@ -1,47 +1,48 @@
 .mat-toolbar {
   position: fixed;
   top: 0;
-  padding-left: 30px;
+  padding-left: 60px;
   width: 100%;
   z-index: 20;
-  height: 140px;
-  background: white;
+  height:120px;
+  /*background: black;*/
 }
 
 .navigation {
-  font-weight: bold;
-  width: 800px;
-  height: 70px;
+  width: 65%;;
+  height: 60px;
   background: #206679;
-  justify-content: center;
-  /*top: 100px;*/
-  margin-top: 120px;
-  margin-left: auto;
+  justify-content: start;
+  margin-top: 100px;
   margin-right: auto;
-  border-radius: 3px;
+  margin-left: 40px;
+  border-radius: 30px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .3),
   0 3px 5px rgba(0, 0, 0, .2),
   0 5px 10px rgba(0, 0, 0, .2),
   0 20px 20px rgba(0, 0, 0, .15);
 }
 
-mat-button {
-
-}
 .logo img {
-  height: 70px;
-  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  margin-left: 60px;
+  height: 90px;
+  font-weight: 1000;
   /*float: left;*/
-  background-color: #206679;
-  font-color:#206679;
+  /*background-color: #206679;*/
+  /*font-color:#206679;*/
+  /*border-radius: 5%;*/
 }
 
 .mat-title, .mat-small {
   padding-top: 0;
-  margin: 15px;
+  margin: 25px;
   cursor: pointer;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
+  font-family: "Noto Sans";
   /*box-shadow: 0 1px 0 #206679 inset,*/
   /*0 -1px 0 hsl(210, 100%, 32%) inset,*/
   /*0 -2px 0 hsl(210, 100%, 38%) inset,*/
@@ -74,7 +75,92 @@ mat-button {
 /*  text-decoration: none;*/
 /*  padding: 8px 8px 17px 8px;*/
 /*}*/
-.mat-icon {
-  color: white;
+/*.mat-icon {*/
+/*  color: #206679;*/
+/*}*/
+
+.home, .navigationAdmin {
+  margin-left: auto;
+  justify-content: right;
+  padding-right:30px;
+  color: #206679;
+  font-size: xx-large;
+
 }
 
+/*io style*/
+
+/**,*/
+/**:after,*/
+/**:before {*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/*// Codepen spesific styling - only to center the elements in the pen preview and viewport*/
+/*                              .container {*/
+/*                                position: absolute;*/
+/*                                top: 0;*/
+/*                                left: 0;*/
+/*                                right: 0;*/
+/*                                bottom: 0;*/
+/*                                width: 100%;*/
+/*                                display: flex;*/
+/*                                align-items: center;*/
+/*                                justify-content: center;*/
+/*                              }*/
+/*// End Codepen spesific styling*/
+
+
+/*body {*/
+/*  font-family: "Inter", sans-serif;*/
+/*  color: #303030;*/
+/*  background-color: mix(#fff, #342ead, 95%);*/
+/*}*/
+
+/*.menu {*/
+/*  display: flex;*/
+/*  flex-grow: 1;*/
+/*  height: 72px;*/
+/*  max-width: 370px;*/
+/*  border-radius: 12px;*/
+/*  overflow: hidden;*/
+/*  background-color: #fff;*/
+/*  box-shadow: 0 0 1px 0 rgba(#342ead, 0.25), 0 15px 30px 0 rgba(#342ead, 0.1);*/
+/*}*/
+
+/*.menu-item {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  flex-grow: 1;*/
+/*  text-decoration: none;*/
+/*&:focus,*/
+/*&:hover {*/
+/*   outline: none;*/
+/*.material-icons {*/
+/*  font-family: "Material Icons";*/
+/*  color: #342ead;*/
+/*}*/
+
+/*.menu-item-label {*/
+/*  color: #342ead;*/
+/*}*/
+/*}*/
+/*}*/
+
+/*.material-icons {*/
+/*  font-family: "Material Icons Outlined";*/
+/*  display: block;*/
+/*  margin-bottom: 4px;*/
+/*  font-size: 26px;*/
+/*  color: mix(#fff, #342ead, 60%);*/
+/*  transition: 0.25s ease;*/
+/*}*/
+
+/*.menu-item-label {*/
+/*  display: block;*/
+/*  font-size: 13px;*/
+/*  color: mix(#fff, #342ead, 70%);*/
+/*  transition: 0.25s ease;*/
+/*}*/

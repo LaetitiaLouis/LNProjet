@@ -12,7 +12,7 @@ import {ProjetService} from "../../service/projet.service";
   styleUrls: ['./synthese-projet.component.css']
 })
 export class SyntheseProjetComponent implements OnInit {
-  @Input() public projet: Projet = null;
+  @Input() public projet: Projet;
   @Input() public photos: Photo [];
 
 
@@ -23,8 +23,6 @@ export class SyntheseProjetComponent implements OnInit {
 
   public ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const projetId = params.get('id');
-      this.photoService.getPhotosByProjet(0).subscribe(photoResult => this.photos = photoResult)
       this.photoService.getPhotosByCategorie('Accueil').subscribe(photoResult => this.photos = photoResult);
     })
   }
