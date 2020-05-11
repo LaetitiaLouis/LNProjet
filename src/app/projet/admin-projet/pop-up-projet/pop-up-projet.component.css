@@ -3,12 +3,17 @@
 }
 
 .card {
-  /*display: flex;*/
-  /*justify-content: center;*/
   width: 600px;
   margin: 20px;
 }
 
 button{
   margin: 20px;
+}
+
+.close{
+  margin: 10px;
+}
+.mat-icon.close{
+  font-size: 20px;
 }

@@ -1,93 +1,47 @@
-<mat-toolbar fxHide.xs="true" class="card mat-elevation-z6">
-  <a class="logo">
-    <img src="../../../assets/logo%20PNG%20gentiane%20nacré%20.png" alt="" routerLink="/admins">
-  </a>
-
-  <mat-nav fxLayout.gt-sm="flex" class="navigation" fxLayoutAlign="center center">
-    <!--    *ngIf="!jwtService.isLogged()"-->
+<div class="container">
+<!--  <mat-toolbar fxHide.xs="true" class="card1"></mat-toolbar>-->
+<mat-toolbar   fxHide.xs="true" class="mat-elevation-z2">
+    <a class="logo">
+      <img src="../../../assets/logo%20PNG%20gentiane%20nacré%20.png" alt="" routerLink="/admins"><h1>Expert dessin en bâtiment</h1>
+    </a>
+<div class="navigation">
+  <div class="mat-nav">
     <a mat-button routerLink="/">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Accueil</span>
     </a>
-
-    <!--    <a mat-button routerLink="/prestation"*ngIf="!jwtService.isLogged()">-->
-    <a mat-button routerLink="/prestation">
+    <a mat-button href="#prestation">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Prestations</span>
     </a>
-    <!--    <button mat-button [matMenuTriggerFor]="prestations" *ngIf="jwtService.isLogged()">Prestations</button>-->
-    <!--    <mat-menu #prestations="matMenu" >-->
-    <!--    <button mat-menu-item>Modifier prestations</button>-->
-    <!--    </mat-menu>-->
-
-    <!--    <mat-menu #modifierPrestations="matMenu">-->
-    <!--      <button *ngFor="let prestation of prestations" [routerLink]="['/prestation']"></button>-->
-    <!--    </mat-menu>-->
-    <!--    <a mat-button routerLink="/projet" *ngIf="!jwtService.isLogged()">-->
     <a mat-button routerLink="/projet">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Projets</span>
     </a>
-    <!--    <button mat-button [matMenuTriggerFor]="projets" *ngIf="jwtService.isLogged()">Projets</button>-->
-    <!--    <mat-menu #projets="matMenu">-->
-    <!--      <button mat-menu-item>Modifier projets</button>-->
-    <!--    </mat-menu>-->
-    <!--    <a mat-button routerLink="/contact" *ngIf="!jwtService.isLogged()">-->
     <a mat-button routerLink="/contact">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Contact</span>
     </a>
-<!--    <button mat-button [matMenuTriggerFor]="contacts" *ngIf="jwtService.isLogged()">Contact</button>-->
-<!--    <mat-menu #contacts="matMenu">-->
-<!--      <button mat-menu-item>Messages</button>-->
-<!--      <button mat-menu-item>Clients</button>-->
-<!--    </mat-menu>-->
-<!--    <button mat-button [matMenuTriggerFor]="profil" *ngIf="jwtService.isLogged()">Profil</button>-->
-<!--    <mat-menu #profil="matMenu">-->
-<!--      <button mat-menu-item>Mon profil</button>-->
-<!--      <button mat-menu-item>Ajouter Admin</button>-->
-<!--    </mat-menu>-->
-  </mat-nav>
+
+    <a mat-button *ngIf="jwtService.isLogged()" (click)="onSubmit()">
+      <mat-icon class="deconnexion">power_settings_new</mat-icon>
+    </a>
+  </div>
+</div>
 </mat-toolbar>
+  </div>
 
 
-<!--  <div fxLayout="row" fxLayout.gt-sm="flex" class="navigationAdmin" *ngIf="jwtService.isLogged()">-->
-<!--  &lt;!&ndash;    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">&ndash;&gt;-->
-<!--        <mat-icon class="home">home</mat-icon>-->
-<!--  &lt;!&ndash;    </button>&ndash;&gt;-->
-<!--  </div>-->
-
-
-
-<mat-toolbar class="mat-elevation-z6" fxHide.gt-xs="true">
+<mat-toolbar class="mat-elevation-z2" fxHide.gt-xs="true">
+  <a class="logo">
+    <img src="../../../assets/logo%20PNG%20gentiane%20nacré%20.png" alt="" routerLink="/admins"><h1>Expert dessin en bâtiment</h1>
+  </a>
+  <div class="menuBurger">
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
-    <mat-icon>menu</mat-icon>
+    <mat-icon >menu</mat-icon>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/">Accueil</button>
       <button mat-menu-item routerLink="/prestations">Prestations</button>
       <button mat-menu-item routerLink="/projets">Projets</button>
       <button mat-menu-item routerLink="/contact">Contact</button>
-      <button mat-menu-item routerLink="/connexion">Connexion</button>
+      <button mat-menu-item *ngIf="jwtService.isLogged()" (click)="onSubmit()">Deconnexion</button>
     </mat-menu>
   </button>
+  </div>
 </mat-toolbar>
-
-<!--io style-->
-<!--<div class="container">-->
-<!--  &lt;!&ndash; code here &ndash;&gt;-->
-<!--  <nav class="menu">-->
-<!--    <a href="#" class="menu-item">-->
-<!--      <span class="material-icons">sports_esports</span>-->
-<!--      <span class="menu-item-label">Games</span>-->
-<!--    </a>-->
-<!--    <a href="#" class="menu-item">-->
-<!--      <span class="material-icons">local_see</span>-->
-<!--      <span class="menu-item-label">Images</span>-->
-<!--    </a>-->
-<!--    <a href="#" class="menu-item">-->
-<!--      <span class="material-icons">movie</span>-->
-<!--      <span class="menu-item-label">Movies</span>-->
-<!--    </a>-->
-<!--    <a href="#" class="menu-item">-->
-<!--      <span class="material-icons">store_mall_directory</span>-->
-<!--      <span class="menu-item-label">Store</span>-->
-<!--    </a>-->
-<!--  </nav>-->
-<!--  &lt;!&ndash; end of code &ndash;&gt;-->
-<!--</div>-->

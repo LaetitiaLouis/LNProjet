@@ -26,7 +26,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {SyntheseProjetComponent} from './projet/synthese-projet/synthese-projet.component';
 import {MatCardModule} from '@angular/material/card';
-import {DetailPrestationComponent} from './prestation/detail-prestation/detail-prestation.component';
 import {RegisterComponent} from './register/register.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MessageComponent} from './message/message.component';
@@ -48,13 +47,21 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {DeconnexionComponent} from './connexion/deconnexion/deconnexion.component';
 import { DetailModifProfilComponent } from './connexion/profil/detail-modif-profil/detail-modif-profil.component';
 import {CardAdminComponent} from "./card-admin/card-admin.component";
-import {MatListModule} from "@angular/material/list";
+import {MatListModule, MatSelectionList} from "@angular/material/list";
 import { CreationAdminComponent } from './connexion/profil/creation-admin/creation-admin.component';
 import { AdminProjetComponent } from './projet/admin-projet/admin-projet.component';
 import {MatTableModule} from "@angular/material/table";
 import { PopUpProjetComponent } from './projet/admin-projet/pop-up-projet/pop-up-projet.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatSortModule} from "@angular/material/sort";
+import { PopUpClientComponent } from './client/pop-up-client/pop-up-client.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { PopUpCreaAdminComponent } from './connexion/profil/creation-admin/pop-up-crea-admin/pop-up-crea-admin.component';
+import { PopUpMessageComponent } from './message/pop-up-message/pop-up-message.component';
+import { PopUpClientDeleteComponent } from './client/pop-up-client-delete/pop-up-client-delete.component';
+import { PopUpModifProfilComponent } from './connexion/profil/detail-modif-profil/pop-up-modif-profil/pop-up-modif-profil.component';
+import { PopUpDeleteProjetComponent } from './projet/admin-projet/pop-up-delete-projet/pop-up-delete-projet.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 const routes: any[] = [
   {path: '', component: AccueilComponent},
@@ -67,8 +74,10 @@ const routes: any[] = [
   {path: 'ajouterAdmin/:login', component: CreationAdminComponent},
   {path: 'adminProjet/:login', component: AdminProjetComponent},
   {path: 'messages', component: MessageComponent},
-  {path: 'contact', component: MessageComponent},
-  {path: 'clients', component: ClientComponent, canActivate:[AdminGuard]}
+  {path: 'contact', component: ContactComponent},
+  {path: 'clients', component: ClientComponent},
+  {path: 'ajouterAdmin/:login', component: CreationAdminComponent},
+  {path: 'deconnexion', component: DeconnexionComponent}
 ];
 
 @NgModule({
@@ -85,7 +94,6 @@ const routes: any[] = [
     FiltreProjetsComponent,
     ListeProjetsComponent,
     SyntheseProjetComponent,
-    DetailPrestationComponent,
     RegisterComponent,
     MessageComponent,
     ConnexionComponent,
@@ -99,7 +107,14 @@ const routes: any[] = [
     CardAdminComponent,
     CreationAdminComponent,
     AdminProjetComponent,
-    PopUpProjetComponent
+    PopUpProjetComponent,
+    PopUpClientComponent,
+    SearchBarComponent,
+    PopUpCreaAdminComponent,
+    PopUpMessageComponent,
+    PopUpClientDeleteComponent,
+    PopUpModifProfilComponent,
+    PopUpDeleteProjetComponent
   ],
   imports: [
     JwtModule.forRoot({
@@ -136,14 +151,16 @@ const routes: any[] = [
     MatExpansionModule,
     MatSidenavModule,
     MatCheckboxModule,
-    MatListModule,
     MatTableModule,
     MatDialogModule,
-    MatSortModule
+    MatSortModule,
+    MatListModule,
+    MatBadgeModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
+    { provide: MatDialogRef, useValue: {} },
+    {provide: MatSelectionList}
   ],
   bootstrap: [AppComponent],
 })

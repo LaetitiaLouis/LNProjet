@@ -1,9 +1,27 @@
 .container {
-  padding-top: 100px;
-  margin-bottom: 0px;
+  /*padding-top: ;*/
+
   min-height: calc(80vh - 110px);
   /*background-color: whitesmoke ;*/
   /*background: black;*/
   /*background-size: cover;*/
   /*width: 100%;*/
 }
+
+@media (min-width: 1200px) {
+  .page {
+    margin: 0 150px 0 150px;
+  }
+}
+@media (max-width: 1200px) {
+  .page {
+    margin: 0 ;
+  }
+}
+
+
+/*@media (max-width: 360px) {*/
+/*  .page {*/
+/*    margin: 0 20px 0 20px;*/
+/*  }*/
+/*}*/

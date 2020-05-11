@@ -1,20 +1,15 @@
-<div class="container" fxLayout="row" fxLayoutAlign="space-around">
- <div class="grid">
-   <img class="imageAU" src="">
-   <img class="imageC" src="">
-   <img class="imageD" src="">
- </div>
+<div class="container">
+  <p>Nous mettons à votre disposition nos compétences afin de vous accompagner sur l'ensemble des prestations proposées ci-après.</p>
 
-  <div class="grid" *ngFor="let categorie of categories">
-    <div class="nomCategorie">
-    <mat-card-title>{{categorie}}</mat-card-title>
-    </div>
-
-    <mat-card-content><div class="sousCategorie" *ngFor="let prestation of prestations">
-<!--      <hr width="30px">-->
-      <div class="detail" *ngIf="prestation.categorie === categorie">{{prestation.intitule}}
+  <div class="grid">
+    <div class="listePrestation" fxLayout="row" fxLayoutGap="100px" fxLayoutAlign="center">
+      <div class="grid" *ngFor="let categorie of categories">
+        <div class="nomCategorie">{{categorie}}</div>
+          <div class="sousCategorie" *ngFor="let prestation of prestations">
+            <div class="detail" *ngIf="prestation.categorie === categorie">{{prestation.intitule}}
+            </div>
+          </div>
       </div>
-    </div></mat-card-content>
+    </div>
   </div>
 </div>
-

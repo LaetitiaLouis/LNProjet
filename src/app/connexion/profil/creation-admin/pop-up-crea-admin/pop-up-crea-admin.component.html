@@ -1,0 +1,47 @@
+<div class="card mat-elevation-z2" >
+  <mat-card>
+  <mat-card-content>
+    <div class="close" fxLayoutAlign="end">
+    <mat-icon class="close" onClick="history.back()">close</mat-icon>
+    </div>
+
+    <form class="formulaire" [formGroup]="formBody">
+      <mat-form-field class="Prenom">
+        <input type="text" matInput formControlName="prenom">
+        <mat-hint>Prénom</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="login">
+        <input type="text" matInput formControlName="login">
+        <mat-hint>Login</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="photo">
+        <input type="photo" matInput formControlName="photo">
+        <mat-hint>Photo</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="presentation">
+        <input type="text" matInput formControlName="presentation">
+        <mat-hint>Présentation</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="password">
+        <input type="text" matInput formControlName="password">
+        <mat-hint>Mot de passe</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="" passwordOk>
+        <input type="text" matInput formControlName="confirmPassword">
+        <mat-hint>Confirmez mot de passe</mat-hint>
+      </mat-form-field>
+    </form>
+
+      <div class="enregister" fxLayout fxLayoutAlign="center center">
+        <form (ngSubmit)="onSubmit()">
+          <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+        </form>
+      </div>
+  </mat-card-content>
+  </mat-card>
+</div>

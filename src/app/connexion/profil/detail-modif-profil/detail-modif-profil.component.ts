@@ -3,6 +3,12 @@ import {Admin} from "../../../model/admin";
 import {JwtService} from "../../../jwt/jwt.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AdminService} from "../../../service/admin.service";
+import {ErrorService} from "../../../service/error.service";
+import {catchError, map, tap} from "rxjs/operators";
+import {Client} from "../../../model/client";
+import {PopUpClientComponent} from "../../../client/pop-up-client/pop-up-client.component";
+import {PopUpModifProfilComponent} from "./pop-up-modif-profil/pop-up-modif-profil.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-detail-modif-profil',
@@ -10,36 +16,57 @@ import {AdminService} from "../../../service/admin.service";
   styleUrls: ['./detail-modif-profil.component.css']
 })
 export class DetailModifProfilComponent implements OnInit {
-  // @Input() creation: boolean = false;
   public admin: Admin;
   public formBody: FormGroup;
 
   constructor(
     private jwtService: JwtService,
     private adminService: AdminService,
-    private fb: FormBuilder) {
+    private es: ErrorService,
+    private fb: FormBuilder,
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    // récupération de l'admin connecté
+    this.formProfil();
+  }
+
+  // récupération de l'admin connecté
+  public formProfil() {
     this.admin = this.jwtService.getAdmin();
     this.formBody = this.fb.group({
-      prenom: [{value: this.admin.prenom, disabled: true}],
-      login: [{value: this.admin.login, disabled: true}],
-      password: [{value: this.admin.password, disabled: true},Validators.minLength(6)],
-      presentation: [{value: this.admin.presentation, disabled: true}],
-      photo: [{value: this.admin.photo, disabled: true}]
+      prenom: [this.admin.prenom],
+      login: [this.admin.login],
+      password: [this.admin.password],
+      presentation: [this.admin.presentation],
+      photo: [this.admin.photo]
     })
   }
+  // enable(champ: string) {
+  //   this.formBody.get(champ).enable();
+  //   this.formBody.get(champ).setValue("");
+  // }
 
-  enable(champ: string) {
-    this.formBody.get(champ).enable();
-    this.formBody.get(champ).setValue("");
+  openDialog(admin: Admin): void {
+    const dialogRef = this.dialog.open(PopUpModifProfilComponent, {data: {admin}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.admin = result;
+    });
   }
 
-  onSubmit() {
-    let admin = {...this.admin, ...this.formBody.value};
-    if(!admin.password){admin.password = ""};
-    this.adminService.updatedAdmin(admin).subscribe(admin => console.log(admin));
-  }
+  // onSubmitUpdate() {
+  //   let admin = {...this.admin, ...this.formBody.value};
+  //   if (!admin.password) {
+  //     admin.password = ""
+  //   }
+  //   ;
+  //   this.adminService.updatedAdmin(admin)
+  //     .subscribe((admin => {
+  //         this.es.handleSuccess("Profil modifié");
+  //         console.log(admin);
+  //       }),
+  //       this.es.handleError("Erreur"))
+  //   ;
+  // }
 }

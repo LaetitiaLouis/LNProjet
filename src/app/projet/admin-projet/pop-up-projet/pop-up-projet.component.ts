@@ -3,10 +3,10 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {ProjetService} from "../../../service/projet.service";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {ErrorService} from "../../../service/error.service";
 
 @Component({
   selector: 'app-pop-up-projet',
-
   templateUrl: './pop-up-projet.component.html',
   styleUrls: ['./pop-up-projet.component.css']
 })
@@ -17,10 +17,9 @@ export class PopUpProjetComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private projetService: ProjetService,
               private route: ActivatedRoute,
-              // public dialog: MatDialog,
-              // private adminService: AdminService,
               public dialogRef: MatDialogRef<PopUpProjetComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private es: ErrorService) {
   }
 
   ngOnInit(): void {
@@ -38,7 +37,9 @@ export class PopUpProjetComponent implements OnInit {
   }
 
   onSubmitCreate(): void {
-    this.projetService.saveProjetInfos(this.formBody.value).subscribe();
+    this.projetService.saveProjetInfos(this.formBody.value)
+      .subscribe(this.es.handleSuccess("Projet créé"), this.es.handleError("Erreur")
+    );
     this.dialogRef.close();
   }
 
@@ -50,7 +51,14 @@ export class PopUpProjetComponent implements OnInit {
   }
 
   onSubmitUpdate() {
-    this.projetService.updateProjet(this.formBody.value).subscribe();
+    const projet = {id: this.data.projet.id, ...this.formBody.value}
+    this.projetService.updateProjet(projet)
+      .subscribe(this.es.handleSuccess("Projet modifié"), this.es.handleError("Erreur")
+      );
+    this.dialogRef.close();
+  }
+
+  closePopUp() {
     this.dialogRef.close();
   }
 }

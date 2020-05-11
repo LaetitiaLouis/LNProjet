@@ -4,14 +4,14 @@ import {Client} from '../model/client';
 import {Projet} from '../model/projet';
 import {catchError, map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-import {Message} from '@angular/compiler/src/i18n/i18n_ast';
 import {ErrorService} from './error.service';
+import {Message} from "../model/message";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
-  BASE_URL = 'http://loclahost:8080/messages';
+  BASE_URL = 'http://localhost:8080/messages';
   constructor(private http: HttpClient,
               private es: ErrorService) {
   }
@@ -48,6 +48,12 @@ export class MessageService {
       .pipe(
         map(this.es.handleSuccess()), catchError(this.es.handleError())
       );
+  }
+
+  getMessageById(id:number): Observable<Message> {
+      return this.http.get<Message>(`${this.BASE_URL}/${id}`)
+        // .pipe(catchError(this.es.handleError('Erreur Id')))
+    ;
   }
 }
 

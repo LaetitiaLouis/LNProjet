@@ -1,11 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MessageService} from "../service/message.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Message} from "@angular/compiler/src/i18n/i18n_ast";
-import {Client} from "../model/client";
-import {ClientService} from "../service/client.service";
-import {FormValidatorService} from "../service/form-validator.service";
-import {map} from "rxjs/operators";
+import {Message} from "../model/message";
+import {PopUpMessageComponent} from "./pop-up-message/pop-up-message.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-message',
@@ -13,43 +10,36 @@ import {map} from "rxjs/operators";
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
-public formBody: FormGroup;
+  public messages: Message[];
+  public message: Message;
+  isVu= false;
 
 
   constructor(private messageService: MessageService,
-              private clientService: ClientService,
-              private validator: FormValidatorService,
-              private fb: FormBuilder) {
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.formBody = this.fb.group({
-      objet: ["",[Validators.required]],
-      contenu: ["",[Validators.required]],
-      nom: ["",[Validators.required]],
-      prenom: ["",[Validators.required]],
-      adresse: ["",[Validators.required]],
-      codePostal: ["",[Validators.required, Validators.minLength(5),Validators.maxLength(5)]],
-      ville: ["",[Validators.required]],
-      email: ["",[Validators.required, Validators.email]],
-      confirmEmail: ["",[Validators.required, Validators.email]],
-      telephone: ["",[Validators.required, Validators.minLength(15), Validators.maxLength(15)]]
-    },
-      {
-      validators: this.validator.emailMatch
-    });
-  }
-  /**
-   * Getter pour obtenir les control du formulaire
-   */
-  get f() {
-    return this.formBody.controls;
+    this.getAllMessages()
   }
 
-  onSubmitFormBody() {
-    this.clientService.saveNewClient(this.formBody.value).pipe(
-      map(client => this.messageService.saveNewMessage(({client: {id: client.id}, ...this.formBody.value})))).subscribe
-        (message => console.log(message)
-    );
+  public getAllMessages() {
+    this.messageService.getAllMessages().subscribe(messages => this.messages = messages);
   }
+
+  openDialog (message?: Message): void {
+    const dialogRef = this.dialog.open(PopUpMessageComponent, {data: {message}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
+
+alertNewMessage () {
+  this.message.vu = false;
+}
+  // onSubmitDelete() {
+  //   const messageId = {id:this.message.id, ...this.message}
+  //   this.messageService.deleteMessage(this.message).subscribe();
+  //
+  // }
 }

@@ -1,0 +1,78 @@
+fieldset{
+  margin:50px;
+}
+
+legend{
+  font-size: 18px;
+  margin: 0 40px 0 10px;
+  padding: 0 10px 0 10px;
+  color: grey;
+}
+
+/*table {*/
+/*  margin: 20px;*/
+/*  width: 100%;*/
+/*}*/
+
+.mat-raised-button.creation {
+  margin: 10px 0 30px 0;
+  padding: 0;
+}
+
+.creation {
+  margin-left: 20px;
+  width: 18%;
+}
+
+.add {
+  /*margin-left: 0;*/
+  /*padding-left: 0;*/
+  font-size: 20px;
+}
+
+.mat-raised-button.recherche {
+  margin: 10px 0 30px 0;
+}
+
+.recherche {
+  width: 300px;
+  margin-left: auto;
+  text-align: right;
+}
+
+.mat-icon.search {
+  width: 20px;
+  height: 20px;
+}
+
+.rechercheInput{
+  border: none;
+  width: 90%;
+  height:20px;
+  caret-color: white;
+  caret: white;
+}
+
+.mat-input-element{
+  caret-color: white;
+  caret: white;
+}
+.mat-elevation-z2 {
+  width: 100%;
+}
+
+.mat-header-cell, .mat-cell {
+  margin: 10px;
+  padding: 5px;
+}
+
+.mat-cell.delete, .mat-cell.update {
+  text-align: center;
+}
+
+.mat-icon.close{
+  font-size: 20px;
+}
+.mat-icon.update{
+  font-size: 20px;
+}

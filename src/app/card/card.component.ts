@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Photo} from "../model/photo";
+import {JwtService} from "../jwt/jwt.service";
 
 @Component({
   selector: 'app-card',
@@ -16,6 +17,7 @@ export class CardComponent implements OnInit {
   @Input() public photo;
 
   constructor(private router: Router,
+              public jwtService: JwtService,
               private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {

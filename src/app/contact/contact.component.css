@@ -1,0 +1,62 @@
+.grid{
+  padding:80px 170px 40px 170px;
+  margin: 0 80px 0 80px;
+  display: flex;
+  justify-content: flex-start;
+  /*background-image: url("../../assets/images.jpg");*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+}
+fieldset{
+  background-color: white;
+}
+legend{
+  font-size: 20px;
+  margin: 0 40px 0 10px;
+  padding: 0 10px 0 10px;
+}
+
+p{
+  padding: 30px 35px 0 30px;
+  font-size: 16px;
+  line-height: 25px;
+
+}
+form{
+  margin: 0 40px 30px 60px;
+}
+
+mat-form-field{
+  margin: 20px 20px 0 20px ;
+  width: 160px;
+  height: 40px;
+}
+
+.email, .emailOk{
+  width: 260px;
+}
+
+.objet, .message{
+  width: 560px;
+}
+/*textarea{*/
+/*  box-sizing: border-box;*/
+/*  border-radius: 2px;*/
+/*  border: solid 1px black;*/
+/*}*/
+.objet {
+  margin-top: 40px;
+}
+
+button{
+  margin-top: 20px;
+  background-color: black;
+  opacity: 80%;
+  color: white;
+}
+
+a{
+  text-decoration: none;
+}
+
+

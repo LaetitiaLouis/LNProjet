@@ -1,1 +1,29 @@
+.mesProjets {
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  /*width: 140px;*/
+  /*height: 140px;*/
+  display: flex;
+  justify-content: center;
+}
 
+.title {
+  text-align: center;
+  padding: 0;
+}
+
+.photo{
+ width: 100%;
+  /*width: 140px;*/
+  /*height: 140px;*/
+ height: auto;
+  object-fit: cover;
+  padding: 0;
+  margin: 0;
+  background-size: cover;
+}
+
+.message, title{
+  border: none;
+}

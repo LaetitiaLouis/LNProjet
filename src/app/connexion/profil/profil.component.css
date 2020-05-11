@@ -1,25 +1,19 @@
-.container {
-  padding-top: 136px;
-  padding-bottom: 135px;
-  background-image: url("../../../assets/photoNB.jpeg");
-
+/*fieldset{*/
+/*  margin: 50px;*/
+/*}*/
+.container{
+  margin-top: 50px;
 }
 
-.TAB {
-  width: 840px;
-  height: 400px;
-  margin: 10px;
-  border: 1px solid lightgrey;
-  /*margin: auto;*/
+legend{
+  font-size: 18px;
+  margin-left: 100px;
+  padding: 0 10px 0 10px;
+  color: grey;
 }
 
 .detailTAB {
-  padding: 100px 20px 0px 20px;
-}
-
-.mat-drawer {
-  font-size: 20px;
-  color: #17657D;
+  padding: 40px 30px 40px 30px;
 }
 
 .navbar {
@@ -29,14 +23,16 @@
   background-color: #e5e5e5;
   /*opacity: 0.6;*/
 }
-
-app-card {
-  padding: 10px;
+.imagePhoto{
+  height: 110px;
+  width: 90px;
 }
 
-/*.deconnexion {*/
-/*  padding-top: 50px;*/
-/*}*/
+app-card {
+  margin: 15px;
+  max-width: 50%;
+  max-height: 50%;
+}
 
 button {
   font-size: 12px;

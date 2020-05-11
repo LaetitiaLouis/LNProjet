@@ -1,1 +1,74 @@
+<div class="grid" fxLayout="center center"fxLayoutAlign="center center">
+  <fieldset fxLayout="center center"fxLayoutAlign="center center">
+    <legend>Nous contacter</legend>
 
+    <p>Besoins d'informations ?<br>Prenez-contacte directement en remplissant ce formulaire<br>Nous vous répondrons dans les meilleurs délais.</p>
+    <form [formGroup]="formBody" fxLayout="center center" fxLayoutAlign="flex-start" >
+      <mat-form-field appearance="standard">
+        <mat-label>Nom</mat-label>
+        <input type="text" matInput placeholder="Entrez votre nom" formControlName="nom">
+
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Prénom</mat-label>
+        <input type="text" matInput placeholder="Entrez votre prénom" formControlName="prenom">
+      </mat-form-field>
+
+      <mat-form-field  class="big" appearance="standard">
+        <mat-label>Adresse</mat-label>
+        <input type="text" matInput placeholder="Entrez votre adresse" formControlName="adresse">
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Code postal</mat-label>
+        <input type="text" matInput placeholder="Entrez votre code postal" formControlName="codePostal">
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Ville</mat-label>
+        <input type="text" matInput placeholder="Entrez votre ville" formControlName="ville">
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Téléphone</mat-label>
+        <input type="text" matInput placeholder="Entrez votre téléphone" formControlName="telephone">
+      </mat-form-field>
+
+      <mat-form-field  class="email" appearance="standard">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput placeholder="Entrez votre adresse mail" formControlName="email">
+        <mat-error *ngIf="f.email.errors">
+          <span *ngIf="f.email.errors.email">Adresse mail invalide</span>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field  class="emailOk" appearance="standard">
+        <mat-label>Confirmation Email</mat-label>
+        <input type="text" matInput placeholder="Meri de confirmez votre adresse mail" formControlName="confirmEmail">
+        <mat-error *ngIf="f.confirmEmail.errors && (f.email.touched)">
+          <span *ngIf="f.confirmEmail.errors.required">Vous devez confirmer votre adresse mail</span>
+          <span *ngIf="f.confirmEmail.errors.emailMismatch">L'adresse mail est différente</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  class="objet" appearance="standard">
+        <mat-label>Votre projet</mat-label>
+        <input type="text" matInput placeholder="Entrez l'objet de votre message" formControlName="objet">
+      </mat-form-field>
+
+      <mat-form-field  class="message" appearance="standard">
+        <mat-label>Message</mat-label>
+        <textarea matInput placeholder="Entrez votre message" formControlName="contenu"></textarea>
+      </mat-form-field>
+
+    </form>
+
+    <div fxLayout fxLayoutAlign="center center">
+      <form (ngSubmit)="onSubmitFormBody()">
+        <button mat-raised-button  type="submit">Envoyer votre message</button>
+      </form>
+    </div>
+  </fieldset>
+</div>

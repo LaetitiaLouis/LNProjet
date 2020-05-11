@@ -94,4 +94,9 @@ export class ProjetService {
         );
     }
   }
+
+  getProjetsByTypeAndIntitule(recherche: string): Observable<Projet[]>{
+    return this.http.get<Projet[]>(`${this.BASE_URL}/findByTypeAndIntitule?recherche=${recherche}`);
+  }
+
 }

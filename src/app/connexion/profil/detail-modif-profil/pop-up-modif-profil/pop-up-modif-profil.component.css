@@ -1,0 +1,20 @@
+.mat-form-field {
+  margin : 10px;
+}
+.formulaire{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+button{
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.close{
+  margin: 10px;
+}
+.mat-icon.close{
+  font-size: 20px;
+}

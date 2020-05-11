@@ -1,5 +1,6 @@
 import {Projet} from './projet';
 import {Prestation} from './prestation';
+import {Message} from "./message";
 
 export class Client {
   id: number;
@@ -17,4 +18,5 @@ export class Client {
   isProspect: boolean;
   prestations: Prestation[];
   prestation: Prestation;
+  message: Message[];
 }

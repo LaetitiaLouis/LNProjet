@@ -2,8 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Projet} from '../../model/projet';
 import {Photo} from "../../model/photo";
 import {PhotoService} from "../../service/photo.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProjetService} from "../../service/projet.service";
+import {JwtService} from "../../jwt/jwt.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
@@ -13,12 +15,18 @@ import {ProjetService} from "../../service/projet.service";
 })
 export class SyntheseProjetComponent implements OnInit {
   @Input() public projet: Projet;
-  @Input() public photos: Photo [];
-
+  // @Input() public photos: Photo [];
+  // @Input() public photo;
+  // public projet: Projet;
+  public photos: Photo [];
+  public photo;
 
   constructor(private photoService: PhotoService,
               private projetService: ProjetService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router,
+              public jwtService: JwtService,
+              private sanitizer: DomSanitizer) {
   }
 
   public ngOnInit(): void {
@@ -26,4 +34,12 @@ export class SyntheseProjetComponent implements OnInit {
       this.photoService.getPhotosByCategorie('Accueil').subscribe(photoResult => this.photos = photoResult);
     })
   }
+
+ /**
+   * Redirige vers le le lien fourni dans l'input link
+   */
+  showDetails(id : number) {
+    this.router.navigate(['/detailProjet',id]);
+  }
 }
+

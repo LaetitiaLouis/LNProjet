@@ -1,5 +1,8 @@
-<div class="card mat-elevation-z4" fxLayoutAlign="center center">
+<div class="card mat-elevation-z2" fxLayoutAlign="center center">
   <mat-card-content>
+    <div class="close" fxLayoutAlign="end">
+    <mat-icon class="close" (click)="closePopUp()">close</mat-icon>
+    </div>
     <form [formGroup]="formBody">
       <mat-form-field class="intitule" (click)="enable('intitule')">
         <input type="text" matInput [placeholder]="!data.update && 'intitule'" formControlName="intitule">

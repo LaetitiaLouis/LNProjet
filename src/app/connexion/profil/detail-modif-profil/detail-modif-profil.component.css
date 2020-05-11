@@ -1,32 +1,27 @@
-/*.container {*/
-/*   padding-top: 136px;*/
-/*   padding-bottom: 135px;*/
-/*   background-image: url("../../../../assets/photoNB.jpeg");*/
-/* }*/
+fieldset {
+  margin: 130px 180px 0px 180px;
+}
 
-/*.TAB {*/
-/*  width: 840px;*/
-/*  height: 400px;*/
-/*  margin: 10px;*/
-/*  border: 1px solid lightgrey;*/
-/*}*/
+legend {
+  font-size: 18px;
+  margin: 0 40px 0 10px;
+  padding: 0 10px 0 10px;
+  color: grey;
+}
 
-/*.mat-drawer {*/
-/*  font-size: 20px;*/
-/*  color: #17657D;*/
-/*}*/
+.mat-icon.close{
+  font-size: 20px;
+}
 
-/*.photoAdmin {*/
-/*  margin-top: 40px;*/
-/*  heigth: 130px;*/
-/*  width: 120px;*/
-/*  object-fit: cover;*/
-/*  border-radius: 50%;*/
-/*}*/
+.form {
+  margin-left: 40px;
+}
 
-/*.navbar {*/
-/*  padding-top: 30px;*/
-/*  width: 150px;*/
-/*  text-align: center;*/
-/*  background-color: #e5e5e5;*/
-/*}*/
+.mat-form-field {
+  margin: 20px;
+  color: black;
+}
+
+.mat-input {
+  color: black;
+}

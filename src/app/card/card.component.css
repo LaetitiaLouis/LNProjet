@@ -1,28 +1,25 @@
 .card, .mat-card {
   cursor: pointer;
   padding: 0;
-  width: 120px;
-  height: 145px;
-  margin:0;
+  width: 80px;
+  height: 100px;
+  margin: 0;
+  font-size: 13px;
 }
-
-/*img {*/
-/*  height: 120px;*/
-/*  width: 130px;*/
-/*  background-repeat: no-repeat;*/
-/*  background-size: cover;*/
-/*  background-position: center;*/
-/*  margin: 0;*/
-/*  padding-top: 16px;*/
-/*}*/
 
 .title {
   text-align: center;
   padding: 0;
+  margin-top: -7px;
+  font-size: 11px;
 }
 
-.photo{
-  width: 120px;
-  height: 120px;
+.photo {
+  width: 80px;
+  height: 85px;
   object-fit: cover;
+}
+
+.message {
+  border: none;
 }

@@ -1,0 +1,39 @@
+.formulaire {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 50px;
+
+}
+
+.mat-elevation {
+  padding: 100px;
+}
+
+mat-card-content {
+/*  margin: 400px 50px 100px 50px;*/
+  border: solid 1px grey;
+
+}
+
+/*mat-card{*/
+/*padding: 50px;}*/
+
+.mat-form-field {
+  margin: 10px;
+}
+
+button {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.close {
+  margin: 10px;
+}
+
+.mat-icon.close {
+  font-size: 20px;
+}
+
+

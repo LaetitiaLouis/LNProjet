@@ -1,8 +1,8 @@
-<app-card
-  [link]="['/detailProjet',projet.id]"
-  [photos]="photos" alt="photo du projet"
-  [title]="projet.intitule"
-  [text]="projet?.intitule">
-</app-card>
-
+<div class="grid">
+  <div class="cardProjet">
+    <mat-card class="mesProjets" (click)="showDetails(projet.id)" title="Voir le projet">
+      <img class="photo" [src]="photos?photos[0].lien: photo" alt="photo du projet">
+    </mat-card>
+  </div>
+</div>
 
