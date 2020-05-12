@@ -1,42 +1,60 @@
-<fieldset>
-  <legend>Profil</legend>
-  <div class="contains">
-    <div class="close" fxLayoutAlign="end">
-      <mat-icon class="close" onclick="history.back()">close</mat-icon>
-    </div>
-    <div class="grid">
-      <form [formGroup]="formBody">
-        <mat-form-field appearance="standard">
-          <input type="text" matInput formControlName="prenom">
-<!--          <mat-icon matSuffix (click)="enable('prenom')">mode_edit</mat-icon>-->
-        </mat-form-field>
+<div class="container" fxLayoutAlign="center center">
+  <mat-drawer-container class="TAB">
+    <mat-drawer class="navbar" mode="side" opened>
+      <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">
+<!--      src="../../../assets/profil-avatar-femme-icone-ronde_24640-14042.jpg">-->
+      <div class="modifierProfil" fxLayout fxLayoutAlign="center center">
+        <button mat-button class="modifierProfil" (click)="openDialog(admin)" color="primary" type="submit">Modifier
+          profil
+        </button>
+      </div>
+    </mat-drawer>
+    <!--  <legend>Profil</legend>-->
+    <div class="contains">
+      <div class="close" fxLayoutAlign="end">
+        <mat-icon class="close" onclick="history.back()">close</mat-icon>
+      </div>
 
-        <mat-form-field appearance="standard">
-          <input type="text" matInput formControlName="login">
-<!--          <mat-icon matSuffix (click)="enable('login')">mode_edit</mat-icon>-->
-        </mat-form-field>
+      <div class="grid">
+        <mat-list>
+<!--          <mat-list-item>{{admin.photo}}</mat-list-item>-->
+          <mat-list-item>{{admin.prenom}}</mat-list-item>
+          <mat-list-item>{{admin.login}}</mat-list-item>
+          <mat-list-item>{{admin.presentation}}</mat-list-item>
+        </mat-list>
 
-        <mat-form-field appearance="standard">
-          <input type="text" matInput formControlName="password">
-<!--          <mat-icon matSuffix (click)="enable('password')">mode_edit</mat-icon>-->
-        </mat-form-field>
+        <!--      <form [formGroup]="formBody">-->
+        <!--        <mat-form-field appearance="standard">-->
+        <!--          <input type="text" matInput formControlName="prenom">-->
+        <!--&lt;!&ndash;          <mat-icon matSuffix (click)="enable('prenom')">mode_edit</mat-icon>&ndash;&gt;-->
+        <!--        </mat-form-field>-->
 
-        <mat-form-field appearance="standard">
-          <input type="text" matInput formControlName="presentation">
-<!--          <mat-icon matSuffix (click)="enable('presentation')">mode_edit</mat-icon>-->
-        </mat-form-field>
+        <!--        <mat-form-field appearance="standard">-->
+        <!--          <input type="text" matInput formControlName="login">-->
+        <!--&lt;!&ndash;          <mat-icon matSuffix (click)="enable('login')">mode_edit</mat-icon>&ndash;&gt;-->
+        <!--        </mat-form-field>-->
 
-        <mat-form-field appearance="standard">
-          <input type="photo" matInput formControlName="photo">
-<!--          <mat-icon matSuffix (click)="enable('photo')">mode_edit</mat-icon>-->
-        </mat-form-field>
-      </form>
+        <!--        <mat-form-field appearance="standard">-->
+        <!--          <input type="text" matInput formControlName="password">-->
+        <!--&lt;!&ndash;          <mat-icon matSuffix (click)="enable('password')">mode_edit</mat-icon>&ndash;&gt;-->
+        <!--        </mat-form-field>-->
 
-      <div fxLayout fxLayoutAlign="center center">
-<!--        <form (ngSubmit)="onSubmitUpdate()">-->
-          <button mat-raised-button (click)="openDialog(admin)"color="primary" type="submit">Modifier profil</button>
-<!--        </form>-->
+        <!--        <mat-form-field appearance="standard">-->
+        <!--          <input type="text" matInput formControlName="presentation">-->
+        <!--&lt;!&ndash;          <mat-icon matSuffix (click)="enable('presentation')">mode_edit</mat-icon>&ndash;&gt;-->
+        <!--        </mat-form-field>-->
+
+        <!--        <mat-form-field appearance="standard">-->
+        <!--          <input type="photo" matInput formControlName="photo">-->
+        <!--&lt;!&ndash;          <mat-icon matSuffix (click)="enable('photo')">mode_edit</mat-icon>&ndash;&gt;-->
+        <!--        </mat-form-field>-->
+        <!--      </form>-->
+
+        <!--      <div fxLayout fxLayoutAlign="center center">-->
+        <!--        <form (ngSubmit)="onSubmitUpdate()">-->
+        <!--          <button mat-raised-button (click)="openDialog(admin)"color="primary" type="submit">Modifier profil</button>-->
+        <!--        </form>-->
       </div>
     </div>
-  </div>
-</fieldset>
+  </mat-drawer-container>
+</div>

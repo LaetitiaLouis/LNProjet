@@ -9,14 +9,14 @@
           <mat-icon class="add">add</mat-icon>
           Ajouter un client
         </button>
-        <button mat-raised-button class="recherche">
-<!--          <input class="rechercheInput" matInput type="text"  [(ngModel)]="searchId"-->
-<!--                 (keydown.enter)="search()">-->
-          <mat-icon class="search">search</mat-icon>
-        </button>
+
+        <div class="mat-elevation-z2">
+          <input class="rechercheInput" matInput type="text"  [(ngModel)]="searchBy">
+          <mat-icon class="search" (click)="search()">search</mat-icon>
+        </div>
       </div>
 
-      <table mat-table [dataSource]="this.clients" class="mat-elevation-z2">
+      <table mat-table [dataSource]="this.clients">
         <!-- Nom Column -->
         <ng-container matColumnDef="nom">
           <th mat-header-cell *matHeaderCellDef>Nom</th>

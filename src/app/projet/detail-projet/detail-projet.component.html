@@ -1,7 +1,12 @@
-<mat-carousel proportion ="30" [autoplay]="true" [loop]="true"
-              timings="250ms ease-in"
-              interval="5000"
-              color="accent">
+<mat-carousel color="white" proportion ="60" appearance
+              [useKeyboard]="true"
+              [hideIndicators]="false"
+              [hideArrows]="false"
+              [loop]="true"
+              [autoplay]="false"
+              [svgIconOverrides]
+              >
+  <<mat-icon>navigate_before</mat-icon><mat-icon>navigate_next</mat-icon>
   <mat-carousel-slide *ngFor="let photo of photosList " [image]="photo.lien"></mat-carousel-slide>
 </mat-carousel>
 

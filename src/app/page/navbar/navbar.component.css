@@ -1,5 +1,7 @@
 .container {
   display: block;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 .mat-toolbar {

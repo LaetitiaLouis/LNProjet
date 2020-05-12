@@ -20,7 +20,6 @@ export class ClientComponent implements OnInit {
   public dataSource = new MatTableDataSource<Client>();
   selection = new SelectionModel<Client>(true, []);
   searchBy: string;
-  searchId: number;
 
   constructor(private clientService: ClientService,
               public dialog: MatDialog) {
@@ -52,18 +51,11 @@ export class ClientComponent implements OnInit {
     });
   }
 
-  // search(): void {
-  //   if (this.searchBy === 'nom') {
-  //     this.clientService.getClientById(this.searchId).subscribe(client => this.client = client);
-  //   } else if (this.searchBy === 'prenom') {
-  //     this.clientService.getClientById(this.searchId).subscribe(client => this.client = client);
-  //   }
-    // this.searchBy = '';
-  // }
+  search(): void {
+  this.clientService.getClientsByNomAndPrenom(this.searchBy).subscribe(client=> this.clients = client);
+   }
 
-  // deleteClient(clientId: number) {
-  //   this.clientService.deleteClient(clientId);
-  // }
+
 
 
   //--------------------------------tableau---------------------------------------------------

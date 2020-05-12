@@ -46,7 +46,7 @@ import {ClientComponent} from './client/client.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {DeconnexionComponent} from './connexion/deconnexion/deconnexion.component';
 import { DetailModifProfilComponent } from './connexion/profil/detail-modif-profil/detail-modif-profil.component';
-import {CardAdminComponent} from "./card-admin/card-admin.component";
+import {CardAdminComponent} from "./admin/card-admin/card-admin.component";
 import {MatListModule, MatSelectionList} from "@angular/material/list";
 import { CreationAdminComponent } from './connexion/profil/creation-admin/creation-admin.component';
 import { AdminProjetComponent } from './projet/admin-projet/admin-projet.component';
@@ -62,6 +62,8 @@ import { PopUpClientDeleteComponent } from './client/pop-up-client-delete/pop-up
 import { PopUpModifProfilComponent } from './connexion/profil/detail-modif-profil/pop-up-modif-profil/pop-up-modif-profil.component';
 import { PopUpDeleteProjetComponent } from './projet/admin-projet/pop-up-delete-projet/pop-up-delete-projet.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatTabsModule} from "@angular/material/tabs";
+import { AdminComponent } from './admin/admin.component';
 
 const routes: any[] = [
   {path: '', component: AccueilComponent},
@@ -114,49 +116,51 @@ const routes: any[] = [
     PopUpMessageComponent,
     PopUpClientDeleteComponent,
     PopUpModifProfilComponent,
-    PopUpDeleteProjetComponent
+    PopUpDeleteProjetComponent,
+    AdminComponent
   ],
-  imports: [
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: function tokenGetter() {
-          return localStorage.getItem('access_token');
-        },
-        whitelistedDomains: [environment.server],
-        blacklistedRoutes: [`${environment.apiUrl}/sign-in`]
-      }
-    }),
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatIconModule,
-    MatRadioModule,
-    FormsModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    MatCarouselModule,
-    MatCarouselModule.forRoot(),
-    MatCardModule,
-    MatButtonToggleModule,
-    FlexLayoutModule,
-    ExtendedModule,
-    FlexModule,
-    MatInputModule,
-    MatGridListModule,
-    MatExpansionModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatTableModule,
-    MatDialogModule,
-    MatSortModule,
-    MatListModule,
-    MatBadgeModule
-  ],
+    imports: [
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: function tokenGetter() {
+                    return localStorage.getItem('access_token');
+                },
+                whitelistedDomains: [environment.server],
+                blacklistedRoutes: [`${environment.apiUrl}/sign-in`]
+            }
+        }),
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatIconModule,
+        MatRadioModule,
+        FormsModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        MatCarouselModule,
+        MatCarouselModule.forRoot(),
+        MatCardModule,
+        MatButtonToggleModule,
+        FlexLayoutModule,
+        ExtendedModule,
+        FlexModule,
+        MatInputModule,
+        MatGridListModule,
+        MatExpansionModule,
+        MatSidenavModule,
+        MatCheckboxModule,
+        MatTableModule,
+        MatDialogModule,
+        MatSortModule,
+        MatListModule,
+        MatBadgeModule,
+        MatTabsModule
+    ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} },

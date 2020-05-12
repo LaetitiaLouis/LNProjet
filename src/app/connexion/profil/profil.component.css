@@ -1,31 +1,65 @@
-/*fieldset{*/
-/*  margin: 50px;*/
+.navbar {
+  padding-top: 30px;
+  width: 150px;
+  text-align: center;
+  background-color: #e5e5e5;
+  opacity: 0.6;
+}
+
+
+
+
+
+
+
+
+
+/*.container{*/
+/*  margin: 150px 50px 50px 50px;*/
 /*}*/
-.container{
+.TAB {
+   width: 840px;
+   height: 400px;
+   margin: 10px;
+   border: 1px solid lightgrey;
+ }
+
+img{
+  height: 110px;
+  width: 90px;
   margin-top: 50px;
+}
+
+
+
+.detailProfil{
+  margin-top: 130px;
 }
 
 legend{
   font-size: 18px;
-  margin-left: 100px;
-  padding: 0 10px 0 10px;
-  color: grey;
+  margin: 50px 0 20px 20px;
+  font-family: Helvetica;
+  /*padding: 0 10px 0 10px;*/
+  /*color: grey;*/
+}
+
+p{
+  margin-left: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  /*padding: 0 10px 0 10px;*/
 }
 
 .detailTAB {
   padding: 40px 30px 40px 30px;
 }
-
 .navbar {
   padding-top: 30px;
   width: 150px;
   text-align: center;
   background-color: #e5e5e5;
   /*opacity: 0.6;*/
-}
-.imagePhoto{
-  height: 110px;
-  width: 90px;
 }
 
 app-card {

@@ -1,8 +1,8 @@
-fieldset{
-  margin:50px;
+fieldset {
+  margin: 50px;
 }
 
-legend{
+legend {
   font-size: 18px;
   margin: 0 40px 0 10px;
   padding: 0 10px 0 10px;
@@ -30,35 +30,31 @@ legend{
   font-size: 20px;
 }
 
-.mat-raised-button.recherche {
+.mat-elevation-z2 {
   margin: 10px 0 30px 0;
-}
-
-.recherche {
-  width: 300px;
-  margin-left: auto;
+  border-radius: 5px;
+  max-width: 300px;
+  /*margin-left: auto;*/
   text-align: right;
+  width: 100%;
 }
 
 .mat-icon.search {
   width: 20px;
   height: 20px;
+  margin: 10px 10px 10px 0;
 }
 
-.rechercheInput{
+input {
+  text-align: center;
   border: none;
-  width: 90%;
-  height:20px;
+  height: 30px;
+  width: 200px;
   caret-color: white;
   caret: white;
-}
-
-.mat-input-element{
-  caret-color: white;
-  caret: white;
-}
-.mat-elevation-z2 {
-  width: 100%;
+  margin: auto;
+  float: left;
+  margin-right: auto;
 }
 
 .mat-header-cell, .mat-cell {
@@ -70,9 +66,10 @@ legend{
   text-align: center;
 }
 
-.mat-icon.close{
+.mat-icon.close {
   font-size: 20px;
 }
-.mat-icon.update{
+
+.mat-icon.update {
   font-size: 20px;
 }

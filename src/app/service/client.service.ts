@@ -60,4 +60,9 @@ export class ClientService {
       .pipe(catchError(this.es.handleError('Erreur Id'))
       );
   }
+
+  getClientsByNomAndPrenom(recherche: string): Observable<Client[]>{
+    return this.http.get<Client[]>(`${this.BASE_URL}/findByNomAndPrenom?recherche=${recherche}`);
+
+  }
 }

@@ -1,18 +1,30 @@
 <div class="page" fxLayout="" fxLayoutAlign="center center">
-  <form [formGroup]="connexionForm" (ngSubmit)="onSubmit()" class="form-container mat-elevation-z2">
-    <div class="form-title mat-headline">Connexion</div>
-    <div class="form-content">
-      <mat-form-field>
+  <div class="formulaire">
+  <form class="formulaire" [formGroup]="connexionForm" (ngSubmit)="onSubmit()" class="mat-elevation-z2">
+    <div class="headerConnexion" fxLayoutAlign="center center">
+      <img class="iconConnexion" src="../../../assets/icon login.png">
+    </div>
+    <div class="mat-headline">Connexion</div>
+    <div class="form-content" fxLayout="column" fxLayoutAlign="center center">
+      <mat-form-field class="appearence" appearance="outline">
+        <div class="login" fxLayout="row">
+        <mat-icon class="permIdentity">perm_identity</mat-icon>
         <input type="text" matInput placeholder="Saisir votre login" formControlName="login">
         <mat-error *ngIf="submitted && f.login.errors">Vous devez saisir un login</mat-error>
+        </div>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field  appearance="outline">
+        <div class="password" fxLayout="row">
+        <mat-icon class="lock">lock</mat-icon>
         <input type="password" matInput placeholder="Saisir votre mot de passe" formControlName="password">
         <mat-error *ngIf="submitted && f.password.errors">Vous devez saisir un mot de passe</mat-error>
+        <mat-icon class="visibility">visibility</mat-icon>
+        </div>
       </mat-form-field>
       <div fxLayout fxLayoutAlign="center center">
         <button mat-raised-button type="submit">Se connecter</button>
       </div>
     </div>
   </form>
+  </div>
 </div>

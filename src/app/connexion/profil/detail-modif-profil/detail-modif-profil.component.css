@@ -1,16 +1,58 @@
-fieldset {
-  margin: 130px 180px 0px 180px;
+.container{
+  margin: 150px 50px 50px 50px;
+}
+.TAB {
+  width: 840px;
+  height: 400px;
+  margin: 10px;
+  border: 1px solid lightgrey;
 }
 
-legend {
-  font-size: 18px;
-  margin: 0 40px 0 10px;
-  padding: 0 10px 0 10px;
-  color: grey;
+.photoAdmin {
+  margin-top: 50px;
+  heigth: 130px;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.detailProfil{
+  margin-top: 130px;
+}
+
+.detailTAB {
+  padding: 40px 30px 40px 30px;
+}
+
+.close{
+  margin: 10px;
 }
 
 .mat-icon.close{
   font-size: 20px;
+}
+
+.navbar {
+  padding-top: 30px;
+  width: 150px;
+  text-align: center;
+  background-color: #e5e5e5;
+  /*opacity: 0.6;*/
+}
+legend {
+  font-size: 18px;
+  margin: 0 40px 0 10px;
+  padding: 0 10px 0 10px;
+}
+
+.grid {
+  /*display: grid;*/
+  /*grid-template-columns: 1fr 1fr 1fr;*/
+  /*max-width: 800px;*/
+  /*margin: 0 auto;*/
+  /*grid-row-gap: 20px;*/
+  /*justify-content: center;*/
+  /*justify-items: center;*/
+  /*grid-column-gap: 20px;*/
 }
 
 .form {

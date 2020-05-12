@@ -18,7 +18,7 @@ export class ProfilComponent implements OnInit {
   public message: Message;
   // @Input() public text;
   // @Input() public title;
-  // @Input() public link;
+  @Input() public link;
 
 
   constructor(private adminService: AdminService,
