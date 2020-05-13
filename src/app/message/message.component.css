@@ -1,24 +1,35 @@
-fieldset{
-  margin: 50px;
+/*fieldset{*/
+/*  margin: 50px;*/
+/*}*/
+
+/*legend{*/
+/*  font-size: 18px;*/
+/*  margin: 0 40px 0 10px;*/
+/*  padding: 0 10px 0 10px;*/
+/*  color: grey;*/
+/*}*/
+
+contains {
+
 }
 
-legend{
-  font-size: 18px;
-  margin: 0 40px 0 10px;
-  padding: 0 10px 0 10px;
-  color: grey;
-}
-
-
-.mat-icon.close{
+.mat-icon.close {
   font-size: 20px;
+}
+.mat-header-cell, .mat-cell {
+  margin: 10px;
+  padding: 5px;
+}
+
+.mat-cell.delete, .mat-cell.detail {
+  text-align: center;
+}
+
+.vu{
+justify-content: center;
 }
 
 .mat-icon.more {
   font-size: 22px;
 }
 
-mat-list{
-/*display:grid;*/
-/*grid-template-columns: 1fr 1fr;*/
-}

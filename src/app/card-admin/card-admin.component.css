@@ -1,32 +1,66 @@
-.container {
-  padding-top: 136px;
-  padding-bottom: 135px;
-  background-image: url("../../assets/photoNB.jpeg");
+.page {
+
 }
 
-.TAB {
-  width: 840px;
-  height: 400px;
-  margin: 10px;
-  border: 1px solid lightgrey;
+/*.grid {*/
+/*  margin: 0;*/
+/*  display: grid;*/
+/*  !*grid-template-columns: 200px auto;*!*/
+/*  !*grid-template-rows: auto;*!*/
+/*  height: 90vh;*/
+/*  !*border: solid 1px black;*!*/
+/*}*/
+
+/*.cardVertical {*/
+/*  grid-column: 1;*/
+/*  !*grid-row: 1/12;*!*/
+/*  background-color: #e5e5e5;*/
+/*}*/
+
+.content {
+  /*grid-column: 2;*/
+  /*grid-row: 1/12;*/
+
 }
 
-.mat-drawer {
-  font-size: 20px;
-  color: #17657D;
+.navTab {
+  margin: 10px 20px 10px 20px;
 }
 
-.photoAdmin {
-  margin-top: 40px;
-  heigth: 130px;
-  width: 120px;
-  object-fit: cover;
-  border-radius: 50%;
+.accueilAdmin {
+  margin: 10px 20px 10px 20px;
+  /*margin: 0 auto;*/
 }
 
-.navbar {
-  padding-top: 30px;
-  width: 150px;
-  text-align: center;
-  background-color: #e5e5e5;
-}
+/*!*.container {*!*/
+/*!*  padding-top: 136px;*!*/
+/*!*  padding-bottom: 135px;*!*/
+/*!*  !*background-image: url("../../assets/photoNB.jpeg");*!*!*/
+/*!*}*!*/
+
+/*.TAB {*/
+/*  width: 840px;*/
+/*  height: 400px;*/
+/*  margin: 10px;*/
+/*  border: 1px solid lightgrey;*/
+/*}*/
+
+/*.mat-drawer {*/
+/*  font-size: 20px;*/
+/*  color: #17657D;*/
+/*}*/
+
+/*.photoAdmin {*/
+/*  margin-top: 40px;*/
+/*  heigth: 130px;*/
+/*  width: 120px;*/
+/*  object-fit: cover;*/
+/*  border-radius: 50%;*/
+/*}*/
+
+/*.navbar {*/
+/*  padding-top: 30px;*/
+/*  width: 150px;*/
+/*  text-align: center;*/
+/*  background-color: #e5e5e5;*/
+/*}*/

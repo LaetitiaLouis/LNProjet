@@ -1,20 +1,64 @@
-  <fieldset fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="flex-start">
-    <legend>MESSAGES</legend>
-    <div class="contains">
-      <div class="close" fxLayoutAlign="end">
-        <mat-icon class="close" onclick="history.back()">close</mat-icon>
-      </div>
-    <mat-list *ngFor="let message of messages">
-      <mat-list-item>{{message.date}}</mat-list-item>
-      <mat-list-item>{{message.objet}}</mat-list-item>
 
-<!--      <div class="delete"fxLayoutAlign="end">-->
-<!--        <mat-icon class="delete"  (click)="onSubmitDelete()">delete</mat-icon>-->
+<div class="contains" >
+  <div class="close" fxLayoutAlign="end">
+    <mat-icon class="close" onclick="history.back()">close</mat-icon>
+  </div>
+  <div class="tableMessages" fxLayoutAlign="center center">
+  <table mat-table [dataSource]="this.messages"  >
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let message"> {{message.date}} </td>
+    </ng-container>
+    <!-- Objet Column -->
+    <ng-container matColumnDef="objet">
+      <th mat-header-cell *matHeaderCellDef>Objet</th>
+      <td mat-cell *matCellDef="let message"> {{message.objet}} </td>
+    </ng-container>
+    <!-- Vu Column -->
+    <ng-container matColumnDef="vu">
+      <th mat-header-cell *matHeaderCellDef>Traité</th>
+      <td mat-cell *matCellDef="let message"> <mat-checkbox class="vu" (click)="message.vu=true"></mat-checkbox> </td>
+
+    </ng-container>
+    <!-- Détail Column -->
+    <ng-container matColumnDef="detail">
+      <th mat-header-cell *matHeaderCellDef>Plus</th>
+      <td mat-cell class="detail" *matCellDef="let message">
+        <mat-icon class="more" (click)="message.contenu">more_vert</mat-icon>
+    </ng-container>
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+      <td mat-cell class="delete" *matCellDef="let message">
+        <mat-icon class="delete"(click)="openDialogDelete(message)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>
+</div>
+</div>
+
+<!--  <mat-list *ngFor="let message of messages">-->
+<!--    <div class="messages">-->
+<!--      <mat-list-item class="date">{{message.date}}</mat-list-item>-->
+<!--      <mat-list-item class="objet">{{message.objet}}</mat-list-item>-->
+
+<!--      <div class="delete">-->
+<!--        <mat-icon class="delete">-->
+<!--          &lt;!&ndash;&lt;!&ndash;                  (click)="onSubmitDelete()">&ndash;&gt;-->
+<!--          delete-->
+<!--        </mat-icon>-->
 <!--      </div>-->
-      <mat-icon class="more" (click)="openDialog(message)">more_vert</mat-icon>
+<!--      <div class="detailMessage">-->
+<!--        <mat-icon class="more" (click)="openDialog(message)">more_vert</mat-icon>-->
+<!--      </div>-->
 <!--      <mat-list-item>{{message.contenu}}</mat-list-item>-->
-      <mat-divider></mat-divider>
-    </mat-list>
-    </div>
-  </fieldset>
+<!--      <mat-divider></mat-divider>-->
+<!--    </div>-->
+<!--  </mat-list>-->
 

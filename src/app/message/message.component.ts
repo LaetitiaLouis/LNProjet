@@ -3,6 +3,11 @@ import {MessageService} from "../service/message.service";
 import {Message} from "../model/message";
 import {PopUpMessageComponent} from "./pop-up-message/pop-up-message.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Projet} from "../model/projet";
+import {PopUpDeleteProjetComponent} from "../projet/admin-projet/pop-up-delete-projet/pop-up-delete-projet.component";
+import {PopUpDeleteMessageComponent} from "./pop-up-message/pop-up-delete-message/pop-up-delete-message.component";
+import {SelectionModel} from "@angular/cdk/collections";
+import {Client} from "../model/client";
 
 @Component({
   selector: 'app-message',
@@ -12,11 +17,12 @@ import {MatDialog} from "@angular/material/dialog";
 export class MessageComponent implements OnInit {
   public messages: Message[];
   public message: Message;
-  isVu= false;
-
+  public displayedColumns: string[] = [ 'vu', 'date', 'objet', 'delete', 'detail'];
+  selection = new SelectionModel<Message>(true, [])
 
   constructor(private messageService: MessageService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+  ) {
   }
 
   ngOnInit(): void {
@@ -27,16 +33,19 @@ export class MessageComponent implements OnInit {
     this.messageService.getAllMessages().subscribe(messages => this.messages = messages);
   }
 
-  openDialog (message?: Message): void {
-    const dialogRef = this.dialog.open(PopUpMessageComponent, {data: {message}});
+  openDetail(): void {
+    this.message.contenu;
+  }
+
+  openDialogDelete(message?: Message): void {
+    const dialogRef = this.dialog.open(PopUpDeleteMessageComponent, {data: {message}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
+      this.getAllMessages();
+      this.messages = result;
     });
   }
 
-alertNewMessage () {
-  this.message.vu = false;
-}
   // onSubmitDelete() {
   //   const messageId = {id:this.message.id, ...this.message}
   //   this.messageService.deleteMessage(this.message).subscribe();
