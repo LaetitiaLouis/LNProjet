@@ -46,7 +46,7 @@ import {ClientComponent} from './client/client.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {DeconnexionComponent} from './connexion/deconnexion/deconnexion.component';
 import { DetailModifProfilComponent } from './connexion/profil/detail-modif-profil/detail-modif-profil.component';
-import {CardAdminComponent} from "./admin/card-admin/card-admin.component";
+import {CardAdminComponent} from "./card-admin/card-admin.component";
 import {MatListModule, MatSelectionList} from "@angular/material/list";
 import { CreationAdminComponent } from './connexion/profil/creation-admin/creation-admin.component';
 import { AdminProjetComponent } from './projet/admin-projet/admin-projet.component';
@@ -64,6 +64,7 @@ import { PopUpDeleteProjetComponent } from './projet/admin-projet/pop-up-delete-
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTabsModule} from "@angular/material/tabs";
 import { AdminComponent } from './admin/admin.component';
+import { PopUpDeleteMessageComponent } from './message/pop-up-message/pop-up-delete-message/pop-up-delete-message.component';
 
 const routes: any[] = [
   {path: '', component: AccueilComponent},
@@ -117,7 +118,8 @@ const routes: any[] = [
     PopUpClientDeleteComponent,
     PopUpModifProfilComponent,
     PopUpDeleteProjetComponent,
-    AdminComponent
+    AdminComponent,
+    PopUpDeleteMessageComponent
   ],
     imports: [
         JwtModule.forRoot({

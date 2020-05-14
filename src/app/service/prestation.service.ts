@@ -4,12 +4,13 @@ import {ErrorService} from './error.service';
 import {Prestation} from '../model/prestation';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrestationService {
-  BASE_URL = 'http://localhost:8080/prestations';
+  BASE_URL = `${environment.apiUrl}/prestations`;
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

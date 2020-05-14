@@ -19,11 +19,11 @@ export class CardAdminComponent implements OnInit {
 
   ngOnInit(): void {
     //récupération de l'admin connecté
-    this.admin = this.jwtService.getAdmin();
+    // this.admin = this.jwtService.getAdmin();
   }
 
-  showDetails() {
-    this.router.navigate(this.link)
-    ;
-  }
+  // showDetails() {
+  //   this.router.navigate(this.link)
+  //   ;
+  // }
 }

@@ -4,12 +4,13 @@ import {ErrorService} from './error.service';
 import {Client} from '../model/client';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  BASE_URL = 'http://localhost:8080/clients';
+  BASE_URL = `${environment.apiUrl}/clients`;
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

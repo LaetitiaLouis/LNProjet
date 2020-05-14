@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "lnprojet": {
+      "hosting": {
+        "NLProjet": [
+          "lnprojet"
+        ]
+      }
+    }
+  }
+}

@@ -4,12 +4,13 @@ import {Photo} from '../model/photo';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {ErrorService} from './error.service';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoService {
-  BASE_URL = 'http://localhost:8080/photos';
+  BASE_URL = `${environment.apiUrl}/photos`;
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

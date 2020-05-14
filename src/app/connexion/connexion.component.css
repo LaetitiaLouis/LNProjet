@@ -1,5 +1,5 @@
 .page {
-  height: 90vh;
+  height: 85vh;
   background-image: url("../../assets/photoNB.jpeg");
 }
 
@@ -11,14 +11,15 @@
 }
 .iconConnexion {
   margin-top: 10px;
-  width: 80px;
+  width: 70px;
 }
 
 .mat-headline{
   /*background-color: #17657D;*/
   text-align: center;
-  height:30px;
-  padding: 0}
+  height:20px;
+  padding: 0;
+  margin-bottom: 10px}
 
 .mat-form-field{
   height: 80%;
@@ -29,7 +30,7 @@ margin-left: 10px;
 }
 
 .form-content {
-  padding: 30px;
+  padding: 10px 30px 10px 30px;
   background: white;
 }
 
@@ -63,7 +64,7 @@ mat-form-field {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 15px;
   color: white;
   font-weight: 400;
   /*background-color: lightgrey;*/

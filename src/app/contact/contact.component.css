@@ -3,13 +3,14 @@
 }
 
 .grid {
-  margin: 20px 20px 50px 20px;
+  margin: 40px 20px 50px 20px;
   display: grid;
   grid-template-columns: 220px auto;
   grid-template-rows: repeat(13, 50px);
 }
 
 .cardContact {
+  /*margin-top: 10px;*/
   grid-column: 1;
   grid-row: 2/13;
   /*background-color: rgba(23, 101, 125, 0.46);*/
@@ -75,7 +76,7 @@ hr {
 }
 
 .containerContact h1{
-  margin: 30px 0 20px 50px;
+  margin: 0 0 20px 50px;
   font-size: 30px;
 }
 

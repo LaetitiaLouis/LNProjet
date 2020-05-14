@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "NLProjet",
+      "public": "dist/NLProjet",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

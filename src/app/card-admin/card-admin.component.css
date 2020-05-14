@@ -1,6 +1,21 @@
-.page {
-
+.content {
+  width: 865px;
+  height: 1000px;
+  /*margin: 10px;*/
+  border: 1px solid lightgrey;
 }
+
+.menuAdmin {
+  padding-top: 30px;
+  /*width: 180px;*/
+  text-align: center;
+  background-color: #e5e5e5;
+  opacity: 0.6;
+}
+
+/*.page {*/
+
+/*}*/
 
 /*.grid {*/
 /*  margin: 0;*/
@@ -17,20 +32,20 @@
 /*  background-color: #e5e5e5;*/
 /*}*/
 
-.content {
-  /*grid-column: 2;*/
-  /*grid-row: 1/12;*/
+/*.content {*/
+/*  !*grid-column: 2;*!*/
+/*  !*grid-row: 1/12;*!*/
 
-}
+/*}*/
 
-.navTab {
-  margin: 10px 20px 10px 20px;
-}
+/*.navTab {*/
+/*  margin: 10px 20px 10px 20px;*/
+/*}*/
 
-.accueilAdmin {
-  margin: 10px 20px 10px 20px;
-  /*margin: 0 auto;*/
-}
+/*.accueilAdmin {*/
+/*  margin: 10px 20px 10px 20px;*/
+/*  !*margin: 0 auto;*!*/
+/*}*/
 
 /*!*.container {*!*/
 /*!*  padding-top: 136px;*!*/

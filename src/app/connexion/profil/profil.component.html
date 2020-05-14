@@ -7,37 +7,41 @@
 
 <!--<app-card-admin></app-card-admin>-->
 
-<div class="container" fxLayoutAlign="center center">
-    <mat-drawer-container class="TAB">
-      <mat-drawer class="navbar" mode="side" opened>
-<!--        <img class="photoAdmin" src="../../../assets/profil-avatar-femme-icone-ronde_24640-14042.jpg">-->
-<!--             [src]="admin.photo" alt="photo de l'administrateur">-->
-        <div class="modifierProfil" fxLayout fxLayoutAlign="center center">
-          <button mat-button class="detailProfil" [routerLink]="['/detailProfil', admin.login]">Voir mon profil</button>
-        </div>
-      </mat-drawer>
-  <div class="intro">
-  <legend>Bonjour {{admin.prenom}} !</legend>
-    <p>Bienvenue sur votre profil !<br> Depuis votre dernière visite vous avez
-      <span>{{messages.length}}</span>nouveau.x message.s ou message.s à traiter.</p>
-  </div>
+<div class="container">
+  <mat-drawer-container class="TAB">
+    <mat-drawer class="navbar" mode="side" opened>
+      <div class="icon">
+        <mat-icon class="mail" *ngIf="messages"
+                  [matBadge]="messages.length" matBadgeOverlap="true" matBadgeSize="small">mail
+        </mat-icon>
+      </div>
+    </mat-drawer>
 
-  <div class="detailTAB" fxLayout.lt-md="row" fxLayoutAlign="center center">
-    <app-card [link]="['/adminProjet', admin.login]" title="Voir mes projets" text="Mes projets"
-              photo="../../../assets/imagesProjet.jpg"></app-card>
-    <app-card [link]="['/messages']" title="Voir mes messages" text="Mes messages"
-              photo="../../../assets/imager_reception_messages_clients.png " *ngIf="messages" [matBadge]="messages.length" matBadgeOverlap="true"></app-card>
+    <div class="intro">
+      <div class="navTab" fxLayout="" fxLayoutAlign="center center">
+        <mat-tab-group>
+          <mat-tab label="Messages">
+            <app-message></app-message>
+          </mat-tab>
+          <mat-tab label="Projets">
+<!--            <app-admin-projet></app-admin-projet>-->
+          </mat-tab>
+          <mat-tab label="Clients">
+<!--            <app-client></app-client>-->
+          </mat-tab>
+        </mat-tab-group>
+      </div>
 
-    <app-card [link]="['/clients']" title="Voir mes clients" text="Mes clients"
-              photo="../../../assets/imageclients.jpg "></app-card>
-    <app-card [link]="['/detailProfil',admin.login]" title="Voir mon profil" text="Mon profil"
-              [photo]="[admin.photo ]"></app-card>
-    <app-card [link]="['/ajouterAdmin', admin.login]" title="Ajouter administrateur" text="Ajouter admin"
-              photo="../../../assets/imageProfil.jpg "></app-card>
-  </div>
-    </mat-drawer-container>
-</div>
+    </div>
+  </mat-drawer-container>
 
-<!--  <div class="container" fxLayout="gt-md" fxLayoutAlign="center center">-->
-<!--        <div class="bienvenue" *ngIf="admin">{{'Bienvenue ' + admin.prenom + ' !' | titlecase}}</div>-->
-<!--       <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">-->
+
+  <!--  <div class="container" fxLayout="gt-md" fxLayoutAlign="center center">-->
+  <!--</div>-->
+  <!--        <div class="bienvenue" *ngIf="admin">{{'Bienvenue ' + admin.prenom + ' !' | titlecase}}</div>-->
+  <!--       <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">-->
+  <!--        <img class="photoAdmin" src="../../../assets/profil-avatar-femme-icone-ronde_24640-14042.jpg">-->
+  <!--             [src]="admin.photo" alt="photo de l'administrateur">-->
+  <!--    <div class="modifierProfil" fxLayout fxLayoutAlign="center center">-->
+  <!--      <button mat-button class="detailProfil" [routerLink]="['/detailProfil', admin.login]">Voir mon profil</button>-->
+  <!--    </div>-->

@@ -4,13 +4,14 @@ import {Projet} from '../model/projet';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {ErrorService} from './error.service';
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService {
-  BASE_URL = 'http://localhost:8080/projets';
+  BASE_URL = `${environment.apiUrl}/projets`;
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

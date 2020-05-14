@@ -6,12 +6,13 @@ import {catchError, map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {ErrorService} from './error.service';
 import {Message} from "../model/message";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
-  BASE_URL = 'http://localhost:8080/messages';
+  BASE_URL = `${environment.apiUrl}/messages`;
   constructor(private http: HttpClient,
               private es: ErrorService) {
   }

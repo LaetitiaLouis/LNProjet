@@ -1,88 +1,91 @@
 .navbar {
-  padding-top: 30px;
-  width: 150px;
-  text-align: center;
-  background-color: #e5e5e5;
-  opacity: 0.6;
-}
-
-
-
-
-
-
-
-
-
-/*.container{*/
-/*  margin: 150px 50px 50px 50px;*/
-/*}*/
-.TAB {
-   width: 840px;
-   height: 400px;
-   margin: 10px;
-   border: 1px solid lightgrey;
- }
-
-img{
-  height: 110px;
-  width: 90px;
-  margin-top: 50px;
-}
-
-
-
-.detailProfil{
-  margin-top: 130px;
-}
-
-legend{
-  font-size: 18px;
-  margin: 50px 0 20px 20px;
-  font-family: Helvetica;
-  /*padding: 0 10px 0 10px;*/
-  /*color: grey;*/
-}
-
-p{
-  margin-left: 20px;
-  font-family: Helvetica;
-  font-size: 16px;
-  /*padding: 0 10px 0 10px;*/
-}
-
-.detailTAB {
-  padding: 40px 30px 40px 30px;
-}
-.navbar {
-  padding-top: 30px;
-  width: 150px;
-  text-align: center;
+  padding-top: 10px;
+  width: 200px;
   background-color: #e5e5e5;
   /*opacity: 0.6;*/
 }
 
-app-card {
-  margin: 15px;
-  max-width: 50%;
-  max-height: 50%;
+.mat-icon.mail {
+  margin-top: 12px;
+  width: 50px;
+  text-align: end;
+  float:right;
+  margin-right: 10px;
+
+}
+.projets{
+  width: 20px;
+  height: 20px;
+  magin-left: 30px;
+}
+/*partie de droite*/
+.TAB {
+  width: 880px;
+  min-height: 600px;
+  /*margin: 10px;*/
+  border: 1px solid lightgrey;
 }
 
-button {
-  font-size: 12px;
-}
 
-.detailProfil {
-  border: none;
-  color: #17657D;
-  font-size: 12px;
-  margin-bottom: 30px;
-}
+/*img {*/
+/*  height: 110px;*/
+/*  width: 90px;*/
+/*  margin-top: 50px;*/
+/*}*/
 
-.photoAdmin {
-  margin-top: 40px;
-  heigth: 130px;
-  width: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-}
+
+/*.detailProfil {*/
+/*  margin-top: 130px;*/
+/*}*/
+
+/*legend {*/
+/*  font-size: 18px;*/
+/*  margin: 50px 0 20px 20px;*/
+/*  font-family: Helvetica;*/
+/*  !*padding: 0 10px 0 10px;*!*/
+  /*color: grey;*/
+/*}*/
+
+/*p {*/
+/*  margin-left: 20px;*/
+/*  font-family: Helvetica;*/
+/*  font-size: 16px;*/
+/*  !*padding: 0 10px 0 10px;*!*/
+/*}*/
+
+/*.detailTAB {*/
+/*  padding: 40px 30px 40px 30px;*/
+/*}*/
+
+/*.navbar {*/
+/*  padding-top: 30px;*/
+/*  width: 150px;*/
+/*  text-align: center;*/
+/*  background-color: #e5e5e5;*/
+/*  !*opacity: 0.6;*!*/
+/*}*/
+
+/*app-card {*/
+/*  margin: 15px;*/
+/*  max-width: 50%;*/
+/*  max-height: 50%;*/
+/*}*/
+
+/*button {*/
+/*  font-size: 12px;*/
+/*}*/
+
+/*.detailProfil {*/
+/*  border: none;*/
+/*  color: #17657D;*/
+/*  font-size: 12px;*/
+/*  margin-bottom: 30px;*/
+/*}*/
+
+/*.photoAdmin {*/
+/*  margin-top: 40px;*/
+/*  heigth: 130px;*/
+/*  width: 120px;*/
+/*  object-fit: cover;*/
+/*  border-radius: 50%;*/
+/*}*/

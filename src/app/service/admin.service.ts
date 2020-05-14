@@ -4,12 +4,13 @@ import {ErrorService} from './error.service';
 import {Admin} from '../model/admin';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  BASE_URL = 'http://localhost:8080/admins';
+  BASE_URL = `${environment.apiUrl}/admins`;
 
   constructor(private http: HttpClient,
               private es: ErrorService) {

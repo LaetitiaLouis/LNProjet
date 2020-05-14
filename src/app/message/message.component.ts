@@ -46,6 +46,10 @@ export class MessageComponent implements OnInit {
     });
   }
 
+  save(message: Message){
+    const messageId = {id:this.message.id, ...this.message}
+   // this.messageService.subscrib this.message.vu = true;
+  }
   // onSubmitDelete() {
   //   const messageId = {id:this.message.id, ...this.message}
   //   this.messageService.deleteMessage(this.message).subscribe();
