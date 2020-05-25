@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProjetService} from "../../service/projet.service";
 import {JwtService} from "../../jwt/jwt.service";
 import {DomSanitizer} from "@angular/platform-browser";
+import {consoleTestResultHandler} from "tslint/lib/test";
 
 
 @Component({
@@ -15,9 +16,6 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class SyntheseProjetComponent implements OnInit {
   @Input() public projet: Projet;
-  // @Input() public photos: Photo [];
-  // @Input() public photo;
-  // public projet: Projet;
   public photos: Photo [];
   public photo;
 
@@ -30,16 +28,18 @@ export class SyntheseProjetComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.photoService.getPhotosByCategorie('Accueil').subscribe(photoResult => this.photos = photoResult);
-    })
+    this.photoService.getPhotosByCategorie('accueil').subscribe(photoResult => {
+      this.photos = photoResult;
+    });
   }
 
- /**
-   * Redirige vers le le lien fourni dans l'input link
-   */
-  showDetails(id : number) {
-    this.router.navigate(['/detailProjet',id]);
+  getPhotosProjet(id: number) {
+    const photos = this.photos.filter(photo => photo.projet.id === id);
+    return photos[0].lien;
+  }
+
+  showDetails(id: number) {
+    this.router.navigate(['/detailProjet', id]);
   }
 }
 

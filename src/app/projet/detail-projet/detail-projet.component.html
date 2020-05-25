@@ -1,4 +1,4 @@
-<mat-carousel color="white" proportion ="60" appearance
+<mat-carousel color="white" proportion ="50" appearance
               [useKeyboard]="true"
               [hideIndicators]="false"
               [hideArrows]="false"
@@ -6,12 +6,10 @@
               [autoplay]="false"
               [svgIconOverrides]
               >
-  <<mat-icon>navigate_before</mat-icon><mat-icon>navigate_next</mat-icon>
   <mat-carousel-slide *ngFor="let photo of photosList " [image]="photo.lien"></mat-carousel-slide>
 </mat-carousel>
 
 <div class="description">
-  <mat-card-title>{{projet?.intitule}}</mat-card-title>
+  <mat-card-title>{{projet?.intitule | titlecase}}</mat-card-title>
   <mat-card-content><p>{{projet?.description}}</p></mat-card-content>
 </div>
-<!--<pre>{{projet | json }}</pre>-->

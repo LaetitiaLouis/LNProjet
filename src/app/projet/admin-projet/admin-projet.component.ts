@@ -9,8 +9,9 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {Type} from "../../model/type";
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpProjetComponent} from "./pop-up-projet/pop-up-projet.component";
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {PopUpDeleteProjetComponent} from "./pop-up-delete-projet/pop-up-delete-projet.component";
+import {JwtService} from "../../jwt/jwt.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-admin-projet',
@@ -19,106 +20,51 @@ import {PopUpDeleteProjetComponent} from "./pop-up-delete-projet/pop-up-delete-p
 })
 export class AdminProjetComponent implements OnInit {
 
-  public displayedColumns: string[] = ['intitule', 'description', 'type', 'date', 'update', 'delete'];
-  public dataSource = new MatTableDataSource<Projet>();
-  selection = new SelectionModel<Projet>(true, []);
-  public projets: Projet[];
-  public projet: Projet;
+  public projets: Observable<Projet[]>;
+  public displayedColumns: string[] = ['intitule', 'description', 'type', 'update', 'delete'];
+  public selection = new SelectionModel<Projet>(true, []);
   public admin: Admin;
   public type: Type;
-  searchBy: string;
+  public searchBy: string;
+
   // public searchForm: FormGroup;
 
   constructor(private projetService: ProjetService,
               private photoService: PhotoService,
               public dialog: MatDialog,
               private route: ActivatedRoute,
-              private fb: FormBuilder) {
+              private jwtService: JwtService) {
   }
 
   ngOnInit(): void {
-    this.getProjetByAdmin();
+    this.getAllProjets();
   }
 
   /**
    * apelle les projets de l'administrateur connecté
    */
-  getProjetByAdmin() {
-    this.route.paramMap.subscribe(params => this.projetService.getProjetsByAdmin(params.get('login'))
-      .subscribe(projets => this.projets = projets));
-  }
+  public getAllProjets() {
+    this.projets = this.projetService.getAllProjets();
+    };
 
-  openDialog(update: boolean, projet?: Projet): void {
-    const dialogRef = this.dialog.open(PopUpProjetComponent, {data: {projet, update}});
+  public openDialog(update: boolean, projet?: Projet): void {
+    const login = this.jwtService.getAdmin().login;
+    const dialogRef = this.dialog.open(PopUpProjetComponent, {data: {projet, update,login}});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.getProjetByAdmin();
-      this.projet = result;
+      this.getAllProjets();
     });
   }
 
-  getAllProjets() {
-    this.projetService.getAllProjets();
-  }
-
-
-  getProjetsByType(typeId: number) {
-    this.projetService.getProjetsByType(typeId);
-  }
-
-  getPhotosByProjet(projetId: number) {
-    this.photoService.getPhotosByProjet(projetId);
-  }
-
-  updateProjet(projet: Projet) {
-    this.projetService.updateProjet(projet);
-  }
-
-  createProjet(projet: Projet) {
-    this.projetService.saveProjetInfos(projet);
-  }
-
-  getProjetsByPrestation(prestationId: number) {
-    this.projetService.getProjetsByPrestation(prestationId);
-  }
-
-  openDialogDelete(projet?: Projet): void {
+  public openDialogDelete(projet?: Projet): void {
     const dialogRef = this.dialog.open(PopUpDeleteProjetComponent, {data: {projet}});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.getAllProjets();
-      this.projets = result;
     });
   }
 
-  search(): void {
-    this.projetService.getProjetsByTypeAndIntitule(this.searchBy).subscribe(projet => this.projets = projet);
-  }
-
-
-  //--------------------------------tableau---------------------------------------------------
-  // /**Si le nombre d'éléments sélectionnés correspond au nombre total de lignes */
-  // isAllSelected() {
-  //   const numSelected = this.selection.selected.length;
-  //   const numRows = this.dataSource.data.length;
-  //   return numSelected === numRows;
-  // }
-  //
-  // /**Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon annule sélection*/
-  // masterToggle() {
-  //   this.isAllSelected() ?
-  //     this.selection.clear() :
-  //     this.dataSource.data.forEach(row => this.selection.select(row));
-  // }
-  //
-  // /**L'étiquette de la case à cocher sur la ligne passée*/
-  // checkboxLabel(row?: Projet): string {
-  //   if (!row) {
-  //     return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-  //   }
-  //   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.intitule + 1}`;
-  // }
-
+  public search(): void {
+    this.projets = this.projetService.getProjetsByTypeAndIntitule(this.searchBy);
+  };
 }
 
 

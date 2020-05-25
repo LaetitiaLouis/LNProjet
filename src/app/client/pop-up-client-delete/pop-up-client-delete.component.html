@@ -4,7 +4,7 @@
       <mat-icon class="close" (click)="closePopUp()">close</mat-icon>
     </div>
 
-    <p>Etes vous sûr de vouloir supprimer le client {{data.client.prenom}} {{data.client.nom}}</p>
+    <p>Etes vous sûr de vouloir supprimer le client {{data.client.prenom | titlecase}} {{data.client.nom | titlecase}}</p>
     <div fxLayout fxLayoutAlign="center center">
       <button mat-raised-button (click)="onSubmitDelete()">Oui</button>
     </div>

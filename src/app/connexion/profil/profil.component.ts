@@ -16,8 +16,6 @@ export class ProfilComponent implements OnInit {
   public admin: Admin;
   public messages: Message[];
   public message: Message;
-  // @Input() public text;
-  // @Input() public title;
   @Input() public link;
 
 

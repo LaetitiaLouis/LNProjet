@@ -1,5 +1,4 @@
 <div class="container">
-<!--  <mat-toolbar fxHide.xs="true" class="card1"></mat-toolbar>-->
 <mat-toolbar   fxHide.xs="true" class="mat-elevation-z2">
     <a class="logo">
       <img src="../../../assets/logo%20PNG%20gentiane%20nacré%20.png" alt="" routerLink="/admins"><h1>Expert dessin en bâtiment</h1>
@@ -17,6 +16,10 @@
     </a>
     <a mat-button routerLink="/contact">
       <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Contact</span>
+    </a>
+
+    <a mat-button *ngIf="jwtService.isLogged()"routerLink="/profil">
+      <span class="mat-title" [ngClass.lt-sm]="'mat-small'">Admin</span>
     </a>
 
     <a mat-button *ngIf="jwtService.isLogged()" (click)="onSubmit()">
@@ -37,9 +40,10 @@
     <mat-icon >menu</mat-icon>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/">Accueil</button>
-      <button mat-menu-item routerLink="/prestations">Prestations</button>
-      <button mat-menu-item routerLink="/projets">Projets</button>
+      <button mat-menu-item><a class="prestation" href="#prestation">Prestations</a></button>
+      <button mat-menu-item routerLink="/projet">Projets</button>
       <button mat-menu-item routerLink="/contact">Contact</button>
+      <button mat-menu-item *ngIf="jwtService.isLogged()" routerLink="/profil">Admin</button>
       <button mat-menu-item *ngIf="jwtService.isLogged()" (click)="onSubmit()">Deconnexion</button>
     </mat-menu>
   </button>

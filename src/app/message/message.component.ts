@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MessageService} from "../service/message.service";
 import {Message} from "../model/message";
 import {PopUpMessageComponent} from "./pop-up-message/pop-up-message.component";
@@ -8,6 +8,10 @@ import {PopUpDeleteProjetComponent} from "../projet/admin-projet/pop-up-delete-p
 import {PopUpDeleteMessageComponent} from "./pop-up-message/pop-up-delete-message/pop-up-delete-message.component";
 import {SelectionModel} from "@angular/cdk/collections";
 import {Client} from "../model/client";
+import {PopUpProjetComponent} from "../projet/admin-projet/pop-up-projet/pop-up-projet.component";
+import {AdminService} from "../service/admin.service";
+import {JwtService} from "../jwt/jwt.service";
+import {Admin} from "../model/admin";
 
 @Component({
   selector: 'app-message',
@@ -17,42 +21,53 @@ import {Client} from "../model/client";
 export class MessageComponent implements OnInit {
   public messages: Message[];
   public message: Message;
-  public displayedColumns: string[] = [ 'vu', 'date', 'objet', 'delete', 'detail'];
-  selection = new SelectionModel<Message>(true, [])
+  public admin: Admin;
 
   constructor(private messageService: MessageService,
-              public dialog: MatDialog,
+              private adminService: AdminService,
+              private jwtService: JwtService,
+              public dialog: MatDialog
   ) {
   }
 
   ngOnInit(): void {
     this.getAllMessages()
+    this.admin = this.jwtService.getAdmin();
+    // this.getNewMessage();
   }
 
-  public getAllMessages() {
+  public getAllMessages(): void {
     this.messageService.getAllMessages().subscribe(messages => this.messages = messages);
   }
 
-  openDetail(): void {
-    this.message.contenu;
-  }
+  // getNewMessage() {
+  //   this.messageService.getAllMessages().subscribe(messages=>{
+  //     this.messages=messages;
+  //     // this.messages=this.messages.filter(message=> !message.vu)})
+  // }
 
-  openDialogDelete(message?: Message): void {
+  public openDialogDelete(message?: Message): void {
     const dialogRef = this.dialog.open(PopUpDeleteMessageComponent, {data: {message}});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.getAllMessages();
-      this.messages = result;
     });
   }
 
-  save(message: Message){
-    const messageId = {id:this.message.id, ...this.message}
-   // this.messageService.subscrib this.message.vu = true;
-  }
-  // onSubmitDelete() {
-  //   const messageId = {id:this.message.id, ...this.message}
-  //   this.messageService.deleteMessage(this.message).subscribe();
-  //
+  // public openDialogUpdate(message?: Message): void {
+  //   const dialogRef = this.dialog.open(PopUpMessageComponent, {data: {message}});
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     this.getAllMessages();
+  //   });
   // }
+
+  public updateMessage(message: Message): void {
+      message.vu = true;
+      console.log(message);
+      this.messageService.updateMessage(message).subscribe(result => {
+      this.getAllMessages()
+    });
+  }
 }
+
+
+

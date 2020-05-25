@@ -1,31 +1,83 @@
 .navbar {
-  padding-top: 10px;
+  /*padding-top: 10px;*/
   width: 200px;
   background-color: #e5e5e5;
   /*opacity: 0.6;*/
 }
 
-.mat-icon.mail {
-  margin-top: 12px;
-  width: 50px;
-  text-align: end;
-  float:right;
-  margin-right: 10px;
+.header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  margin-top: 20px;
 
 }
-.projets{
-  width: 20px;
-  height: 20px;
-  magin-left: 30px;
+
+.admin {
+  grid-column: 2/span 2;
+  grid-row:3/ span2;
+  margin-top: 20px;
+  margin-left: 12px;
+  font-size: 16px;
+  font-weight: bold;
 }
+.photoAdmin {
+  grid-column: 1/span 1;
+  grid-row: 3/span 1;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 100%;
+  margin-left: 10px;
+  border: solid 2px lightgrey;
+}
+
+.mat-icon.mail {
+  /*margin-top: 18px;*/
+  /*margin-right: 10px;*/
+  grid-column: 3;
+  grid-row: 1/span 1;
+  width: 40px;
+  text-align: end;
+}
+
+.mat-icon.settings {
+  grid-column: 4;
+  grid-row: 1/span 1;
+  margin-left: 8px;
+}
+
+
 /*partie de droite*/
 .TAB {
-  width: 880px;
-  min-height: 600px;
-  /*margin: 10px;*/
+  width: 100%;
+  height: 100%;
   border: 1px solid lightgrey;
+  background-color: white;
+  min-height: 800px;
 }
 
+.mat-tab-label {
+  text-align: center;
+  justify-content: center;
+}
+
+/*.navTab{*/
+/*  text-decoration: none;*/
+/*  list-style-type: none;*/
+/*}*/
+
+/*li{*/
+/*  margin:20px 25px 20px 25px;*/
+/*  color: grey;*/
+/*  !*font-style: ;*!*/
+/*  display: inline;*/
+/*  border-bottom: solid 1px #17657D;*/
+/*}*/
+
+.listMessages {
+
+}
 
 /*img {*/
 /*  height: 110px;*/
@@ -43,7 +95,7 @@
 /*  margin: 50px 0 20px 20px;*/
 /*  font-family: Helvetica;*/
 /*  !*padding: 0 10px 0 10px;*!*/
-  /*color: grey;*/
+/*color: grey;*/
 /*}*/
 
 /*p {*/

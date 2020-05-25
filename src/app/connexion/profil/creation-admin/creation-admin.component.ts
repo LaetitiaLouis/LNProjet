@@ -49,7 +49,8 @@ export class CreationAdminComponent implements OnInit {
   }
 
   onSubmit() {
-    this.adminService.registerAdmin(this.formBody.value).subscribe(admin => admin && this.router.navigate(['/profil']));
+    this.adminService.registerAdmin(this.formBody.value)
+      .subscribe(admin => admin && this.router.navigate(['/profil']));
   }
 
   closePopUp() {

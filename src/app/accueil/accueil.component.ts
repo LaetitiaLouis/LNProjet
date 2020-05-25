@@ -24,7 +24,7 @@ export class AccueilComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.photoService.getPhotosByCategorie('carousel').subscribe(photos => this.photos = photos);
+    this.photoService.getPhotosByCategorie('caroussel').subscribe(photos => this.photos = photos);
     this.adminService.getAllAdmins().subscribe(admin => this.admin = admin);
   }
 }

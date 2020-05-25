@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TypeService} from '../../service/type.service';
 import {take} from 'rxjs/operators';
 import {Type} from '../../model/type';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-filtre-projets',
@@ -9,7 +10,7 @@ import {Type} from '../../model/type';
   styleUrls: ['./filtre-projets.component.css']
 })
 export class FiltreProjetsComponent implements OnInit {
-  // public types = new FormControl();
+  public types = new FormControl();
   typeList: Type[] = [];
   @Output() typesChangeEmitter = new EventEmitter<any>();
   readonly ITEM_ALL = 'Tous les projets';
@@ -32,15 +33,21 @@ export class FiltreProjetsComponent implements OnInit {
     this.typesChangeEmitter.emit('Tous');
   }
 
-  public onClickTypes(event: any): void {
-    // this.typesChangeEmitter.emit(event.value);
-    // console.log(event.target.innerText);
-    // if(event.target.innerText==='Tous') {}
-    const item = this.typeList.filter(typeItem => typeItem.libelle === event.target.innerText)[0];
-    this.typesChangeEmitter.emit(item);
+  public onClickTypes(typeProjet: any): void {
+    console.log(typeProjet.libelle);
+    this.typesChangeEmitter.emit(typeProjet);
   }
 
   public onClickProjets(): void{
     this.typesChangeEmitter.emit('Tous');
   }
+
+  public onTypesChange(event: any): void {
+    console.log(event.value);
+    this.typesChangeEmitter.emit(event.value);
+    if(event.target && event.target.innerText ==='Tous') {
+      this.typesChangeEmitter.emit(event.value);
+    }
+  }
 }
+

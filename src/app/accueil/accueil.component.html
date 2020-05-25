@@ -8,8 +8,7 @@
     </mat-carousel>
     <div class="introLogo">
       <a class="logo">
-        <img src="../../../assets/logo PNG gentiane nacré .png" alt="" routerLink="/admins">
-        <!--        <img src="../../../assets/Logo 4 (blanc).png" alt="" routerLink="/admins">-->
+        <img src="../../../assets/logo PNG gentiane nacré .png" alt="">
       </a>
     </div>
       <p class="presLNProjet">Né du partenariat entre une architecte, Laurence, et une dessinatrice, Nadège, LNProjet vous
@@ -22,7 +21,7 @@
         3D. </p>
   </div>
 
-  <div class="presentation" fxLayout.gt-sm="row" fxLayoutGap="20px">
+  <div class="presentation" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="40px">
     <div class="grid" *ngFor="let admin of admin">
       <p><img mat-card-image [src]="admin.photo" [alt]="'photo de '+admin.login">{{admin.presentation}}</p></div>
   </div>

@@ -1,6 +1,6 @@
 .page {
   height: 85vh;
-  background-image: url("../../assets/photoNB.jpeg");
+  /*background-image: url("../../assets/photoNB.jpeg");*/
 }
 
 .formulaire{
@@ -17,7 +17,7 @@
 .mat-headline{
   /*background-color: #17657D;*/
   text-align: center;
-  height:20px;
+  height:30px;
   padding: 0;
   margin-bottom: 10px}
 

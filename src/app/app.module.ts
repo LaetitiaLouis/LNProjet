@@ -55,7 +55,6 @@ import { PopUpProjetComponent } from './projet/admin-projet/pop-up-projet/pop-up
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatSortModule} from "@angular/material/sort";
 import { PopUpClientComponent } from './client/pop-up-client/pop-up-client.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PopUpCreaAdminComponent } from './connexion/profil/creation-admin/pop-up-crea-admin/pop-up-crea-admin.component';
 import { PopUpMessageComponent } from './message/pop-up-message/pop-up-message.component';
 import { PopUpClientDeleteComponent } from './client/pop-up-client-delete/pop-up-client-delete.component';
@@ -65,6 +64,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatTabsModule} from "@angular/material/tabs";
 import { AdminComponent } from './admin/admin.component';
 import { PopUpDeleteMessageComponent } from './message/pop-up-message/pop-up-delete-message/pop-up-delete-message.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 const routes: any[] = [
   {path: '', component: AccueilComponent},
@@ -73,13 +73,13 @@ const routes: any[] = [
   {path: 'admins', component: ConnexionComponent},
   {path: 'profil', component: ProfilComponent},
   {path: 'detailProjet/:id', component: DetailProjetComponent},
-  {path: 'detailProfil/:login', component: DetailModifProfilComponent},
-  {path: 'ajouterAdmin/:login', component: CreationAdminComponent},
+  {path: 'modifProfil/:login', component: PopUpModifProfilComponent},
+  // {path: 'ajouterAdmin/:login', component: CreationAdminComponent},
   {path: 'adminProjet/:login', component: AdminProjetComponent},
   {path: 'messages', component: MessageComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'clients', component: ClientComponent},
-  {path: 'ajouterAdmin/:login', component: CreationAdminComponent},
+  {path: 'ajouterAdmin/:login', component: PopUpCreaAdminComponent},
   {path: 'deconnexion', component: DeconnexionComponent}
 ];
 
@@ -112,7 +112,6 @@ const routes: any[] = [
     AdminProjetComponent,
     PopUpProjetComponent,
     PopUpClientComponent,
-    SearchBarComponent,
     PopUpCreaAdminComponent,
     PopUpMessageComponent,
     PopUpClientDeleteComponent,
@@ -121,48 +120,49 @@ const routes: any[] = [
     AdminComponent,
     PopUpDeleteMessageComponent
   ],
-    imports: [
-        JwtModule.forRoot({
-            config: {
-                tokenGetter: function tokenGetter() {
-                    return localStorage.getItem('access_token');
-                },
-                whitelistedDomains: [environment.server],
-                blacklistedRoutes: [`${environment.apiUrl}/sign-in`]
-            }
-        }),
-        BrowserModule,
-        RouterModule.forRoot(routes),
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatMenuModule,
-        MatIconModule,
-        MatRadioModule,
-        FormsModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatSnackBarModule,
-        MatCarouselModule,
-        MatCarouselModule.forRoot(),
-        MatCardModule,
-        MatButtonToggleModule,
-        FlexLayoutModule,
-        ExtendedModule,
-        FlexModule,
-        MatInputModule,
-        MatGridListModule,
-        MatExpansionModule,
-        MatSidenavModule,
-        MatCheckboxModule,
-        MatTableModule,
-        MatDialogModule,
-        MatSortModule,
-        MatListModule,
-        MatBadgeModule,
-        MatTabsModule
-    ],
+  imports: [
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function tokenGetter() {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: [environment.server],
+        blacklistedRoutes: [`${environment.apiUrl}/sign-in`]
+      }
+    }),
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatRadioModule,
+    FormsModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatCarouselModule,
+    MatCarouselModule.forRoot(),
+    MatCardModule,
+    MatButtonToggleModule,
+    FlexLayoutModule,
+    ExtendedModule,
+    FlexModule,
+    MatInputModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSortModule,
+    MatListModule,
+    MatBadgeModule,
+    MatTabsModule,
+    MatSlideToggleModule
+  ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} },

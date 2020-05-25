@@ -27,8 +27,8 @@ export class PopUpMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.messages.push(this.data.message);
-    console.log(this.data);
+    // this.messages.push(this.data.message);
+    // console.log(this.data);
 
   }
 

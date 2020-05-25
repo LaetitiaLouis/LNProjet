@@ -51,7 +51,20 @@ h1 {
   margin-right: 0;
 }
 
-/*xxxxxxxxxxxxxxxxxxxxxxxxxx*/
+a.prestation {
+  text-decoration: none;
+  color: black;
+}
+
+/******************/
+@media (max-width: 1000px) {
+  .container {
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+/******************/
 @media (max-width: 800px) {
   .mat-title {
     padding-left: 0;

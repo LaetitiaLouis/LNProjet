@@ -3,7 +3,7 @@
 }
 
 .card {
-  width: 600px;
+  width: 800px;
   margin: 20px;
 }
 
@@ -15,5 +15,9 @@ button{
   margin: 10px;
 }
 .mat-icon.close{
+  font-size: 20px;
+}
+
+.mat-icon.add{
   font-size: 20px;
 }

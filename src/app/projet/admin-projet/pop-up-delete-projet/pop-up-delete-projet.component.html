@@ -4,10 +4,9 @@
       <mat-icon class="close" (click)="closePopUp()">close</mat-icon>
     </div>
 
-    <p>Etes vous sûr de vouloir supprimer le projet {{data.projet.intitule}} du client {{data.projet.client.nom}}</p>
+    <p>Etes vous sûr de vouloir supprimer ce projet</p>
     <div fxLayout fxLayoutAlign="center center">
-      <button mat-raised-button (click)="onSubmitDelete()">Oui</button>
-      <button mat-raised-button (click)="closePopUp()">Non</button>
+      <button mat-raised-button color="primary" (click)="onSubmitDelete()">Oui</button>
     </div>
   </mat-card-content>
 </div>

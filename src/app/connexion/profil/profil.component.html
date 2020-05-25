@@ -1,47 +1,49 @@
-<!--<div class="container" fxLayoutAlign="center center">-->
-<!--  -->
-<!--<mat-drawer-container class="TAB">-->
-<!--  <mat-drawer class="navbar" mode="side" opened></mat-drawer>-->
-<!--</mat-drawer-container>-->
-<!--</div>-->
-
-<!--<app-card-admin></app-card-admin>-->
-
-<div class="container">
+<div class="container" >
   <mat-drawer-container class="TAB">
-    <mat-drawer class="navbar" mode="side" opened>
-      <div class="icon">
+    <mat-drawer class="navbar" mode="side" opened fxHide.sm="true" fxHide.xs="true">
+      <div class="header">
         <mat-icon class="mail" *ngIf="messages"
                   [matBadge]="messages.length" matBadgeOverlap="true" matBadgeSize="small">mail
         </mat-icon>
+          <mat-icon class="settings"[matMenuTriggerFor]="menu" aria-label="icon-button with a menu">settings</mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/modifProfil/:login">Modifier Profil</button>
+            <button mat-menu-item routerLink="/ajouterAdmin/:login">Créer nouveau Profil</button>
+          </mat-menu>
+        <div class="admin">
+          {{admin.login | titlecase}}
+        </div>
+          <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">
       </div>
     </mat-drawer>
 
     <div class="intro">
-      <div class="navTab" fxLayout="" fxLayoutAlign="center center">
-        <mat-tab-group>
-          <mat-tab label="Messages">
-            <app-message></app-message>
-          </mat-tab>
-          <mat-tab label="Projets">
-<!--            <app-admin-projet></app-admin-projet>-->
-          </mat-tab>
-          <mat-tab label="Clients">
-<!--            <app-client></app-client>-->
-          </mat-tab>
-        </mat-tab-group>
-      </div>
 
+      <mat-tab-group>
+        <mat-tab label="Messages" class="listMessages" fxLayout="" fxLayoutAlign="center center">
+          <app-message></app-message>
+        </mat-tab>
+        <mat-tab label="TAB Projets">
+          <app-admin-projet></app-admin-projet>
+        </mat-tab>
+        <mat-tab label="Clients">
+          <app-client></app-client>
+        </mat-tab>
+        <mat-tab label="Profil" fxHide.gt-sm="true">
+          <app-client></app-client>
+        </mat-tab>
+      </mat-tab-group>
     </div>
+
   </mat-drawer-container>
+</div>
 
-
-  <!--  <div class="container" fxLayout="gt-md" fxLayoutAlign="center center">-->
-  <!--</div>-->
-  <!--        <div class="bienvenue" *ngIf="admin">{{'Bienvenue ' + admin.prenom + ' !' | titlecase}}</div>-->
-  <!--       <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">-->
-  <!--        <img class="photoAdmin" src="../../../assets/profil-avatar-femme-icone-ronde_24640-14042.jpg">-->
-  <!--             [src]="admin.photo" alt="photo de l'administrateur">-->
-  <!--    <div class="modifierProfil" fxLayout fxLayoutAlign="center center">-->
-  <!--      <button mat-button class="detailProfil" [routerLink]="['/detailProfil', admin.login]">Voir mon profil</button>-->
-  <!--    </div>-->
+<!--  <div class="container" fxLayout="gt-md" fxLayoutAlign="center center">-->
+<!--</div>-->
+<!--        <div class="bienvenue" *ngIf="admin">{{'Bienvenue ' + admin.prenom + ' !' | titlecase}}</div>-->
+<!--       <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">-->
+<!--        <img class="photoAdmin" src="../../../assets/profil-avatar-femme-icone-ronde_24640-14042.jpg">-->
+<!--             [src]="admin.photo" alt="photo de l'administrateur">-->
+<!--    <div class="modifierProfil" fxLayout fxLayoutAlign="center center">-->
+<!--      <button mat-button class="detailProfil" [routerLink]="['/detailProfil', admin.login]">Voir mon profil</button>-->
+<!--    </div>-->

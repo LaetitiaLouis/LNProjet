@@ -12,10 +12,8 @@
 }
 
 .photo {
-  width: 100%;
-  /*width: 140px;*/
-  /*height: 140px;*/
-  height: auto;
+  width: 240px;
+  height: 240px;
   object-fit: cover;
   padding: 0;
   margin: 0;

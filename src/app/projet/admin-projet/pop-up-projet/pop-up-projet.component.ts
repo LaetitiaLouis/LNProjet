@@ -1,9 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ProjetService} from "../../../service/projet.service";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ErrorService} from "../../../service/error.service";
+import {JwtService} from "../../../jwt/jwt.service";
+import {consoleTestResultHandler} from "tslint/lib/test";
+import {TypeService} from "../../../service/type.service";
+import {Type} from "../../../model/type";
+import {map, tap} from "rxjs/operators";
+import {Photo} from "../../../model/photo";
 
 @Component({
   selector: 'app-pop-up-projet',
@@ -12,35 +18,91 @@ import {ErrorService} from "../../../service/error.service";
 })
 export class PopUpProjetComponent implements OnInit {
   public formBody: FormGroup;
+  public photoFormArray: FormArray = new FormArray([]);
+  // TODO table catégorie back ou ENUM
+  public photosCategories: string[] = ['accueil', 'projet'];
+  public typesProjets: Type[];
 
 
   constructor(private fb: FormBuilder,
               private projetService: ProjetService,
+              private typeService: TypeService,
               private route: ActivatedRoute,
+              private jwtService: JwtService,
               public dialogRef: MatDialogRef<PopUpProjetComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private es: ErrorService) {
   }
 
   ngOnInit(): void {
+    this.getTypesProjets();
     this.formProjet();
+    this.initPhotos();
+  }
+
+  getTypesProjets() {
+    this.typeService.getAllTypes().subscribe(types => this.typesProjets = types);
   }
 
   formProjet(): void {
-    const adminLogin = this.route.paramMap.subscribe(params => ('login'));
     this.formBody = this.fb.group({
       intitule: [this.data.update ? this.data.projet.intitule : ''],
       description: [this.data.update ? this.data.projet.description : ''],
-      photos: [this.data.update ? this.data.projet.photos : ''],
-      admin: [{value: "adminLogin", disabled: !this.data.update}]
-    })
+      type: [this.data.update ? this.data.projet.type : ''],
+      photos: [this.data.update ? this.data.projet.photos : this.photoFormArray],
+      // admin: [{value: this.jwtService.getAdmin(), disabled: !this.data.update}]
+    });
+    this.formBody.valueChanges.subscribe(value=> console.log(value));
+  }
+
+  //affiche le mat-select type
+  compareFunction(type1: any, type2: any) {
+    return type1.id === type2.id;
+  }
+
+  initPhotos() {
+    console.log('initPhotos')
+    if(this.data && this.data.update){
+      this.data.projet.photos.forEach(photo=> {
+        const form = this.createPhotoForm(photo);
+      this.photoFormArray.push(form);
+      })
+
+    }
+  }
+
+  createPhotoForm(photo?: Photo) {
+    return this.fb.group({
+      nom: [photo ? photo.nom : ''],
+      categorie: [photo ? photo.categorie : ''],
+      lien: [photo ? photo.lien : ''],
+      id: [photo? photo.id: ''],
+      projet:[photo? {id: this.data.projet.id} :'']
+    });
+  }
+
+  addPhotoForm() {
+    this.photoFormArray.push(this.createPhotoForm());
+  }
+
+  removePhotos(index: number) {
+    this.photoFormArray.removeAt(index);
+    this.formBody.controls.photos.setValue(this.photoFormArray);
+    console.log(index)
   }
 
   onSubmitCreate(): void {
-    this.projetService.saveProjetInfos(this.formBody.value)
-      .subscribe(this.es.handleSuccess("Projet créé"), this.es.handleError("Erreur")
-    );
-    this.dialogRef.close();
+    const projet = {
+      admin: {login: this.jwtService.getAdmin().login, role: "ADMIN"}, ...this.formBody.value,
+      photos: this.formBody.controls.photos.value.value,
+      type: this.formBody.controls.type.value
+    };
+    this.projetService.saveProjetInfos(projet)
+      .pipe(tap(this.es.handleSuccess("Projet créé")))
+      .subscribe(projet =>
+          this.dialogRef.close(projet),
+        this.es.handleError("Erreur")
+      );
   }
 
   enable(champ: string) {
@@ -51,11 +113,18 @@ export class PopUpProjetComponent implements OnInit {
   }
 
   onSubmitUpdate() {
-    const projet = {id: this.data.projet.id, ...this.formBody.value}
+    const projet = {
+      id: this.data.projet.id,
+      admin: {login: this.jwtService.getAdmin().login, role: "ADMIN"}, ...this.formBody.value,
+      photos: this.photoFormArray.value,
+      type: this.formBody.controls.type.value
+    };
     this.projetService.updateProjet(projet)
-      .subscribe(this.es.handleSuccess("Projet modifié"), this.es.handleError("Erreur")
+      .pipe(tap(this.es.handleSuccess("Projet modifié")))
+      .subscribe(projet =>
+          this.dialogRef.close(projet),
+        this.es.handleError("Erreur")
       );
-    this.dialogRef.close();
   }
 
   closePopUp() {

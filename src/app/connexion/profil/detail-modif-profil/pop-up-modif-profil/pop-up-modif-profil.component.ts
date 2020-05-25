@@ -5,6 +5,7 @@ import {JwtService} from "../../../../jwt/jwt.service";
 import {AdminService} from "../../../../service/admin.service";
 import {ErrorService} from "../../../../service/error.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Message} from "../../../../model/message";
 
 @Component({
   selector: 'app-pop-up-modif-profil',
@@ -27,11 +28,17 @@ export class PopUpModifProfilComponent implements OnInit {
     this.formBody = this.fb.group({
       prenom: [this.data.prenom],
       login: [this.data.login],
-      password: [{value: this.data.password, disabled: true},Validators.minLength(6)],
+      password: [this.data.password,Validators.minLength(6)],
       confirmPassword: ["", [Validators.required]],
-      presentation: [{value: this.data.presentation, disabled: true}],
-      photo: [{value: this.data.photo, disabled: true}]
+      role: [this.data.role],
+      presentation: [this.data.presentation],
+      photo: [this.data.photo],
     })
+  }
+
+  enable(champ: string) {
+    this.formBody.get(champ).enable();
+    this.formBody.get(champ).setValue("");
   }
 
   onSubmitUpdate() {
@@ -40,18 +47,18 @@ export class PopUpModifProfilComponent implements OnInit {
     this.adminService.updatedAdmin(admin)
       .subscribe((admin => {
           this.es.handleSuccess("Profil modifié");
-          console.log(admin);
         }),
         this.es.handleError("Erreur"))
     ;
   }
 
-  enable(champ: string) {
-    this.formBody.get(champ).enable();
-    this.formBody.get(champ).setValue("");
+  public onChangeValiditeCompte(): void {
+    if(this.admin.compteValide = true) {
+      console.log(this.admin.compteValide);
+        this.adminService.updatedAdmin(this.admin).subscribe(result => this.admin.compteValide = false);
+  }else {
+      this.adminService.updatedAdmin(this.admin).subscribe(result => this.admin.compteValide = true);
+    }
   }
 
-  closePopUp() {
-    this.dialogRef.close();
-  }
 }

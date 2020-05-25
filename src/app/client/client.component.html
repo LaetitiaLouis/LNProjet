@@ -1,114 +1,143 @@
-<fieldset fxLayout="row">
-  <legend>CLIENTS</legend>
-  <div class="contains">
-      <div class="close" fxLayoutAlign="end">
-        <mat-icon class="close" onclick="history.back()">close</mat-icon>
-      </div>
-      <div class="buttons" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="flex-start">
-        <button mat-raised-button class="creation" (click)="openDialog(false)">
-          <mat-icon class="add">add</mat-icon>
-          Ajouter un client
-        </button>
+<div class="contains">
+  <div class="buttons" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+    <button mat-raised-button class="creation" (click)="openDialog(false)">
+      <mat-icon class="add">add</mat-icon>
+      Ajouter un client
+    </button>
 
-        <div class="mat-elevation-z2">
-          <input class="rechercheInput" matInput type="text"  [(ngModel)]="searchBy">
-          <mat-icon class="search" (click)="search()">search</mat-icon>
-        </div>
-      </div>
-
-      <table mat-table [dataSource]="this.clients">
-        <!-- Nom Column -->
-        <ng-container matColumnDef="nom">
-          <th mat-header-cell *matHeaderCellDef>Nom</th>
-          <td mat-cell *matCellDef="let client"> {{client.nom}} </td>
-        </ng-container>
-
-        <!-- Prenom Column -->
-        <ng-container matColumnDef="prenom">
-          <th mat-header-cell *matHeaderCellDef>Prénom</th>
-          <td mat-cell *matCellDef="let client"> {{client.prenom}} </td>
-        </ng-container>
-
-        <!-- Adresse Column -->
-        <ng-container matColumnDef="adresse">
-          <th mat-header-cell *matHeaderCellDef>Adresse</th>
-          <td mat-cell *matCellDef="let client"> {{client.adresse}} </td>
-        </ng-container>
-
-        <!-- Code postal Column -->
-        <ng-container matColumnDef="codePostal">
-          <th mat-header-cell *matHeaderCellDef>Code Postal</th>
-          <td mat-cell *matCellDef="let client"> {{client.codePostal}} </td>
-        </ng-container>
-
-        <!-- Ville Column -->
-        <ng-container matColumnDef="ville">
-          <th mat-header-cell *matHeaderCellDef>Ville</th>
-          <td mat-cell *matCellDef="let client"> {{client.ville}} </td>
-        </ng-container>
-
-        <!-- Telephone Column -->
-        <ng-container matColumnDef="telephone">
-          <th mat-header-cell *matHeaderCellDef>Téléphone</th>
-          <td mat-cell *matCellDef="let client"> {{client.telephone}} </td>
-        </ng-container>
-
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let client"> {{client.email}} </td>
-        </ng-container>
-
-        <!-- Ref devis Column -->
-        <ng-container matColumnDef="refDevis">
-          <th mat-header-cell *matHeaderCellDef>Ref devis</th>
-          <td mat-cell *matCellDef="let client"> {{client.refDevis}} </td>
-        </ng-container>
-
-        <!-- Ref facture Column -->
-        <ng-container matColumnDef="refFacture">
-          <th mat-header-cell *matHeaderCellDef>Ref facture</th>
-          <td mat-cell *matCellDef="let client"> {{client.refFacture}} </td>
-        </ng-container>
-
-        <!-- Update Column -->
-        <ng-container matColumnDef="update">
-          <th mat-header-cell *matHeaderCellDef>Modifier</th>
-          <td mat-cell class="update" *matCellDef="let client">
-            <mat-icon class="update" (click)="openDialog(true, client)">edit</mat-icon>
-          </td>
-        </ng-container>
-
-        <!-- Delete Column -->
-        <ng-container matColumnDef="delete">
-          <th mat-header-cell *matHeaderCellDef>Supprimer</th>
-          <td mat-cell class="delete" *matCellDef="let client">
-            <mat-icon class="delete"(click)="openDialogDelete(client)">delete</mat-icon>
-          </td>
-        </ng-container>
-
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="selection.toggle(row)">
-        </tr>
-      </table>
+    <div class="mat-elevation-z2">
+      <input class="rechercheInput" matInput type="text" [(ngModel)]="searchBy">
+      <mat-icon class="search" (click)="search()">search</mat-icon>
     </div>
-</fieldset>
-        <!--  &lt;!&ndash; Checkbox Column &ndash;&gt;-->
-        <!--  <ng-container matColumnDef="select">-->
-        <!--    <th mat-header-cell *matHeaderCellDef>-->
-        <!--      <mat-checkbox (change)="$event ? masterToggle() : null"-->
-        <!--                    [checked]="selection.hasValue() && isAllSelected()"-->
-        <!--                    [indeterminate]="selection.hasValue() && !isAllSelected()"-->
-        <!--                    [aria-label]="checkboxLabel()">-->
-        <!--      </mat-checkbox>-->
-        <!--    </th>-->
-        <!--    <td mat-cell *matCellDef="let row">-->
-        <!--      <mat-checkbox (click)="$event.stopPropagation()"-->
-        <!--                    (change)="$event ? selection.toggle(row) : null"-->
-        <!--                    [checked]="selection.isSelected(row)"-->
-        <!--                    [aria-label]="checkboxLabel(row)">-->
-        <!--      </mat-checkbox>-->
-        <!--    </td>-->
-        <!--  </ng-container>-->
+  </div>
+
+  <table mat-table [dataSource]="this.clients" fxHide.xs="true">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+          [aria-label]="checkboxLabel()"
+          [color]="">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nomPrenom">
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+      <td mat-cell *matCellDef="let client"> {{client.nom | titlecase}} {{client.prenom | titlecase}} </td>
+    </ng-container>
+
+    <!--    &lt;!&ndash; Nom Column &ndash;&gt;-->
+    <!--    <ng-container matColumnDef="nom" fxHide.sm="true">-->
+    <!--      <th mat-header-cell *matHeaderCellDef>Nom</th>-->
+    <!--      <td mat-cell *matCellDef="let client"> {{client.nom | titlecase}} </td>-->
+    <!--    </ng-container>-->
+
+    <!--    &lt;!&ndash; Prenom Column &ndash;&gt;-->
+    <!--    <ng-container matColumnDef="prenom" fxHide.sm="true">-->
+    <!--      <th mat-header-cell *matHeaderCellDef>Prénom</th>-->
+    <!--      <td mat-cell *matCellDef="let client"> {{client.prenom | titlecase}} </td>-->
+    <!--    </ng-container>-->
+
+    <!-- Adresse Column -->
+    <ng-container matColumnDef="adresse">
+      <th mat-header-cell *matHeaderCellDef>Adresse</th>
+      <td mat-cell
+          *matCellDef="let client"> {{client.adresse | titlecase}} {{client.codePostal}} {{client.ville | titlecase}}</td>
+    </ng-container>
+
+    <!-- Telephone Column -->
+    <ng-container matColumnDef="telephone">
+      <th mat-header-cell *matHeaderCellDef>Téléphone</th>
+      <td mat-cell *matCellDef="let client"> {{client.telephone}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let client"> {{client.email}} </td>
+    </ng-container>
+
+    <!-- Ref devis Column -->
+    <ng-container matColumnDef="refDevis">
+      <th mat-header-cell *matHeaderCellDef>Ref devis</th>
+      <td mat-cell *matCellDef="let client"> {{client.refDevis}} </td>
+    </ng-container>
+
+    <!-- Ref facture Column -->
+    <ng-container matColumnDef="refFacture">
+      <th mat-header-cell *matHeaderCellDef>Ref facture</th>
+      <td mat-cell *matCellDef="let client"> {{client.refFacture}} </td>
+    </ng-container>
+
+    <!-- Update Column -->
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef>Modifier</th>
+      <td mat-cell class="update" *matCellDef="let client">
+        <mat-icon class="update" (click)="openDialog(true, client)">edit</mat-icon>
+      </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+      <td mat-cell class="delete" *matCellDef="let client">
+        <mat-icon class="delete" (click)="openDialogDelete(client)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>
+</div>
+
+<div class="accordeon" fxHide.gt-xs="true">
+  <!--  <button mat-button (click)="accordion.openAll()">Tout voir</button>-->
+  <!--  <button mat-button (click)="accordion.closeAll()"></button>-->
+  <!--</div>-->
+  <mat-accordion class="headers-align" multi *ngFor="let client of clients">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{client.nom| titlecase}} {{client.prenom | titlecase}}
+        </mat-panel-title>
+        <!--      <mat-panel-description>-->
+        <!--        Voir détail client-->
+        <!--        <mat-icon>account_circle</mat-icon>-->
+        <!--      </mat-panel-description>-->
+      </mat-expansion-panel-header>
+      <p>
+        {{client.adresse | titlecase}}
+        <br/>{{client.codePostal}} {{client.ville | titlecase}}</p>
+      <p>{{client.telephone}}
+        <br/>{{client.email}}</p>
+      <p>{{client.refDevis}} {{client.refFacture}}</p>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<!--      <mat-form-field>-->
+<!--        <mat-label>First name</mat-label>-->
+<!--        <input matInput>-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field>-->
+<!--        <mat-label>Age</mat-label>-->
+<!--        <input matInput type="number" min="1">-->
+<!--      </mat-form-field>-->

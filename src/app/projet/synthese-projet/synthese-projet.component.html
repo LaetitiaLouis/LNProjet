@@ -1,8 +1,7 @@
 <div class="grid">
-  <div class="cardProjet">
-    <mat-card class="mesProjets" (click)="showDetails(projet.id)" title="Voir le projet">
-      <img class="photo" [src]="photos?photos[0].lien: photo" alt="photo du projet">
+  <div class="cardProjet" *ngIf="projet">
+    <mat-card  class="mesProjets" (click)="showDetails(projet.id)" title="{{projet.intitule}}">
+      <img *ngIf="photos" class="photo" [src]="getPhotosProjet(projet.id)" alt="photo du projet">
     </mat-card>
   </div>
 </div>
-

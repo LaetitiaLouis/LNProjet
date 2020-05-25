@@ -2,14 +2,12 @@
   <mat-drawer-container class="TAB">
     <mat-drawer class="navbar" mode="side" opened>
       <img class="photoAdmin" [src]="admin.photo" alt="photo de l'administrateur">
-<!--      src="../../../assets/profil-avatar-femme-icone-ronde_24640-14042.jpg">-->
       <div class="modifierProfil" fxLayout fxLayoutAlign="center center">
-        <button mat-button class="modifierProfil" (click)="openDialog(admin)" color="primary" type="submit">Modifier
+        <button mat-button class="modifierPhoto" (click)="openDialog(admin)" color="primary" type="submit">Modifier
           profil
         </button>
       </div>
     </mat-drawer>
-    <!--  <legend>Profil</legend>-->
     <div class="contains">
       <div class="close" fxLayoutAlign="end">
         <mat-icon class="close" onclick="history.back()">close</mat-icon>
