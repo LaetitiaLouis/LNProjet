@@ -62,7 +62,6 @@ import { PopUpModifProfilComponent } from './connexion/profil/detail-modif-profi
 import { PopUpDeleteProjetComponent } from './projet/admin-projet/pop-up-delete-projet/pop-up-delete-projet.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTabsModule} from "@angular/material/tabs";
-import { AdminComponent } from './admin/admin.component';
 import { PopUpDeleteMessageComponent } from './message/pop-up-message/pop-up-delete-message/pop-up-delete-message.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
@@ -71,16 +70,16 @@ const routes: any[] = [
   {path: 'prestation', component: PrestationComponent},
   {path: 'projet', component: ProjetComponent},
   {path: 'admins', component: ConnexionComponent},
-  {path: 'profil', component: ProfilComponent},
+  {path: 'profil', component: ProfilComponent, canActivate:[AdminGuard]},
   {path: 'detailProjet/:id', component: DetailProjetComponent},
-  {path: 'modifProfil/:login', component: PopUpModifProfilComponent},
+  {path: 'modifProfil/:login', component: PopUpModifProfilComponent, canActivate:[AdminGuard]},
   // {path: 'ajouterAdmin/:login', component: CreationAdminComponent},
-  {path: 'adminProjet/:login', component: AdminProjetComponent},
-  {path: 'messages', component: MessageComponent},
+  {path: 'adminProjet/:login', component: AdminProjetComponent, canActivate:[AdminGuard]},
+  {path: 'messages', component: MessageComponent, canActivate:[AdminGuard]},
   {path: 'contact', component: ContactComponent},
-  {path: 'clients', component: ClientComponent},
-  {path: 'ajouterAdmin/:login', component: PopUpCreaAdminComponent},
-  {path: 'deconnexion', component: DeconnexionComponent}
+  {path: 'clients', component: ClientComponent, canActivate:[AdminGuard]},
+  {path: 'ajouterAdmin/:login', component: PopUpCreaAdminComponent, canActivate:[AdminGuard]},
+  {path: 'deconnexion', component: DeconnexionComponent, canActivate:[AdminGuard]}
 ];
 
 @NgModule({
@@ -117,14 +116,13 @@ const routes: any[] = [
     PopUpClientDeleteComponent,
     PopUpModifProfilComponent,
     PopUpDeleteProjetComponent,
-    AdminComponent,
     PopUpDeleteMessageComponent
   ],
   imports: [
     JwtModule.forRoot({
       config: {
         tokenGetter: function tokenGetter() {
-          return localStorage.getItem('access_token');
+          return sessionStorage.getItem('access_token');
         },
         whitelistedDomains: [environment.server],
         blacklistedRoutes: [`${environment.apiUrl}/sign-in`]

@@ -20,11 +20,6 @@ button{
   margin: 20px 10px 0 0;
 }
 
- .compteValide {
-   width: 100px;
-   border: solid 1px lightgrey;
- }
-
 @media (max-width: 600px) {
   .card {
     margin: 20px;

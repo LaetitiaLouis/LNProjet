@@ -12,6 +12,7 @@ import {PopUpProjetComponent} from "./pop-up-projet/pop-up-projet.component";
 import {PopUpDeleteProjetComponent} from "./pop-up-delete-projet/pop-up-delete-projet.component";
 import {JwtService} from "../../jwt/jwt.service";
 import {Observable} from "rxjs";
+import {Client} from "../../model/client";
 
 @Component({
   selector: 'app-admin-projet',
@@ -20,14 +21,14 @@ import {Observable} from "rxjs";
 })
 export class AdminProjetComponent implements OnInit {
 
-  public projets: Observable<Projet[]>;
+  public projets: Projet[];
+  public projet: Projet;
   public displayedColumns: string[] = ['intitule', 'description', 'type', 'update', 'delete'];
+  public displayedColumnsXs: string[] = ['select','intitule', 'description', 'type'];
   public selection = new SelectionModel<Projet>(true, []);
   public admin: Admin;
   public type: Type;
   public searchBy: string;
-
-  // public searchForm: FormGroup;
 
   constructor(private projetService: ProjetService,
               private photoService: PhotoService,
@@ -39,12 +40,37 @@ export class AdminProjetComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProjets();
   }
+  /** Indique si le nombre d'éléments sélectionnés correspond au nombre total de lignes */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.projets.length;
+    return numSelected === numRows;
 
+  }
+
+  /** Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon supprime sélection */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      console.log(this.selection);
+      this.selection.clear();
+    } else {
+      this.selection.selected.forEach(c=> console.log(c));
+      this.projets.forEach(row => this.selection.select(row));
+    }
+  }
+
+  /** Case à cocher sur la ligne passée */
+  checkboxLabel(row?: Projet): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
   /**
    * apelle les projets de l'administrateur connecté
    */
   public getAllProjets() {
-    this.projets = this.projetService.getAllProjets();
+    this.projetService.getAllProjets().subscribe(projets => this.projets = projets);
     };
 
   public openDialog(update: boolean, projet?: Projet): void {
@@ -63,7 +89,7 @@ export class AdminProjetComponent implements OnInit {
   }
 
   public search(): void {
-    this.projets = this.projetService.getProjetsByTypeAndIntitule(this.searchBy);
+   this.projetService.getProjetsByTypeAndIntitule(this.searchBy).subscribe(projets => this.projets = projets);
   };
 }
 

@@ -3,10 +3,7 @@ p{
 }
 
 .mat-raised-button{
-  color: white;
-  max-height: 30px;
-  background-color: #222222;
   margin:10px;
   font-size: 14px;
-  opacity: 0.8;
+  
 }

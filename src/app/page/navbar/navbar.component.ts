@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit() {
-    this.jwtService.logout();
-    this.router.navigate(['/'])
+    this.router.navigate(['/']).then(_=> this.jwtService.logout());
   }
 }

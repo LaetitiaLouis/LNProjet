@@ -53,21 +53,22 @@ export class JwtService {
 
   getRole(): string {
     if (this.isLogged()) {
-      return JwtService.userFromToken(JwtService.getToken()).role;
+      console.log(JwtService.userFromToken(JwtService.getToken()))
+      return JwtService.userFromToken(JwtService.getToken()).auth[0];
     }
     return undefined;
   }
 
   private static getToken(): string {
-    return localStorage.getItem('access_token');
+    return sessionStorage.getItem('access_token');
   }
 
   private static setToken(token: string) {
-    localStorage.setItem('access_token', token);
+    sessionStorage.setItem('access_token', token);
   }
 
   private static clearToken() {
-    localStorage.removeItem('access_token');
+    sessionStorage.removeItem('access_token');
   }
 
   login(name: string, password: string) {
@@ -100,12 +101,7 @@ export class JwtService {
   //     }));
   }
 
-  // registerAdmin(admin: Admin) {
-  //      const adminN = new Admin;
-  //   this.httpClient.post<{ access_token: string }>(`${environment.apiUrl}/admins/sign-up`, adminN).pipe(tap(_ => {
-  //     this.login(Admin);
-  //   }));
-  // }
+
 
   logout() {
     if (this.isLogged()) {

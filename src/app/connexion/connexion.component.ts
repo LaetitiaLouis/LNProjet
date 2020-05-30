@@ -10,6 +10,7 @@ import {JwtService} from "../jwt/jwt.service";
 export class ConnexionComponent implements OnInit {
   connexionForm: FormGroup;
   submitted = false;
+  showPassword= false;
 
   constructor(private fb: FormBuilder,
               private jwtService: JwtService) {

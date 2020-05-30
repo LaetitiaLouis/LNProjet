@@ -16,9 +16,9 @@
       <mat-form-field  appearance="outline">
         <div class="password" fxLayout="row">
         <mat-icon class="lock">lock</mat-icon>
-        <input type="password" matInput placeholder="Saisir votre mot de passe" formControlName="password">
+        <input [type]="showPassword? 'text' : 'password'" matInput placeholder="Saisir votre mot de passe" formControlName="password">
         <mat-error *ngIf="submitted && f.password.errors">Vous devez saisir un mot de passe</mat-error>
-        <mat-icon class="visibility">visibility</mat-icon>
+        <mat-icon class="visibility" (click)="showPassword=!showPassword">visibility</mat-icon>
         </div>
       </mat-form-field>
       <div fxLayout fxLayoutAlign="center center">

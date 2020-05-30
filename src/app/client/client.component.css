@@ -1,12 +1,10 @@
-.mat-raised-button.creation {
+.creation{
   margin: 10px 0 30px 0;
-  padding: 0;
-}
-
-.creation {
-  width: 130px;
-  font-size: 12px;
-
+  border-radius: 5px;
+  max-width: 200px;
+  text-align: right;
+  width: 100%;
+  max-height: 35px;
 }
 
 .add {
@@ -16,9 +14,10 @@
 .mat-elevation-z2 {
   margin: 10px 0 30px 0;
   border-radius: 5px;
-  max-width: 300px;
+  max-width: 400px;
   text-align: right;
   width: 100%;
+  max-height: 35px;
 }
 
 .mat-icon.search {
@@ -36,7 +35,7 @@ input {
   text-align: left;
   border: none;
   height: 20px;
-  width: 240px;
+  width: 250px;
   caret-color: black;
   margin: 10px;
   float: left;
@@ -53,10 +52,93 @@ input {
   text-align: center;
 }
 
-.mat-icon.close {
+.mat-icon.update {
   font-size: 20px;
 }
 
+/***********************************/
+@media (max-width: 960px) {
 .mat-icon.update {
-  font-size: 20px;
+  font-size: 18px;
+}
+
+  .mat-icon.delete{
+  }
+}
+
+/**********************************/
+.accordeon{
+  margin: 40px 80px 40px 80px;
+}
+
+
+  @media (max-width: 960px) {
+    .mat-icon.update {
+      font-size: 18px;
+    }
+
+    .mat-icon.delete{
+      font-size: 18px;
+    }
+
+    .mat-icon.add {
+      font-size: 18px;
+    }
+
+    .mat-elevation-z2 {
+      max-width: 220px;
+    }
+
+    .mat-icon.search {
+      width: 18px;
+      height: 18px;
+    }
+
+    .mat-elevation-z2 {
+      margin: 20px 10px 20px 10px;
+      border-radius: 5px;
+      min-width: 280px;
+      max-width: 400px;
+      text-align: right;
+      width: 100%;
+      max-height: 30px;
+    }
+}
+
+@media(max-width: 600px) {
+  .mat-elevation-z2 {
+    margin: 20px 10px 20px 10px;
+    border-radius: 5px;
+    min-width: 280px;
+    max-width: 300px;
+    text-align: right;
+    width: 100%;
+    max-height: 30px;
+  }
+}
+
+@media (max-width: 450px){
+  .mat-elevation-z2 {
+    margin: 20px;
+    max-width: 280px;
+    text-align: right;
+    width: 100%;
+  }
+
+  .accordeon{
+    margin: 20px;
+  }
+}
+
+@media (max-width:350px ) {
+.accordeon{
+  margin: 10px;
+}
+  .buttons{
+    margin-right: 10px;
+  }
+  .mat-elevation-z1 {
+      max-width: 230px;
+    margin-left: 10px;
+  }
 }

@@ -43,7 +43,11 @@ export class PopUpModifProfilComponent implements OnInit {
 
   onSubmitUpdate() {
     let admin = {...this.admin, ...this.formBody.value};
-    if(!admin.password){admin.password = ""};
+    for (const propriete in admin){
+      if(!admin[propriete]){
+        admin[propriete] = this.admin[propriete];
+      }
+    }
     this.adminService.updatedAdmin(admin)
       .subscribe((admin => {
           this.es.handleSuccess("Profil modifié");
@@ -53,12 +57,7 @@ export class PopUpModifProfilComponent implements OnInit {
   }
 
   public onChangeValiditeCompte(): void {
-    if(this.admin.compteValide = true) {
-      console.log(this.admin.compteValide);
-        this.adminService.updatedAdmin(this.admin).subscribe(result => this.admin.compteValide = false);
-  }else {
-      this.adminService.updatedAdmin(this.admin).subscribe(result => this.admin.compteValide = true);
-    }
+      this.admin.compteValide = !this.admin.compteValide;
+      // this.adminService.updatedAdmin(this.admin).subscribe(result => this.admin = result);
   }
-
 }

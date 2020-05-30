@@ -13,10 +13,10 @@ export class Client {
   telephone: string;
   refDevis: string;
   refFacture: string;
+  prestation: Prestation;
+  message: Message[];
   projet: Projet;
   projets: Projet[];
   isProspect: boolean;
   prestations: Prestation[];
-  prestation: Prestation;
-  message: Message[];
 }

@@ -62,82 +62,19 @@
   justify-content: center;
 }
 
-/*.navTab{*/
-/*  text-decoration: none;*/
-/*  list-style-type: none;*/
-/*}*/
-
-/*li{*/
-/*  margin:20px 25px 20px 25px;*/
-/*  color: grey;*/
-/*  !*font-style: ;*!*/
-/*  display: inline;*/
-/*  border-bottom: solid 1px #17657D;*/
-/*}*/
-
-.listMessages {
-
+/*écran< 960px*/
+.icons{
+  float: right;
+  margin-left: auto;
 }
 
-/*img {*/
-/*  height: 110px;*/
-/*  width: 90px;*/
-/*  margin-top: 50px;*/
-/*}*/
+.menuXs{
+  padding-right: 40px;
+}
 
-
-/*.detailProfil {*/
-/*  margin-top: 130px;*/
-/*}*/
-
-/*legend {*/
-/*  font-size: 18px;*/
-/*  margin: 50px 0 20px 20px;*/
-/*  font-family: Helvetica;*/
-/*  !*padding: 0 10px 0 10px;*!*/
-/*color: grey;*/
-/*}*/
-
-/*p {*/
-/*  margin-left: 20px;*/
-/*  font-family: Helvetica;*/
-/*  font-size: 16px;*/
-/*  !*padding: 0 10px 0 10px;*!*/
-/*}*/
-
-/*.detailTAB {*/
-/*  padding: 40px 30px 40px 30px;*/
-/*}*/
-
-/*.navbar {*/
-/*  padding-top: 30px;*/
-/*  width: 150px;*/
-/*  text-align: center;*/
-/*  background-color: #e5e5e5;*/
-/*  !*opacity: 0.6;*!*/
-/*}*/
-
-/*app-card {*/
-/*  margin: 15px;*/
-/*  max-width: 50%;*/
-/*  max-height: 50%;*/
-/*}*/
-
-/*button {*/
-/*  font-size: 12px;*/
-/*}*/
-
-/*.detailProfil {*/
-/*  border: none;*/
-/*  color: #17657D;*/
-/*  font-size: 12px;*/
-/*  margin-bottom: 30px;*/
-/*}*/
-
-/*.photoAdmin {*/
-/*  margin-top: 40px;*/
-/*  heigth: 130px;*/
-/*  width: 120px;*/
-/*  object-fit: cover;*/
-/*  border-radius: 50%;*/
-/*}*/
+/******************/
+@media (max-width: 400px) {
+  .menuXs {
+    padding-right: 30px;
+  }
+}

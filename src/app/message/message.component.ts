@@ -33,7 +33,6 @@ export class MessageComponent implements OnInit {
   ngOnInit(): void {
     this.getAllMessages()
     this.admin = this.jwtService.getAdmin();
-    // this.getNewMessage();
   }
 
   public getAllMessages(): void {
@@ -53,16 +52,8 @@ export class MessageComponent implements OnInit {
     });
   }
 
-  // public openDialogUpdate(message?: Message): void {
-  //   const dialogRef = this.dialog.open(PopUpMessageComponent, {data: {message}});
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     this.getAllMessages();
-  //   });
-  // }
-
   public updateMessage(message: Message): void {
       message.vu = true;
-      console.log(message);
       this.messageService.updateMessage(message).subscribe(result => {
       this.getAllMessages()
     });
