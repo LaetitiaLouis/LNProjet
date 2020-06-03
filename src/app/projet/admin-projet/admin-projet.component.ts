@@ -89,7 +89,7 @@ export class AdminProjetComponent implements OnInit {
   }
 
   public search(): void {
-   this.projetService.getProjetsByTypeAndIntitule(this.searchBy).subscribe(projets => this.projets = projets);
+   this.projetService.getProjetsByTypeOrIntitule(this.searchBy).subscribe(projets => this.projets = projets);
   };
 }
 

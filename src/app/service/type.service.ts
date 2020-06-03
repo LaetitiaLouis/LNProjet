@@ -17,14 +17,14 @@ export class TypeService {
   }
 
   /**
-   * Requête : Obtenir la liste de tous les types
+   * Obtenir la liste de tous les types
    */
   getAllTypes(): Observable<Type[]> {
     return this.http.get<Type[]>(`${this.BASE_URL}`);
   }
 
   /**
-   * Requête : Enregistrer un nouveau type
+   * Enregistrer un nouveau type
    * @param  type L'objet type à enregistrer
    */
   saveNewType(type: Type): Observable<Type> {
@@ -32,8 +32,7 @@ export class TypeService {
   }
 
   /**
-   * Requête : Modifier un type
-   * @param  type L'objet type à modifier
+   * Modifier un type
    */
   updateType(type: Type): Observable<Type> {
     return this.http.put<Type>(`${this.BASE_URL}`, type)
@@ -41,8 +40,7 @@ export class TypeService {
   }
 
   /**
-   * Requête : Supprimer un type
-   * @param id L'id du type à supprimer
+   * Supprimer un type
    */
   deleteType(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})

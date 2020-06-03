@@ -37,7 +37,7 @@
     <div class="intro">
       <mat-tab-group fxLayout="column" fxLayoutAlign="center none">
         <mat-tab label="Messages" class="listMessages">
-          <app-message></app-message>
+          <app-message (messageChange)="getNewMessage()"></app-message>
         </mat-tab>
         <mat-tab label="TAB Projets" class="TABProjets">
           <app-admin-projet></app-admin-projet>

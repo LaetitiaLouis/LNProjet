@@ -52,7 +52,6 @@ export class PopUpProjetComponent implements OnInit {
       photos: [this.data.update ? this.data.projet.photos : this.photoFormArray],
       // admin: [{value: this.jwtService.getAdmin(), disabled: !this.data.update}]
     });
-    this.formBody.valueChanges.subscribe(value=> console.log(value));
   }
 
   //affiche le mat-select type
@@ -97,6 +96,7 @@ export class PopUpProjetComponent implements OnInit {
       photos: this.formBody.controls.photos.value.value,
       type: this.formBody.controls.type.value
     };
+    console.log(projet);
     this.projetService.saveProjetInfos(projet)
       .pipe(tap(this.es.handleSuccess("Projet créé")))
       .subscribe(projet =>
@@ -119,6 +119,7 @@ export class PopUpProjetComponent implements OnInit {
       photos: this.photoFormArray.value,
       type: this.formBody.controls.type.value
     };
+    projet.photos.forEach(p=>p.projet ={id: this.data.projet.id});
     this.projetService.updateProjet(projet)
       .pipe(tap(this.es.handleSuccess("Projet modifié")))
       .subscribe(projet =>

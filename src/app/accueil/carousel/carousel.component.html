@@ -1,8 +1,0 @@
-<mat-carousel proportion="100" [autoplay]="true" [loop]="true"
-              timings="2000ms ease 0s"
-              interval="5000"
-              color="accent">
-  <div *ngFor="let categorie of categories">
-    <div *ngFor="let photo of photosList"><mat-carousel-slide *ngIf="photo.categorie === categorie" [image]="photo.lien"></mat-carousel-slide></div></div>
-</mat-carousel>
-

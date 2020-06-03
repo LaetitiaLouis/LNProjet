@@ -62,8 +62,12 @@ export class ClientService {
       );
   }
 
+  /**
+   Requête : Obtenir un client via son prénom ou son nom
+   * @param le nom ou le prénom du client à afficher
+   */
   getClientsByNomAndPrenom(recherche: string): Observable<Client[]>{
-    return this.http.get<Client[]>(`${this.BASE_URL}/findByNomAndPrenom?recherche=${recherche}`);
+    return this.http.get<Client[]>(`${this.BASE_URL}/findByNomOrPrenom?recherche=${recherche}`);
 
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MessageService} from "../service/message.service";
 import {Message} from "../model/message";
 import {PopUpMessageComponent} from "./pop-up-message/pop-up-message.component";
@@ -22,6 +22,7 @@ export class MessageComponent implements OnInit {
   public messages: Message[];
   public message: Message;
   public admin: Admin;
+  @Output() messageChange = new EventEmitter();
 
   constructor(private messageService: MessageService,
               private adminService: AdminService,
@@ -53,9 +54,10 @@ export class MessageComponent implements OnInit {
   }
 
   public updateMessage(message: Message): void {
-      message.vu = true;
-      this.messageService.updateMessage(message).subscribe(result => {
-      this.getAllMessages()
+    message.client = null;
+    message.vu = true;
+    this.messageService.updateMessage(message).subscribe(result => {
+      this.messageChange.emit();
     });
   }
 }
