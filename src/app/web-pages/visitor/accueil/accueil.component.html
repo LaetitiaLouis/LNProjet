@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="description">
+    <mat-carousel proportion="60" [autoplay]="true" [loop]="true"
+                  timings="250ms ease-in"
+                  interval="5000"
+                  color="accent">
+      <mat-carousel-slide *ngFor="let photo of photos" [image]="photo.lien"></mat-carousel-slide>
+    </mat-carousel>
+    <div class="introLogo">
+      <a class="logo">
+        <img src="../../../../assets/logo%20PNG%20gentiane%20nacré%20.png" alt="">
+      </a>
+    </div>
+      <p class="presLNProjet">Né du partenariat entre une architecte, Laurence, et une dessinatrice, Nadège, LNProjet vous
+        accompagne dans la
+        conception de
+        votre projet de construction ou d'extension, le réaménagement de votre habitat, la réalisation de vos demandes
+        de
+        permis de construire
+        et déclaration de travaux et également pour vous aider à vous projeter dans votre futur habitat grâce à la
+        3D. </p>
+  </div>
+
+  <div class="presentation" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="40px">
+    <div class="grid" *ngFor="let admin of admin">
+      <p><img mat-card-image [src]="admin.photo" [alt]="'photo de '+admin.login">{{admin.presentation}}</p></div>
+  </div>
+  <app-prestation id="prestation"></app-prestation>
+</div>
+
+
+

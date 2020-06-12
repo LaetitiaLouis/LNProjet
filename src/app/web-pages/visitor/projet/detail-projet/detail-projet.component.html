@@ -1,0 +1,15 @@
+<mat-carousel color="white" proportion ="50" appearance
+              [useKeyboard]="true"
+              [hideIndicators]="false"
+              [hideArrows]="false"
+              [loop]="true"
+              [autoplay]="false"
+              [svgIconOverrides]
+              >
+  <mat-carousel-slide *ngFor="let photo of photosList " [image]="photo.lien"></mat-carousel-slide>
+</mat-carousel>
+
+<div class="description">
+  <mat-card-title>{{projet?.intitule}}</mat-card-title>
+  <mat-card-content><p>{{projet?.description}}</p></mat-card-content>
+</div>

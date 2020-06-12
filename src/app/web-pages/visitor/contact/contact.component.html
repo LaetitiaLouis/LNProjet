@@ -1,0 +1,114 @@
+<div class="grid">
+  <div class="cardContact" fxHide.xs="true">
+    <a class="logo">
+      <img src="../../../../assets/logo%20PNG%20gentiane%20nacré%20.png" alt="">
+      <h1 class="logo">Expert dessin en bâtiment</h1>
+    </a>
+    <p class="contact">Un renseignement ?<br/>Un devis ?</p>
+    <hr>
+    <p class="libelle">N'hésitez pas à nous contacter :</p>
+    <p class="libelle">Téléphone<br/><span>06 33 18 78 06</span></p>
+    <p class="libelle">Email<br/><span>contact@nlprojet.fr</span></p>
+    <p class="libelle">Vous pouvez également utiliser le <span>formulaire de contact</span></p>
+    <hr>
+    <p class="libelle">Suivez-nous !</p>
+    <div class="iconContact">
+      <img class="fbIcon" src="../../../../assets/FbIcon.png" alt="facebook icon">
+      <img class="inst" src="../../../../assets/instagram-logo-rond-png-4.png" alt="instagram icon">
+      <img class="linkedin" src="../../../../assets/LinkedIn-Icon-Dark.png" alt="Linkedin icon">
+    </div>
+  </div>
+  <div class="cardContactXs" fxLayout="center center" fxHide.gt-xs="true">
+
+    <div class="contactXs">
+      <h1>Un renseignement ? Un devis ? N'hésitez pas à nous contacter :</h1>
+        <p>Téléphone : <span>06 33 18 78 06</span>
+        <br/>Email : <span>contact@nlprojet.fr</span>
+    <p class="libelleXs">Suivez-nous !</p>
+    <div class="iconContact">
+      <img class="fbIcon" src="../../../../assets/FbIcon.png" alt="facebook icon">
+      <img class="inst" src="../../../../assets/instagram-logo-rond-png-4.png" alt="instagram icon">
+      <img class="linkedin" src="../../../../assets/LinkedIn-Icon-Dark.png" alt="Linkedin icon">
+    </div>
+              <p>Vous pouvez également prendre directement contact en utilisant le <span>formulaire de contact</span>. Nous
+        vous répondrons dans les meilleurs délais.</p>
+    </div>
+  </div>
+    <div class="formulaire" fxLayoutAlign="space-around" fxLayout="column">
+      <div class="titre" fxFlex="80">
+        <h1 fxHide.xs="true">Contact</h1>
+        <p fxHide.xs="true">Prenez-contact directement en remplissant ce formulaire<br>Nous
+          vous répondrons dans les meilleurs délais.</p>
+      </div>
+      <div class="detailForm">
+        <form [formGroup]="formBody" fxLayout="center center" fxLayoutAlign="space-between">
+
+          <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Nom</mat-label>
+            <input type="text" matInput placeholder="Entrez votre nom" formControlName="nom">
+          </mat-form-field>
+
+          <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Prénom</mat-label>
+            <input type="text" matInput placeholder="Entrez votre prénom" formControlName="prenom">
+          </mat-form-field>
+
+          <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Adresse</mat-label>
+            <input type="text" matInput placeholder="Entrez votre adresse" formControlName="adresse">
+          </mat-form-field>
+
+          <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Code postal</mat-label>
+            <input type="text" matInput placeholder="Entrez votre code postal" formControlName="codePostal">
+          </mat-form-field>
+
+          <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Ville</mat-label>
+            <input type="text" matInput placeholder="Entrez votre ville" formControlName="ville">
+          </mat-form-field>
+
+          <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Téléphone</mat-label>
+            <input type="text" matInput placeholder="Entrez votre téléphone" formControlName="telephone">
+          </mat-form-field>
+
+          <mat-form-field class="email" fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput placeholder="Entrez votre adresse mail" formControlName="email">
+            <mat-error *ngIf="f.email.errors">
+              <span *ngIf="f.email.errors.email">Adresse mail invalide</span>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="emailOk" fxFlex.gt-xs="45" fxFlex.xs="75">
+            <mat-label>Confirmation Email</mat-label>
+            <input type="text" matInput placeholder="Merci de confirmez votre adresse mail"
+                   formControlName="confirmEmail">
+            <mat-error *ngIf="f.confirmEmail.errors && (f.email.touched)">
+              <span *ngIf="f.confirmEmail.errors.required">Vous devez confirmer votre adresse mail</span>
+              <span *ngIf="f.confirmEmail.errors.emailMismatch">L'adresse mail est différente</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="objet" fxFlex.gt-xs="80" fxFlex.xs="75">
+            <mat-label>Votre projet</mat-label>
+            <input type="text" matInput placeholder="Entrez l'objet de votre message" formControlName="objet">
+          </mat-form-field>
+
+          <mat-form-field class="message" fxFlex.gt-xs="80" fxFlex.xs="75">
+            <mat-label>Message</mat-label>
+            <textarea matInput placeholder="Entrez votre message" formControlName="contenu"></textarea>
+          </mat-form-field>
+        </form>
+      </div>
+      <div fxLayout fxLayoutAlign="center center">
+        <form (ngSubmit)="onSubmitFormBody()">
+          <button fxHide.xs="true" mat-raised-button type="submit">Envoyer votre message</button>
+          <button fxHide.gt-xs="true" mat-raised-button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+

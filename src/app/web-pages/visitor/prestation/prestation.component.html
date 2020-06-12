@@ -1,0 +1,13 @@
+<div class="container">
+  <p>Nous mettons à votre disposition nos compétences pour vous accompagner sur l'ensemble des prestations suivantes :</p>
+
+    <div class="listePrestation" fxLayout.xs="column" fxLayoutAlign.gt-xs="space-evenly" fxLayoutAlign.xs="center" >
+      <div class="grid" *ngFor="let categorie of categories">
+        <div class="nomCategorie">{{categorie}}</div>
+          <div class="sousCategorie" *ngFor="let prestation of prestations">
+            <div class="detail" *ngIf="prestation.categorie === categorie">{{prestation.intitule}}
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

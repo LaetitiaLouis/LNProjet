@@ -19,7 +19,7 @@ export class TypeService {
   /**
    * Obtenir la liste de tous les types
    */
-  getAllTypes(): Observable<Type[]> {
+  public getAllTypes(): Observable<Type[]> {
     return this.http.get<Type[]>(`${this.BASE_URL}`);
   }
 
@@ -27,14 +27,14 @@ export class TypeService {
    * Enregistrer un nouveau type
    * @param  type L'objet type à enregistrer
    */
-  saveNewType(type: Type): Observable<Type> {
+  public saveNewType(type: Type): Observable<Type> {
     return this.http.post<Type>(`${this.BASE_URL}`, type);
   }
 
   /**
    * Modifier un type
    */
-  updateType(type: Type): Observable<Type> {
+  public updateType(type: Type): Observable<Type> {
     return this.http.put<Type>(`${this.BASE_URL}`, type)
       .pipe(catchError(this.es.handleError()));
   }
@@ -42,7 +42,7 @@ export class TypeService {
   /**
    * Supprimer un type
    */
-  deleteType(id: number) {
+  public deleteType(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
       .pipe(
         map(this.es.handleSuccess()), catchError(this.es.handleError())

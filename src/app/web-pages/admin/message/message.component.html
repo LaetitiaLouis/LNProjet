@@ -1,0 +1,17 @@
+<div class="contains">
+
+  <div class="message" *ngFor="let message of messages">
+
+    <div class="newMessage" *ngIf="!message.vu"(click)="updateMessage(message)" onclick="this.hidden=true">
+      <img class="new" src="../../../../assets/new-512.jpg">
+    </div>
+
+    <mat-icon class="delete" (click)="openDialogDelete(message)">delete</mat-icon>
+
+    <h3>{{message.date | date:"dd/MM/yyyy"}}</h3>
+    <h4>{{message.objet}}</h4>
+    <p>{{message.contenu}}</p>
+
+  </div>
+</div>
+

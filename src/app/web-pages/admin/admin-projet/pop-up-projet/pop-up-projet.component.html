@@ -1,0 +1,63 @@
+<div class="card mat-elevation-z2">
+  <mat-card-content>
+    <div class="close" fxLayoutAlign="end">
+      <mat-icon class="close" (click)="closePopUp()">close</mat-icon>
+    </div>
+    <div class="formulaire"fxLayoutAlign="space-around" fxLayout="column">
+    <form [formGroup]="formBody" fxLayout="center center" fxLayoutAlign="space-between">
+      <mat-form-field class="intitule" (click)="enable('intitule')" fxFlex.gt-xs="45" fxFlex.xs="100">
+        <input type="text" matInput [placeholder]="!data.update && 'intitule'" formControlName="intitule">
+        <mat-hint>Nom du projet</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="type" (click)="enable('type')" fxFlex.gt-xs="45" fxFlex.xs="100">
+        <mat-label>Type du projet</mat-label>
+        <mat-select [compareWith]="compareFunction" formControlName="type">
+          <mat-option *ngFor="let type of typesProjets" [value]="type">
+            {{type.libelle}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="description" (click)="enable('description')" fxFlex="100">
+        <input type="text" matInput [placeholder]="!data.update && 'description'" formControlName="description">
+        <mat-hint>Description</mat-hint>
+      </mat-form-field>
+
+
+      <!--ajout des photos-->
+      <button mat-button (click)="addPhotoForm()"><mat-icon>add_circle</mat-icon>Ajouter une photo</button>
+      <div class="photos" *ngFor="let photoForm of photoFormArray.controls; index as i" fxLayout="center center" fxLayoutAlign="space-between">
+        <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="100">
+          <mat-label>Catégorie</mat-label>
+          <mat-select [formControl]="photoForm.get('categorie')">
+            <mat-option *ngFor="let categorie of photosCategories" [value]="categorie">
+              {{categorie}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="100">
+          <mat-label>Nom</mat-label>
+          <input matInput type="text" [formControl]="photoForm.get('nom')">
+        </mat-form-field>
+        <mat-form-field fxFlex.gt-sm="75" fxFlex.sm="60" >
+          <mat-label>Url de la photo</mat-label>
+          <input matInput type="text" [formControl]="photoForm.get('lien')">
+        </mat-form-field>
+        <button mat-icon-button (click)="removePhotos(i)" fxFlex="15">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </form>
+    </div>
+<div class="boutonEnregistrer" fxLayoutAlign="center center">
+      <button mat-raised-button color="primary" *ngIf="!data.update" (click)="onSubmitCreate()" >Enregistrer</button>
+      <button mat-raised-button color="primary" *ngIf="data.update" (click)="onSubmitUpdate()" fxLayout="center center">Enregistrer</button>
+</div>
+
+  </mat-card-content>
+</div>
+
+
+
+

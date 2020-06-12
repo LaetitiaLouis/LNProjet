@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {JwtService} from "../../jwt/jwt.service";
+import {JwtService} from "../../security/jwt/jwt.service";
 import {Router} from "@angular/router";
 
 @Component({

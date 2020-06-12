@@ -1,0 +1,109 @@
+<div class="contains">
+  <div class="buttons" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-start" fxHide.xs="true">
+    <button mat-raised-button class="creation" (click)="openDialog(false)" >
+      <mat-icon class="add">add</mat-icon>
+      Créer un nouveau projet
+    </button>
+
+    <div class="mat-elevation-z2" fxLayoutAlign="flex-start">
+      <input class="rechercheInput" matInput type="text" [(ngModel)]="searchBy">
+      <mat-icon class="search" (click)="search()">search</mat-icon>
+    </div>
+  </div>
+
+    <!-- pour les écran <600px-->
+    <div class="buttons" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" fxHide.gt-xs="true">
+      <div class="mat-elevation-z2" fxLayoutAlign="start center">
+
+<!--    <div class="icons" fxLayoutAlign="start center" fxHide.gt-xs="true">-->
+      <mat-icon class="add">add_circle</mat-icon>
+      <mat-icon class="update" (click)="openDialog(true, projet)">edit</mat-icon>
+      <mat-icon class="delete"(click)="openDialogDelete(projet)">delete</mat-icon>
+        <input class="rechercheInput" matInput type="text" [(ngModel)]="searchBy">
+        <mat-icon class="search" (click)="search()">search</mat-icon>
+    </div>
+    </div>
+
+  <table mat-table [dataSource]="this.projets" fxHide.xs="true">
+    <!-- Intitulé Column -->
+    <ng-container matColumnDef="intitule">
+      <th mat-header-cell *matHeaderCellDef>Nom du projet</th>
+      <td mat-cell *matCellDef="let projet"> {{projet.intitule}} </td>
+    </ng-container>
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description du projet</th>
+      <td mat-cell *matCellDef="let projet"> {{projet.description}} </td>
+    </ng-container>
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type de projet</th>
+      <td mat-cell *matCellDef="let projet">
+        {{projet.type.libelle}}
+      </td>
+    </ng-container>
+
+    <!-- Update Column -->
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef>Modifier</th>
+      <td mat-cell class="update" *matCellDef="let projet">
+        <mat-icon class="update" (click)="openDialog(true, projet)">edit</mat-icon>
+      </td>
+    </ng-container>
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+      <td mat-cell class="delete" *matCellDef="let projet">
+        <mat-icon class="delete" (click)="openDialogDelete(projet)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <table mat-table [dataSource]="this.projets" *ngIf="projets && projets.length" fxHide.gt-xs="true">
+
+    <ng-container matColumnDef="select">
+      <th scope="col" mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+          [aria-label]="checkboxLabel()"
+          color="primary">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)"
+                      color="primary">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <!-- Intitulé Column -->
+    <ng-container matColumnDef="intitule">
+      <th mat-header-cell *matHeaderCellDef>Nom du projet</th>
+      <td mat-cell *matCellDef="let projet"> {{projet.intitule}} </td>
+    </ng-container>
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description du projet</th>
+      <td mat-cell *matCellDef="let projet"> {{projet.description}} </td>
+    </ng-container>
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type de projet</th>
+      <td mat-cell *matCellDef="let projet">
+        {{projet.type.libelle | titlecase}}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsXs"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsXs;">
+    </tr>
+  </table>
+</div>

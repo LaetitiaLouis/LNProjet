@@ -9,4 +9,5 @@ export class Admin {
   photo: string;
   prenom: string;
   compteValide: boolean;
+
 }

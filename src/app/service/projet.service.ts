@@ -20,21 +20,21 @@ export class ProjetService {
   /**
    * Obtenir la liste de tous les projets
    */
-  getAllProjets(): Observable<Projet[]> {
+  public getAllProjets(): Observable<Projet[]> {
     return this.http.get<Projet[]>(`${this.BASE_URL}`);
   }
 
   /**
    * Enregistrer un nouveau projet
    */
-  saveProjetInfos(projet: Projet): Observable<Projet> {
+  public saveProjetInfos(projet: Projet): Observable<Projet> {
     return this.http.post<Projet>(`${this.BASE_URL}`, projet);
   }
 
   /**
    * Modifier un projet
    */
-  updateProjet(projet: Projet): Observable<Projet> {
+  public updateProjet(projet: Projet): Observable<Projet> {
     return this.http.put<Projet>(`${this.BASE_URL}`, projet)
       .pipe(catchError(this.es.handleError()));
   }
@@ -42,7 +42,7 @@ export class ProjetService {
   /**
    * Supprimer un projet
    */
-  deleteProjet(id: number) {
+  public deleteProjet(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
       .pipe(
         map(this.es.handleSuccess()), catchError(this.es.handleError())
@@ -52,7 +52,7 @@ export class ProjetService {
   /**
    * Rechercher une liste de projets par type
    */
-  getProjetsByType(typeId: number): Observable<Projet[]> {
+  public getProjetsByType(typeId: number): Observable<Projet[]> {
     console.log(typeId);
     if (typeId === -1) {
       return this.getAllProjets();
@@ -66,7 +66,7 @@ export class ProjetService {
   /**
    * Rechercher un projet via son id
    */
-  getProjetById(id: number): Observable<Projet> {
+  public getProjetsById(id: number): Observable<Projet> {
     return this.http.get<Projet>(`${this.BASE_URL}/${id}`)
       .pipe(catchError(this.es.handleError())
       );
@@ -75,7 +75,7 @@ export class ProjetService {
   /**
    * Afficher les projets par prestation
    */
-  getProjetsByPrestation(prestationId: number): Observable<Projet[]> {
+  public getProjetsByPrestation(prestationId: number): Observable<Projet[]> {
     console.log(prestationId);
     if (prestationId === -1) {
       return this.getAllProjets();
@@ -89,7 +89,7 @@ export class ProjetService {
   /**
    * Afficher les projets par admin
    */
-  getProjetsByAdmin(adminLogin: string): Observable<Projet[]> {
+  public getProjetsByAdmin(adminLogin: string): Observable<Projet[]> {
     console.log(adminLogin);
     if (adminLogin === "") {
       return this.getAllProjets();
@@ -101,9 +101,9 @@ export class ProjetService {
   }
 
   /**
-   * Afficher les projets par type ou par intitulé
+   Requête : Obtenir un client via son prénom ou son nom via une saisie partielle
    */
-  getProjetsByTypeOrIntitule(recherche: string): Observable<Projet[]> {
+  public getProjetsByTypeOrIntitule(recherche: string): Observable<Projet[]> {
     return this.http.get<Projet[]>(`${this.BASE_URL}/findByTypeOrIntitule?recherche=${recherche}`);
   }
 
