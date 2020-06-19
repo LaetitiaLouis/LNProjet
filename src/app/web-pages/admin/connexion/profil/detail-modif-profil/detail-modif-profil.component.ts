@@ -36,7 +36,7 @@ export class DetailModifProfilComponent implements OnInit {
    */
   public formProfil() {
     //récupération de l'admin connecté
-    this.admin = this.jwtService.getAdmin();
+    this.admin = this.jwtService.getStoredAdmin();
     this.formBody = this.fb.group({
       prenom: [this.admin.prenom],
       login: [this.admin.login],
@@ -53,7 +53,6 @@ export class DetailModifProfilComponent implements OnInit {
   public openDialog(admin: Admin): void {
     const dialogRef = this.dialog.open(PopUpModifProfilComponent, {data: {admin}});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.admin = result;
     });
   }

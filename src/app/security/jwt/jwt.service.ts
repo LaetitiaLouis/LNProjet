@@ -77,10 +77,8 @@ export class JwtService {
     return this.httpClient.post<{ access_token: string }>(`${environment.apiUrl}/admins/sign-in`, user).pipe(
       tap(res => {
         this.setToken(res.access_token);
-      }),
-      map(this.errorService.handleSuccess("Vous êtes bien connecté")),
-      catchError(this.errorService.handleError('Erreur de connexion, login ou mot de passe invalide'))
-    );
+        this.storeAdmin();
+      }));
   }
 
   /**
@@ -88,7 +86,7 @@ export class JwtService {
    */
   public logout() {
     if (this.isLogged()) {
-      this.errorService.handleSuccess(`${this.getUsername()} disconnected`);
+      this.errorService.handleSuccess("Vous êtes bien déconnecté");
       this.clearToken();
     }
   }
@@ -119,6 +117,20 @@ export class JwtService {
     return decodedToken;
   }
 
+  /**
+   * met les infos de l'admin dans le session storage
+   */
+    private storeAdmin(){
+    const admin = this.getAdmin();
+    sessionStorage.setItem("admin", JSON.stringify(admin));
+    }
+
+  /**
+   * récupère l'admin dans le session storage
+   */
+  public getStoredAdmin(): Admin {
+      return JSON.parse(sessionStorage.getItem("admin"));
+    }
   // /**
   //  *
   //  */

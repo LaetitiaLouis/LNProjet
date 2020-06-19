@@ -33,10 +33,7 @@ export class ErrorService {
    * @param message Le message à afficher
    */
   handleError(message?: string) {
-    return (e: Error): Observable<any> => {
-      this.openSnackBar(message || e.error, 'Ok', true);
-      return of([]);
-    };
+      this.openSnackBar(message, 'Ok', true);
   }
 
     /**
@@ -44,9 +41,6 @@ export class ErrorService {
      * @param message Le message à afficher
      */
     handleSuccess(message?: string) {
-      return (response): Observable<any> => {
-        this.openSnackBar(message || response, 'Ok', false);
-        return of([]);
-      };
+        this.openSnackBar(message , 'Ok', false);
     }
 }

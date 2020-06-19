@@ -1,12 +1,14 @@
 .mat-form-field {
-  margin : 10px;
+  margin: 10px;
 }
 
 .card {
-  width: 600px;
+  max-width: 600px;
+  min-width: 200px;
   margin: 20px;
+
 }
 
-button{
+button {
   margin: 20px;
 }

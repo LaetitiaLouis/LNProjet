@@ -21,7 +21,7 @@ export class AdminProjetComponent implements OnInit {
   public projets: Projet[];
   public projet: Projet;
   public displayedColumns: string[] = ['intitule', 'description', 'type', 'update', 'delete'];
-  public displayedColumnsXs: string[] = ['select', 'intitule', 'description', 'type'];
+  public displayedColumnsXs: string[] = ['select', 'intitule', 'description'];
   public selection = new SelectionModel<Projet>(true, []);
   public admin: Admin;
   public type: Type;
@@ -88,7 +88,10 @@ export class AdminProjetComponent implements OnInit {
   }
 
   public search(): void {
-    this.projetService.getProjetsByTypeOrIntitule(this.searchBy).subscribe(projets => this.projets = projets);
+    this.projetService.getProjetsByTypeOrIntitule(this.searchBy).subscribe(projets => {
+      this.projets = projets;
+      this.searchBy = '';
+    });
   };
 }
 

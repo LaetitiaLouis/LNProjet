@@ -43,6 +43,7 @@ export class ClientComponent implements OnInit {
     this.clientService.getClientsByNomOrPrenom(this.searchBy).subscribe(client => this.clients = client);
 
   }
+
   /**
    * Ouvre la popup client
    * @param update

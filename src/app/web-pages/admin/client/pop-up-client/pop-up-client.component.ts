@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ClientService} from "../../../../service/client.service";
+import {ErrorService} from "../../../../service/error.service";
 
 @Component({
   selector: 'app-pop-up-client',
@@ -16,6 +17,7 @@ export class PopUpClientComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private clientService: ClientService,
               private route: ActivatedRoute,
+              public error: ErrorService,
               public dialogRef: MatDialogRef<PopUpClientComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
@@ -52,8 +54,11 @@ export class PopUpClientComponent implements OnInit {
 
   public onSubmitUpdate() {
     const client = {id: this.data.client.id, ...this.formBody.value}
-    this.clientService.updateClient(client).subscribe();
-    this.dialogRef.close();
+    this.clientService.updateClient(client).subscribe(client => {
+      this.error.handleSuccess("Client modifié");
+      this.dialogRef.close();
+    });
+    _ => this.error.handleError("Votre client n'a pas été modifié");
   }
 
   public onSubmitDelete() {

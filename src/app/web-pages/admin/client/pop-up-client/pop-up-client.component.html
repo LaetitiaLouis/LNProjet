@@ -1,61 +1,63 @@
-<div class="card mat-elevation-z2">
-  <mat-card-content>
+<div class="card mat-elevation-z1">
+  <mat-dialog-content>
     <div class="close" fxLayoutAlign="end">
       <mat-icon class="close" (click)="closePopUp()">close</mat-icon>
     </div>
-    <form [formGroup]="formBody">
-      <mat-form-field class="nom" (click)="enable('nom')">
+    <div class="formulaire"fxLayoutAlign="space-around" fxLayout="column">
+    <form [formGroup]="formBody" fxLayout="center center" fxLayoutAlign="space-between">
+      <mat-form-field class="nom" (click)="enable('nom')"fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'nom'" formControlName="nom">
         <mat-hint>Nom</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="prenom" (click)="enable('prenom')">
+      <mat-form-field class="prenom" (click)="enable('prenom')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'prenom'" formControlName="prenom">
         <mat-hint>Prénom</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="adresse" (click)="enable('adresse')">
+      <mat-form-field class="adresse" (click)="enable('adresse')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'adresse'" formControlName="adresse">
         <mat-hint>Adresse</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="codePostal" (click)="enable('codePostal')">
+      <mat-form-field class="codePostal" (click)="enable('codePostal')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'codePostal'" formControlName="codePostal">
         <mat-hint>Code postal</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="ville" (click)="enable('ville')">
+      <mat-form-field class="ville" (click)="enable('ville')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'ville'" formControlName="ville">
         <mat-hint>Ville</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="telephone" (click)="enable('telephone')">
+      <mat-form-field class="telephone" (click)="enable('telephone')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'telephone'" formControlName="telephone">
         <mat-hint>Téléphone</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="email" (click)="enable('email')">
+      <mat-form-field class="email" (click)="enable('email')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'email'" formControlName="email">
         <mat-hint>Email</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="refDevis" (click)="enable('refDevis')">
+      <mat-form-field class="refDevis" (click)="enable('refDevis')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'refDevis'" formControlName="refDevis">
         <mat-hint>Ref Devis</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="refFacture" (click)="enable('refFacture')">
+      <mat-form-field class="refFacture" (click)="enable('refFacture')" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput [placeholder]="!data.update && 'refFacture'" formControlName="refFacture">
         <mat-hint>Ref Facture</mat-hint>
       </mat-form-field>
 
-      <div fxLayout fxLayoutAlign="center center">
-                 <button mat-raised-button (click)="onSubmitUpdate()" *ngIf="data.update">Modifier</button>
+      <div fxLayout fxLayoutAlign="center center" fxFlex="100">
+                 <button mat-raised-button color="primary" (click)="onSubmitUpdate()" *ngIf="data.update">Modifier</button>
          </div>
 
-      <div fxLayout fxLayoutAlign="center center">
-          <button mat-raised-button (click)="onSubmitCreate()" *ngIf="!data.update">Créer</button>
+      <div fxLayout fxLayoutAlign="center center" fxFlex="100">
+          <button mat-raised-button color="primary" (click)="onSubmitCreate()" *ngIf="!data.update">Créer</button>
       </div>
     </form>
-  </mat-card-content>
+    </div>
+  </mat-dialog-content>
 </div>

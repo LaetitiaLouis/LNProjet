@@ -14,13 +14,13 @@ import {Router} from "@angular/router";
 })
 export class ContactComponent implements OnInit {
   public formBody: FormGroup;
-
+  submitted = true;
 
   constructor(private messageService: MessageService,
               private clientService: ClientService,
               private validator: FormValidatorService,
-              private es : ErrorService,
-              private router : Router,
+              private es: ErrorService,
+              private router: Router,
               private fb: FormBuilder) {
   }
 
@@ -49,18 +49,19 @@ export class ContactComponent implements OnInit {
     return this.formBody.controls;
   }
 
+
   public onSubmitFormBody() {
     this.messageService.saveNewMessage({
       ...this.formBody.value,
       client: this.formBody.value
-    }).subscribe((
-      // message => {
-        this.es.handleSuccess("Message envoyé !")
-      // && this.router.navigate(['/'])
-    // }
-    ),
-  this.es.handleError("Une erreur s'est produite, votre message n'a pas été envoyé"));
+    }).subscribe(message => {
+        this.es.handleSuccess("Message envoyé !");
+        this.router.navigate(['/accueil']);
+      },
+      _ => this.es.handleError("Une erreur s'est produite, votre message n'a pas été envoyé"));
     this.formBody.reset();
   }
+
 }
+
 

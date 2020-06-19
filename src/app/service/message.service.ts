@@ -36,8 +36,7 @@ export class MessageService {
    * @param message L'objet message à modifier
    */
   updateMessage(message: Message): Observable<Message> {
-    return this.http.put<Message>(`${this.BASE_URL}`, message)
-      .pipe(catchError(this.es.handleError()));
+    return this.http.put<Message>(`${this.BASE_URL}`, message);
   }
 
   /**
@@ -45,10 +44,7 @@ export class MessageService {
    * @param id L'id du message à supprimer
    */
   deleteMessage(id: number) {
-    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
-      .pipe(
-        map(this.es.handleSuccess()), catchError(this.es.handleError())
-      );
+    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
 
   getMessageById(id:number): Observable<Message> {

@@ -19,7 +19,10 @@ export class PopUpDeleteProjetComponent implements OnInit {
   }
 
   public onSubmitDelete() {
-    this.projetService.deleteProjet(this.data.projet.id).subscribe(this.es.handleSuccess("Projet supprimé"), this.es.handleError("Erreur"));
+    this.projetService.deleteProjet(this.data.projet.id).subscribe( result => {
+      this.es.handleSuccess("Projet supprimé");
+    },
+      _=>this.es.handleError("Erreur : votre projet n'a pas été supprimé"));
     this.dialogRef.close();
   }
 

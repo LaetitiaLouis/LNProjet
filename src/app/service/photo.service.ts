@@ -37,10 +37,6 @@ export class PhotoService {
    */
   deletePhoto(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
-      .pipe(
-        map(this.es.handleSuccess()),
-        catchError(this.es.handleError)
-      );
   }
 
   /**
@@ -51,10 +47,7 @@ export class PhotoService {
     if (projetId === -1) {
       return this.getAllPhotos()
     } else {
-      return this.http.get<Photo[]>(`${this.BASE_URL}/projets/${projetId}`)
-        .pipe(catchError(this.es.handleError('Aucune photo trouvée pour ce projet'))
-
-        );
+      return this.http.get<Photo[]>(`${this.BASE_URL}/projets/${projetId}`);
     }
   }
 
@@ -64,13 +57,11 @@ export class PhotoService {
    */
   getPhotosByCategorie(categorie: string): Observable<Photo[]> {
     return this.http.get<Photo[]>(`${this.BASE_URL}/byCategorie?categorie=${categorie}`)
-      .pipe(catchError(this.es.handleError('Aucune photo trouvée pour cette catégorie'))
-      );
+      ;
   }
 
   getPhotoById(id: number): Observable<Photo> {
     return this.http.get<Photo>(`${this.BASE_URL}/${id}`)
-      .pipe(catchError(this.es.handleError('Erreur Id'))
-      );
+      ;
   }
 }

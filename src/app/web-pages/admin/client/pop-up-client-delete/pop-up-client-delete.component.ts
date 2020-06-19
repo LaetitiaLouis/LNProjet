@@ -20,7 +20,10 @@ export class PopUpClientDeleteComponent implements OnInit {
   }
 
   public onSubmitDelete() {
-    this.clientService.deleteClient(this.data.client.id).subscribe(this.es.handleSuccess("Client supprimé"), this.es.handleError("Erreur"));
+    this.clientService.deleteClient(this.data.client.id).subscribe(result =>{
+      this.es.handleSuccess("Client supprimé");
+    },
+      _=>this.es.handleError("Une erreur a eu lieu lors de la suppression du client"));
     this.dialogRef.close();
   }
 

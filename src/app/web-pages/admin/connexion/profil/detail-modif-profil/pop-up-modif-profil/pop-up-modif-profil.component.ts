@@ -5,7 +5,7 @@ import {JwtService} from "../../../../../../security/jwt/jwt.service";
 import {AdminService} from "../../../../../../service/admin.service";
 import {ErrorService} from "../../../../../../service/error.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Message} from "../../../../../../model/message";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-pop-up-modif-profil',
@@ -20,15 +20,17 @@ export class PopUpModifProfilComponent implements OnInit {
               private adminService: AdminService,
               private es: ErrorService,
               private fb: FormBuilder,
+              private router: Router,
               public dialogRef: MatDialogRef<PopUpModifProfilComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Admin) { }
+              @Inject(MAT_DIALOG_DATA) public data: Admin) {
+  }
 
   public ngOnInit(): void {
-    this.admin = this.jwtService.getAdmin();
+    this.admin = this.jwtService.getStoredAdmin();
     this.formBody = this.fb.group({
       prenom: [this.data.prenom],
       login: [this.data.login],
-      password: [this.data.password,Validators.minLength(6)],
+      password: [this.data.password, Validators.minLength(6)],
       confirmPassword: ["", [Validators.required]],
       role: [this.data.role],
       presentation: [this.data.presentation],
@@ -43,20 +45,22 @@ export class PopUpModifProfilComponent implements OnInit {
 
   public onSubmitUpdate() {
     let admin = {...this.admin, ...this.formBody.value};
-    for (const propriete in admin){
-      if(!admin[propriete]){
+    for (const propriete in admin) {
+      if (!admin[propriete]) {
         admin[propriete] = this.admin[propriete];
       }
     }
     this.adminService.updatedAdmin(admin)
-      .subscribe((admin => {
+      .subscribe(admin => {
           this.es.handleSuccess("Profil modifié");
-        }),
-        this.es.handleError("Erreur"))
+          this.router.navigate(['/profil']);
+        },
+        _ => this.es.handleError("Votre profil n'a pas été modifié"))
     ;
   }
 
-  public onChangeValiditeCompte(): void {
-      this.admin.compteValide = !this.admin.compteValide;
-  }
+  // public onChangeValiditeCompte(): void {
+  //     this.admin.compteValide = !this.admin.compteValide;
+  // }
 }
+

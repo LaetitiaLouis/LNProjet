@@ -27,7 +27,7 @@ export class FormValidatorService {
     return (control: AbstractControl): Observable<ValidatorsErrors | null> => {
       return this.checkIfLoginExists(control.value).pipe
       (map(res => {
-          return res ? {loginExits: true} : null;
+          return res ? {loginExists: true} : null;
         })
       );
     };

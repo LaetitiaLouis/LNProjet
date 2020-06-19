@@ -35,17 +35,13 @@ export class TypeService {
    * Modifier un type
    */
   public updateType(type: Type): Observable<Type> {
-    return this.http.put<Type>(`${this.BASE_URL}`, type)
-      .pipe(catchError(this.es.handleError()));
+    return this.http.put<Type>(`${this.BASE_URL}`, type);
   }
 
   /**
    * Supprimer un type
    */
   public deleteType(id: number) {
-    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
-      .pipe(
-        map(this.es.handleSuccess()), catchError(this.es.handleError())
-      );
+    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
 }

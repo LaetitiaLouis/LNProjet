@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {JwtService} from "../../../security/jwt/jwt.service";
 import {Router} from "@angular/router";
+import {ErrorService} from "../../../service/error.service";
 
 @Component({
   selector: 'app-connexion',
@@ -15,6 +16,7 @@ export class ConnexionComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
+              private error: ErrorService,
               private jwtService: JwtService) {
   }
 
@@ -26,9 +28,15 @@ export class ConnexionComponent implements OnInit {
   }
 
   public onSubmit() {
+
     const login = this.connexionForm.controls.login.value;
     const password = this.connexionForm.controls.password.value;
-    this.jwtService.login(login, password).subscribe(_=>this.router.navigate(['/profil']));
+    this.jwtService.login(login, password).subscribe(_=> {
+      this.error.handleSuccess("Vous êtes bien connecté");
+      this.router.navigate(['/profil']);
+  console.log()
+    },_=>this.error.handleError("Erreur : login ou mot de passe invalide")
+    );
      }
 
   public get f() {

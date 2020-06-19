@@ -38,7 +38,6 @@ export class ClientService {
    */
   updateClient(client: Client): Observable<Client> {
     return this.http.put<Client>(`${this.BASE_URL}`, client)
-      .pipe(catchError(this.es.handleError()));
   }
 
   /**
@@ -46,10 +45,7 @@ export class ClientService {
    * @param id L'id du client à supprimer
    */
   deleteClient(id: number) {
-    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
-      .pipe(
-        map(this.es.handleSuccess()), catchError(this.es.handleError())
-      );
+    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
 
   /**
@@ -57,9 +53,7 @@ export class ClientService {
    * @param id l'id du client à afficher
    */
   getClientById(id: number): Observable<Client> {
-    return this.http.get<Client>(`${this.BASE_URL}/${id}`)
-      .pipe(catchError(this.es.handleError('Erreur Id'))
-      );
+    return this.http.get<Client>(`${this.BASE_URL}/${id}`);
   }
 
   /**

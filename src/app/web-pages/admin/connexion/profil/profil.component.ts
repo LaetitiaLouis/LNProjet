@@ -5,7 +5,6 @@ import {JwtService} from "../../../../security/jwt/jwt.service";
 import {MessageService} from "../../../../service/message.service";
 import {Message} from "../../../../model/message";
 import {Router} from "@angular/router";
-import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-profil',

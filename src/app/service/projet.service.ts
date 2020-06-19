@@ -35,18 +35,14 @@ export class ProjetService {
    * Modifier un projet
    */
   public updateProjet(projet: Projet): Observable<Projet> {
-    return this.http.put<Projet>(`${this.BASE_URL}`, projet)
-      .pipe(catchError(this.es.handleError()));
+    return this.http.put<Projet>(`${this.BASE_URL}`, projet);
   }
 
   /**
    * Supprimer un projet
    */
   public deleteProjet(id: number) {
-    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
-      .pipe(
-        map(this.es.handleSuccess()), catchError(this.es.handleError())
-      );
+    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
 
   /**
@@ -57,9 +53,7 @@ export class ProjetService {
     if (typeId === -1) {
       return this.getAllProjets();
     } else {
-      return this.http.get<Projet[]>(`${this.BASE_URL}/types/${typeId}`)
-        .pipe(catchError(this.es.handleError('Aucun projet ne correspond à ce type'))
-        );
+      return this.http.get<Projet[]>(`${this.BASE_URL}/types/${typeId}`);
     }
   }
 
@@ -67,23 +61,7 @@ export class ProjetService {
    * Rechercher un projet via son id
    */
   public getProjetsById(id: number): Observable<Projet> {
-    return this.http.get<Projet>(`${this.BASE_URL}/${id}`)
-      .pipe(catchError(this.es.handleError())
-      );
-  }
-
-  /**
-   * Afficher les projets par prestation
-   */
-  public getProjetsByPrestation(prestationId: number): Observable<Projet[]> {
-    console.log(prestationId);
-    if (prestationId === -1) {
-      return this.getAllProjets();
-    } else {
-      return this.http.get<Projet>(`${this.BASE_URL}/prestations/${prestationId}`)
-        .pipe(catchError(this.es.handleError())
-        );
-    }
+    return this.http.get<Projet>(`${this.BASE_URL}/${id}`);
   }
 
   /**
@@ -94,9 +72,7 @@ export class ProjetService {
     if (adminLogin === "") {
       return this.getAllProjets();
     } else {
-      return this.http.get<Projet[]>(`${this.BASE_URL}/admins/${adminLogin}`)
-        .pipe(catchError(this.es.handleError())
-        );
+      return this.http.get<Projet[]>(`${this.BASE_URL}/admins/${adminLogin}`);
     }
   }
 
@@ -106,5 +82,4 @@ export class ProjetService {
   public getProjetsByTypeOrIntitule(recherche: string): Observable<Projet[]> {
     return this.http.get<Projet[]>(`${this.BASE_URL}/findByTypeOrIntitule?recherche=${recherche}`);
   }
-
 }

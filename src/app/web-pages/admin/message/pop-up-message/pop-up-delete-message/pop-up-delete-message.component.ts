@@ -20,7 +20,10 @@ export class PopUpDeleteMessageComponent implements OnInit {
   }
 
   onSubmitDelete() {
-    this.messageService.deleteMessage(this.data.message.id).subscribe(this.es.handleSuccess("Message supprimé"), this.es.handleError("Erreur"));
+    this.messageService.deleteMessage(this.data.message.id).subscribe(result =>{
+      this.es.handleSuccess("Message supprimé");
+    },
+      _=>this.es.handleError("Erreur : votre message n'a pas été supprimé"));
     this.dialogRef.close();
   }
 

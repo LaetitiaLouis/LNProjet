@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {ErrorService} from './error.service';
 import {Admin} from '../model/admin';
 import {Observable} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -37,7 +37,8 @@ export class AdminService {
    * @param admin L'objet admin à modifier
    */
   updatedAdmin(admin: Admin): Observable<Admin> {
-    return this.http.put<Admin>(`${this.BASE_URL}`, admin);
+    return this.http.put<Admin>(`${this.BASE_URL}`, admin).pipe
+    (tap(admin=>sessionStorage.setItem("admin", JSON.stringify(admin))));
   }
 
 
@@ -50,9 +51,7 @@ export class AdminService {
   }
 
   getAdminByLogin(login:string): Observable<Admin> {
-    return this.http.get<Admin>(`${this.BASE_URL}/${login}`)
-      .pipe(catchError(this.es.handleError('Erreur login'))
-      );
+    return this.http.get<Admin>(`${this.BASE_URL}/${login}`);
   }
 
 }

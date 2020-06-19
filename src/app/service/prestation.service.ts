@@ -41,11 +41,7 @@ export class PrestationService {
    * @param id L'id de la prestation à supprimer
    */
   deletePrestation(id: number) {
-    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'})
-      .pipe(
-        map(this.es.handleSuccess()),
-        catchError(this.es.handleError())
-      );
+    return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
 
   // /**

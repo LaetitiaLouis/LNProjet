@@ -33,7 +33,7 @@ export class PopUpMessageComponent implements OnInit {
   }
 
   onSubmitDelete() {
-    this.messageService.deleteMessage(this.data.message).subscribe();
+    this.messageService.deleteMessage(this.data.message);
     this.dialogRef.close();
 
   }

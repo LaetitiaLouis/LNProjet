@@ -59,13 +59,11 @@ export class PopUpProjetComponent implements OnInit {
   }
 
   public initPhotos() {
-    console.log('initPhotos')
-    if(this.data && this.data.update){
-      this.data.projet.photos.forEach(photo=> {
+    if (this.data && this.data.update) {
+      this.data.projet.photos.forEach(photo => {
         const form = this.createPhotoForm(photo);
-      this.photoFormArray.push(form);
+        this.photoFormArray.push(form);
       })
-
     }
   }
 
@@ -74,8 +72,8 @@ export class PopUpProjetComponent implements OnInit {
       nom: [photo ? photo.nom : ''],
       categorie: [photo ? photo.categorie : ''],
       lien: [photo ? photo.lien : ''],
-      id: [photo? photo.id: ''],
-      projet:[photo? {id: this.data.projet.id} :'']
+      id: [photo ? photo.id : ''],
+      projet: [photo ? {id: this.data.projet.id} : '']
     });
   }
 
@@ -96,10 +94,11 @@ export class PopUpProjetComponent implements OnInit {
       type: this.formBody.controls.type.value
     };
     this.projetService.saveProjetInfos(projet)
-      .pipe(tap(this.es.handleSuccess("Projet créé")))
-      .subscribe(projet =>
-          this.dialogRef.close(projet),
-        this.es.handleError("Une erreur s'est produite lors de l'enregistrement de votre projet")
+      // .pipe(tap(this.es.handleSuccess("Projet créé")))
+      .subscribe(projet => {
+        this.es.handleSuccess("Projet créé");
+        this.dialogRef.close(projet);},
+        _=>this.es.handleError("Une erreur s'est produite lors de l'enregistrement de votre projet")
       );
   }
 
@@ -117,12 +116,12 @@ export class PopUpProjetComponent implements OnInit {
       photos: this.photoFormArray.value,
       type: this.formBody.controls.type.value
     };
-    projet.photos.forEach(p=>p.projet ={id: this.data.projet.id});
+    projet.photos.forEach(p => p.projet = {id: this.data.projet.id});
     this.projetService.updateProjet(projet)
-      .pipe(tap(this.es.handleSuccess("Projet modifié")))
-      .subscribe(projet =>
-          this.dialogRef.close(projet),
-        this.es.handleError("Erreur")
+      .subscribe(projet => {
+        this.es.handleSuccess("Projet modifié");
+        this.dialogRef.close(projet);},
+        _=>this.es.handleError("Une erreur s'est produite lors de la modification de votre projet")
       );
   }
 

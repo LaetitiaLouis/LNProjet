@@ -12,6 +12,7 @@ import {PopUpProjetComponent} from "../admin-projet/pop-up-projet/pop-up-projet.
 import {AdminService} from "../../../service/admin.service";
 import {JwtService} from "../../../security/jwt/jwt.service";
 import {Admin} from "../../../model/admin";
+import {ErrorService} from "../../../service/error.service";
 
 @Component({
   selector: 'app-message',
@@ -27,18 +28,30 @@ export class MessageComponent implements OnInit {
   constructor(private messageService: MessageService,
               private adminService: AdminService,
               private jwtService: JwtService,
+              private error: ErrorService,
               public dialog: MatDialog
   ) {
   }
 
   public ngOnInit(): void {
-    this.getAllMessages()
+    this.getAllMessages();
     this.admin = this.jwtService.getAdmin();
   }
 
   public getAllMessages(): void {
-    this.messageService.getAllMessages().subscribe(messages => this.messages = messages);
+    this.messageService.getAllMessages().subscribe(messages =>{ this.messages = messages; this.sortMessages()});
+
   }
+
+  public sortMessages (): void{
+    this.messages.sort((a,b)=>b.id -a.id);
+    const vus = this.messages.filter(message => message.vu);
+    const noVus = this.messages.filter(message => !message.vu);
+    this.messages = noVus.concat(vus);
+  }
+
+
+
 
   public openDialogDelete(message?: Message): void {
     const dialogRef = this.dialog.open(PopUpDeleteMessageComponent, {data: {message}});
@@ -52,7 +65,10 @@ export class MessageComponent implements OnInit {
     message.vu = true;
     this.messageService.updateMessage(message).subscribe(result => {
       this.messageChange.emit();
+      this.sortMessages();
+      this.error.handleSuccess("Le statut de votre message a bien été modifié")
     });
+    _=>this.error.handleError("Erreur : votre message n'a pas été modifié")
   }
 }
 

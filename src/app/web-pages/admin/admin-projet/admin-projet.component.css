@@ -1,6 +1,7 @@
 .mat-raised-button.creation {
   margin: 10px 0 30px 0;
   padding: 0;
+  max-height: 35px;
 }
 
 .creation {
@@ -12,10 +13,9 @@
   font-size: 20px;
 }
 
-.mat-elevation-z2 {
+.mat-raised-button.search {
   margin: 10px 0 30px 0;
-  border-radius: 5px;
-  max-width: 300px;
+  max-width: 400px;
   text-align: right;
   width: 100%;
   max-height: 35px;
@@ -26,18 +26,24 @@
   height: 20px;
   margin: 10px 10px 10px 0;
   cursor: pointer;
+}
 
+.mat-icon.return {
+  width: 20px;
+  height: 20px;
+  margin: 10px 10px 10px 0;
+  cursor: pointer;
 }
 
 input:focus {
-  outline:  none;
+  outline: none;
 }
 
 input {
   text-align: left;
   border: none;
   height: 20px;
-  width: 240px;
+  width: 250px;
   caret-color: black;
   margin: 10px;
   float: left;
@@ -56,6 +62,8 @@ input {
 
 .mat-icon.update {
   font-size: 20px;
+  margin-top: 10px;
+
 }
 
 .mat-icon.close {
@@ -63,16 +71,22 @@ input {
 }
 
 @media (max-width: 600px) {
-.mat-icon.update {
-  font-size: 18px;
-}
+  .mat-icon.update {
+    font-size: 18px;
+    margin-top: 10px;
 
-.mat-icon.delete{
-  font-size: 18px;
-}
+  }
+
+  .mat-icon.delete {
+    font-size: 18px;
+    margin-top: 10px;
+
+  }
 
   .mat-icon.add {
     font-size: 18px;
+    margin-top: 10px;
+
   }
 
   .mat-elevation-z2 {
@@ -80,6 +94,11 @@ input {
   }
 
   .mat-icon.search {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mat-icon.return {
     width: 18px;
     height: 18px;
   }
@@ -97,7 +116,7 @@ input {
 }
 
 @media (max-width: 500px) {
-.mat-cell{
-  font-size: 12px;
-}
+  .mat-cell {
+    font-size: 12px;
+  }
 }

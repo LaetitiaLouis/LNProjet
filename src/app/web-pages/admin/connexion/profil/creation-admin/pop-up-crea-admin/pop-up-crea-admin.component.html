@@ -10,6 +10,7 @@
 
       <mat-form-field class="login" fxFlex.gt-xs="45" fxFlex.xs="100">
         <input type="text" matInput formControlName="login">
+        <mat-error *ngIf="formBody.controls.login.errors.loginExists">Ce login est déjà utilisé</mat-error>
         <mat-hint>Login</mat-hint>
       </mat-form-field>
 

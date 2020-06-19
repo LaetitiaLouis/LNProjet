@@ -46,37 +46,44 @@
           <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
             <mat-label>Nom</mat-label>
             <input type="text" matInput placeholder="Entrez votre nom" formControlName="nom">
+            <mat-error *ngIf="submitted && f.nom.errors">Vous devez saisir un nom</mat-error>
+
           </mat-form-field>
 
           <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
             <mat-label>Prénom</mat-label>
             <input type="text" matInput placeholder="Entrez votre prénom" formControlName="prenom">
+            <mat-error *ngIf="submitted && f.prenom.errors">Vous devez saisir un prénom</mat-error>
           </mat-form-field>
 
           <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
             <mat-label>Adresse</mat-label>
             <input type="text" matInput placeholder="Entrez votre adresse" formControlName="adresse">
+            <mat-error *ngIf="submitted && f.adresse.errors">Vous devez saisir une adresse</mat-error>
           </mat-form-field>
 
           <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
             <mat-label>Code postal</mat-label>
             <input type="text" matInput placeholder="Entrez votre code postal" formControlName="codePostal">
+            <mat-error *ngIf="submitted && f.codePostal.errors">Vous devez saisir un code postal</mat-error>
           </mat-form-field>
 
           <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
             <mat-label>Ville</mat-label>
             <input type="text" matInput placeholder="Entrez votre ville" formControlName="ville">
+            <mat-error *ngIf="submitted && f.ville.errors">Vous devez saisir une ville</mat-error>
           </mat-form-field>
 
           <mat-form-field fxFlex.gt-xs="45" fxFlex.xs="75">
             <mat-label>Téléphone</mat-label>
             <input type="text" matInput placeholder="Entrez votre téléphone" formControlName="telephone">
+            <mat-error *ngIf="submitted && f.telephone.errors">Vous devez saisir un téléphone</mat-error>
           </mat-form-field>
 
           <mat-form-field class="email" fxFlex.gt-xs="45" fxFlex.xs="75">
             <mat-label>Email</mat-label>
             <input type="text" matInput placeholder="Entrez votre adresse mail" formControlName="email">
-            <mat-error *ngIf="f.email.errors">
+            <mat-error *ngIf="submitted && f.email.errors">Vous devez saisir un email
               <span *ngIf="f.email.errors.email">Adresse mail invalide</span>
             </mat-error>
           </mat-form-field>
@@ -87,19 +94,21 @@
             <input type="text" matInput placeholder="Merci de confirmez votre adresse mail"
                    formControlName="confirmEmail">
             <mat-error *ngIf="f.confirmEmail.errors && (f.email.touched)">
-              <span *ngIf="f.confirmEmail.errors.required">Vous devez confirmer votre adresse mail</span>
-              <span *ngIf="f.confirmEmail.errors.emailMismatch">L'adresse mail est différente</span>
+              <mat-error *ngIf="f.confirmEmail.errors.required">Vous devez confirmer votre adresse mail</mat-error>
+              <mat-error *ngIf="f.confirmEmail.errors.emailMismatch">L'adresse mail est différente</mat-error>
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="objet" fxFlex.gt-xs="80" fxFlex.xs="75">
             <mat-label>Votre projet</mat-label>
             <input type="text" matInput placeholder="Entrez l'objet de votre message" formControlName="objet">
+            <mat-error *ngIf="submitted && f.objet.errors">Vous devez saisir l'objet de votre message</mat-error>
           </mat-form-field>
 
           <mat-form-field class="message" fxFlex.gt-xs="80" fxFlex.xs="75">
             <mat-label>Message</mat-label>
             <textarea matInput placeholder="Entrez votre message" formControlName="contenu"></textarea>
+            <mat-error *ngIf="submitted && f.contenu.errors">Vous devez saisir un message</mat-error>
           </mat-form-field>
         </form>
       </div>

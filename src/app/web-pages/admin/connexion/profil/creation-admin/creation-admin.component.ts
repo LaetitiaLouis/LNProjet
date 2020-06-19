@@ -35,7 +35,7 @@ export class CreationAdminComponent implements OnInit {
   public formCreaAdmin(): void {
     this.formBody = this.fb.group({
         prenom: ["", [Validators.required]],
-        login: ["", [Validators.required]],
+        login: ["", [Validators.required],[this.validator.loginExits]],
         password: ["", [Validators.required]],
         // Validators.minLength(6)],
         confirmPassword: ["", [Validators.required]],
@@ -45,6 +45,7 @@ export class CreationAdminComponent implements OnInit {
       },
       {
         validators: this.validator.passwordMatch
+
       });
   }
 

@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Admin} from "../../../../../../model/admin";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AdminService} from "../../../../../../service/admin.service";
 import {FormValidatorService} from "../../../../../../service/form-validator.service";
 import {Router} from "@angular/router";
@@ -33,13 +33,16 @@ export class PopUpCreaAdminComponent implements OnInit {
   public formCreaAdmin() {
     this.formBody = this.fb.group({
         prenom: ["", [Validators.required]],
-        login: ["", [Validators.required]],
-        password: ["", [Validators.required]],
-        // Validators.minLength(6)],
+        password: ["", [Validators.required ,Validators.minLength(6)]],
         confirmPassword: ["", [Validators.required]],
         presentation: ["", [Validators.required]],
         photo: ["", [Validators.required]],
-        role: [{value: "ADMIN", disabled: false}]
+        role: [{value: "ADMIN", disabled: false}],
+        login:new FormControl("", {
+          validators : [Validators.required],
+          asyncValidators:[this.validator.loginExits()],
+          updateOn:'blur'// requête faite quand quitte le champ uniquement
+        }),
       },
       {
         validators: this.validator.passwordMatch
@@ -48,11 +51,11 @@ export class PopUpCreaAdminComponent implements OnInit {
 
   public onSubmit() {
     this.adminService.registerAdmin(this.formBody.value)
-      .subscribe((admin => {
+      .subscribe(admin => {
           this.es.handleSuccess("Administrateur créé");
-          admin && this.router.navigate(['/profil']);
+          this.router.navigate(['/profil']);
         }),
-        this.es.handleError("Erreur"));
+        _=>this.es.handleError("Le compte n'a pas été enregistré");
     this.dialogRef.close();
   }
 }
