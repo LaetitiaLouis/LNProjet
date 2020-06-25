@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <table mat-table [dataSource]="this.clients" *ngIf="clients && clients.length" fxHide.xs="true" fxHide.sm="true">
+  <table mat-table [dataSource]="this.clients" *ngIf="clients" fxHide.xs="true" fxHide.sm="true">
 
     <!-- Nom Column -->
     <ng-container matColumnDef="nom">
@@ -102,7 +102,7 @@
   </table>
 
 
-  <table mat-table [dataSource]="this.clients" *ngIf="clients && clients.length" fxHide.xs="true" fxHide.gt-sm="true">
+  <table mat-table [dataSource]="this.clients" *ngIf="clients" fxHide.xs="true" fxHide.gt-sm="true">
 
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>

@@ -6,6 +6,7 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpClientDeleteComponent} from "./pop-up-client-delete/pop-up-client-delete.component";
 import {Admin} from "../../../model/admin";
+import {Projet} from "../../../model/projet";
 
 @Component({
   selector: 'app-client',
@@ -20,6 +21,7 @@ export class ClientComponent implements OnInit {
   public selection = new SelectionModel<Client>(true, []);
   public searchBy: string;
   public admin: Admin;
+  public selected: Client;
 
   constructor(private clientService: ClientService,
               public dialog: MatDialog) {
@@ -27,12 +29,14 @@ export class ClientComponent implements OnInit {
 
   ngOnInit() : void {
     this.getAllClients();
+    this.selection.changed.subscribe(change => { this.selected = change.added[0]});
   }
 
   /**
    * Afficher la liste des clients
    */
   public getAllClients() {
+    this.clients = [];
     this.clientService.getAllClients().subscribe(clients => this.clients = clients);
   }
 
@@ -41,7 +45,7 @@ export class ClientComponent implements OnInit {
    */
   public search(): void {
     this.clientService.getClientsByNomOrPrenom(this.searchBy).subscribe(client => this.clients = client);
-
+    this.searchBy = '';
   }
 
   /**
@@ -50,7 +54,9 @@ export class ClientComponent implements OnInit {
    * @param client
    */
   public openDialog(update: boolean, client?: Client): void {
-    const dialogRef = this.dialog.open(PopUpClientComponent, {data: {client, update}});
+    const c = client?client:this.selected;
+    this.selection.clear();
+    const dialogRef = this.dialog.open(PopUpClientComponent, {data: {client:c, update}});
     dialogRef.afterClosed().subscribe(result => {
       this.getAllClients();
     });
@@ -61,10 +67,11 @@ export class ClientComponent implements OnInit {
    * @param client
    */
   public openDialogDelete(client?: Client): void {
-    const dialogRef = this.dialog.open(PopUpClientDeleteComponent, {data: {client}});
+    const c = client?client:this.selected;
+    this.selection.clear();
+    const dialogRef = this.dialog.open(PopUpClientDeleteComponent, {data: {client:c}});
     dialogRef.afterClosed().subscribe(result => {
       this.getAllClients();
-      // this.clients = result;
     });
   }
 
@@ -79,7 +86,6 @@ export class ClientComponent implements OnInit {
   /** Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon supprime sélection */
   public masterToggle() {
     if (this.isAllSelected()) {
-      console.log(this.selection);
       this.selection.clear();
     } else {
       this.selection.selected.forEach(c=> console.log(c));

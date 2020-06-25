@@ -26,6 +26,7 @@ export class AdminProjetComponent implements OnInit {
   public admin: Admin;
   public type: Type;
   public searchBy: string;
+  public selected: Projet;
 
   constructor(private projetService: ProjetService,
               private photoService: PhotoService,
@@ -36,6 +37,7 @@ export class AdminProjetComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getAllProjets();
+    this.selection.changed.subscribe(change => { this.selected = change.added[0]});
   }
 
   /** Indique si le nombre d'éléments sélectionnés correspond au nombre total de lignes */
@@ -49,7 +51,6 @@ export class AdminProjetComponent implements OnInit {
   /** Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon supprime sélection */
   public masterToggle() {
     if (this.isAllSelected()) {
-      console.log(this.selection);
       this.selection.clear();
     } else {
       this.selection.selected.forEach(c => console.log(c));
@@ -66,22 +67,26 @@ export class AdminProjetComponent implements OnInit {
   }
 
   /**
-   * apelle les projets de l'administrateur connecté
+   * appelle les projets
    */
   public getAllProjets() {
     this.projetService.getAllProjets().subscribe(projets => this.projets = projets);
   };
 
   public openDialog(update: boolean, projet?: Projet): void {
+    const p = projet?projet:this.selected;
+    this.selection.clear();
     const login = this.jwtService.getAdmin().login;
-    const dialogRef = this.dialog.open(PopUpProjetComponent, {data: {projet, update, login}});
+    const dialogRef = this.dialog.open(PopUpProjetComponent, {data: {projet:p, update, login}});
     dialogRef.afterClosed().subscribe(result => {
       this.getAllProjets();
     });
   }
 
   public openDialogDelete(projet?: Projet): void {
-    const dialogRef = this.dialog.open(PopUpDeleteProjetComponent, {data: {projet}});
+    const p = projet?projet:this.selected;
+    this.selection.clear();
+    const dialogRef = this.dialog.open(PopUpDeleteProjetComponent, {data: {projet:p}});
     dialogRef.afterClosed().subscribe(result => {
       this.getAllProjets();
     });
@@ -93,6 +98,10 @@ export class AdminProjetComponent implements OnInit {
       this.searchBy = '';
     });
   };
+
+  public edit(){
+    console.log(this.selection.selected);
+  }
 }
 
 
