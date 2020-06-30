@@ -15,7 +15,7 @@ export class ErrorService {
   }
 
   /**
-   * Requête : Afficher la boîte contenant les messages
+   * Affiche la boîte contenant les messages
    * @param message Le message à afficher
    * @param action Le texte du bouton qui ferme la boîte
    * @param error True si c'est un message d'erreur sinon False
@@ -29,7 +29,7 @@ export class ErrorService {
   }
 
   /**
-   * Requête : Gérer les messages d'erreurs
+   * Gère les messages d'erreurs
    * @param message Le message à afficher
    */
   handleError(message?: string) {
@@ -37,7 +37,7 @@ export class ErrorService {
   }
 
     /**
-     * Requête : Gérer les messages positifs
+     * Gère les messages positifs
      * @param message Le message à afficher
      */
     handleSuccess(message?: string) {

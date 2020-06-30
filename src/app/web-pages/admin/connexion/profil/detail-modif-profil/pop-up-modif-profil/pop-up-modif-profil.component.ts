@@ -38,11 +38,17 @@ export class PopUpModifProfilComponent implements OnInit {
     })
   }
 
+  /**
+   *
+   */
   public enable(champ: string) {
     this.formBody.get(champ).enable();
     this.formBody.get(champ).setValue("");
   }
 
+  /**
+   * Modifie un admin via le formulaire
+   */
   public onSubmitUpdate() {
     let admin = {...this.admin, ...this.formBody.value};
     for (const propriete in admin) {
@@ -59,6 +65,9 @@ export class PopUpModifProfilComponent implements OnInit {
     ;
   }
 
+  /**
+   * Modifie le statut d'un admin
+   */
   // public onChangeValiditeCompte(): void {
   //     this.admin.compteValide = !this.admin.compteValide;
   // }

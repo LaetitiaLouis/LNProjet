@@ -24,6 +24,9 @@ export class DetailProjetComponent implements OnInit {
               private photoService: PhotoService) {
   }
 
+  /**
+   * Affiche un projet et ses photos
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
         const projetId = +params.get('id');

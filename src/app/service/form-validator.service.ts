@@ -34,7 +34,7 @@ export class FormValidatorService {
   }
 
   /**
-   * demander au serveur si le login existe
+   * demande au serveur si le login existe
    */
   checkIfLoginExists(login: string) {
     return this.adminService.checkIfLoginExists(login);
@@ -52,6 +52,11 @@ export class FormValidatorService {
       control.get('confirmEmail').setErrors({emailMismatch: true});
     }
   }
+
+  /**
+   * validateur vérifiant si 2 mots de passe correspondent
+   * @param control
+   */
 
   passwordMatch(control: FormControl) {
     const password = control.get('password').value;

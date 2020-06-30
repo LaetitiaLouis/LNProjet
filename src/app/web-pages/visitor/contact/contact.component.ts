@@ -24,6 +24,9 @@ export class ContactComponent implements OnInit {
               private fb: FormBuilder) {
   }
 
+  /**
+   * Crée un formulaire contact
+   */
   public ngOnInit(): void {
     this.formBody = this.fb.group({
         objet: ["", [Validators.required]],
@@ -49,7 +52,9 @@ export class ContactComponent implements OnInit {
     return this.formBody.controls;
   }
 
-
+  /**
+   * Enregistre un nouveau message via le formulaire
+   */
   public onSubmitFormBody() {
     this.messageService.saveNewMessage({
       ...this.formBody.value,

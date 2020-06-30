@@ -27,17 +27,26 @@ export class SyntheseProjetComponent implements OnInit {
               private sanitizer: DomSanitizer) {
   }
 
+  /**
+   * Affiche les photos "accueil"
+   */
   public ngOnInit(): void {
     this.photoService.getPhotosByCategorie('accueil').subscribe(photoResult => {
       this.photos = photoResult;
     });
   }
 
+  /**
+   * Affiche les photos d'un projet
+   */
   public getPhotosProjet(id: number) {
     const photos = this.photos.filter(photo => photo.projet.id === id);
     return photos[0].lien;
   }
 
+  /**
+   * Affiche le détail d'un projet
+   */
   public showDetails(id: number) {
     this.router.navigate(['/detailProjet', id]);
   }

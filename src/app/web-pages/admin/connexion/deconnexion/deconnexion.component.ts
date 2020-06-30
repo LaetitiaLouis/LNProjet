@@ -17,6 +17,10 @@ export class DeconnexionComponent implements OnInit {
   public ngOnInit(): void {
     this.admin = this.jwtService.getAdmin();
   }
+
+  /**
+   * Déconnecte l'utilisateur
+   */
   public onSubmit() {
     this.jwtService.logout();
   }

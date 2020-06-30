@@ -48,7 +48,6 @@ export class DetailModifProfilComponent implements OnInit {
 
   /**
    * Ouverture de la popup modifProfil
-   * @param admin
    */
   public openDialog(admin: Admin): void {
     const dialogRef = this.dialog.open(PopUpModifProfilComponent, {data: {admin}});

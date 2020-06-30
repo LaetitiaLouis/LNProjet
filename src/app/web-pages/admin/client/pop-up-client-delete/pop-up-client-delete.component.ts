@@ -19,6 +19,9 @@ export class PopUpClientDeleteComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  /**
+   * Supprime un client via le formulaire
+   */
   public onSubmitDelete() {
     this.clientService.deleteClient(this.data.client.id).subscribe(result =>{
       this.es.handleSuccess("Client supprimé");
@@ -27,6 +30,9 @@ export class PopUpClientDeleteComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+   * Ferme la popup
+   */
   public closePopUp() {
     this.dialogRef.close();
   }

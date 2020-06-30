@@ -16,6 +16,9 @@ export class NavbarComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  /**
+   * renvoie à la page d'accueil après déconnexion
+   */
   onSubmit() {
     this.router.navigate(['/']).then(_=> this.jwtService.logout());
   }

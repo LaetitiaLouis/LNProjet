@@ -26,6 +26,9 @@ export class PopUpClientComponent implements OnInit {
     this.formClient();
   }
 
+  /**
+   * Crée un formulaire client
+   */
   public formClient(): void {
     this.formBody = this.fb.group({
       nom: [this.data.update ? this.data.client.nom : ''],
@@ -40,11 +43,17 @@ export class PopUpClientComponent implements OnInit {
     })
   }
 
+  /**
+   * Crée un nouveau client via le formulaire
+   */
   public onSubmitCreate(): void {
     this.clientService.saveNewClient(this.formBody.value).subscribe();
     this.dialogRef.close();
   }
 
+  /**
+   * Réactive le champ du formulaire
+   */
   public enable(champ: string) {
     if (this.data.update) {
       this.formBody.get(champ).enable();
@@ -52,6 +61,9 @@ export class PopUpClientComponent implements OnInit {
     }
   }
 
+  /**
+   * Récupère  et modifie un client via le formulaire
+   */
   public onSubmitUpdate() {
     const client = {id: this.data.client.id, ...this.formBody.value}
     this.clientService.updateClient(client).subscribe(client => {
@@ -61,11 +73,17 @@ export class PopUpClientComponent implements OnInit {
     _ => this.error.handleError("Votre client n'a pas été modifié");
   }
 
-  public onSubmitDelete() {
-    this.clientService.deleteClient(this.formBody.value).subscribe();
-    this.dialogRef.close();
-  }
+  // /**
+  //  * Supprime un client
+  //  */
+  // public onSubmitDelete() {
+  //   this.clientService.deleteClient(this.formBody.value).subscribe();
+  //   this.dialogRef.close();
+  // }
 
+  /**
+   * Ferme la popup
+   */
   public closePopUp() {
     this.dialogRef.close();
   }

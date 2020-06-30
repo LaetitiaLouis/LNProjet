@@ -27,8 +27,10 @@ export class ConnexionComponent implements OnInit {
     });
   }
 
+  /**
+   * valide la connexion de l'utilisateur
+   */
   public onSubmit() {
-
     const login = this.connexionForm.controls.login.value;
     const password = this.connexionForm.controls.password.value;
     this.jwtService.login(login, password).subscribe(_=> {
@@ -39,6 +41,9 @@ export class ConnexionComponent implements OnInit {
     );
      }
 
+  /**
+   * Getter pour obtenir les control du formulaire
+   */
   public get f() {
     return this.connexionForm.controls;
   }

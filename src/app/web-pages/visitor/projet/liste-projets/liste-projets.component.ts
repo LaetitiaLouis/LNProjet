@@ -21,6 +21,9 @@ export class ListeProjetsComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  /**
+   * Fonction appelée lorsqu'un type de projet est sélectionné depuis filtre projet
+   */
   public onClickTypes(event: any) {
     // vide l'existant
     this.projetsList = [];

@@ -14,6 +14,9 @@ export class PrestationComponent implements OnInit {
   constructor(private prestationService: PrestationService) {
   }
 
+  /**
+   * Affiche les prestations par catégories
+   */
   public ngOnInit(): void {
     this.prestationService.getAllPrestations().subscribe(prestations => {
       this.prestations = prestations;

@@ -30,7 +30,7 @@ export class ProfilComponent implements OnInit {
   }
 
   /**
-   * Afficher les nouveaux messages
+   * Affiche les nouveaux messages
    */
   public getNewMessage() {
     this.messageService.getAllMessages().subscribe(messages=>{

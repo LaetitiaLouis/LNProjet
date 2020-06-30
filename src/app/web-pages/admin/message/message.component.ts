@@ -38,11 +38,17 @@ export class MessageComponent implements OnInit {
     this.admin = this.jwtService.getAdmin();
   }
 
+  /**
+   * Affiche les messages
+   */
   public getAllMessages(): void {
     this.messageService.getAllMessages().subscribe(messages =>{ this.messages = messages; this.sortMessages()});
 
   }
 
+  /**
+   * Trie les messages par statut et date et par ordre décroissant
+   */
   public sortMessages (): void{
     this.messages.sort((a,b)=>b.id -a.id);
     const vus = this.messages.filter(message => message.vu);
@@ -50,9 +56,9 @@ export class MessageComponent implements OnInit {
     this.messages = noVus.concat(vus);
   }
 
-
-
-
+  /**
+   * Ouvre popUpDeleteMessage
+   */
   public openDialogDelete(message?: Message): void {
     const dialogRef = this.dialog.open(PopUpDeleteMessageComponent, {data: {message}});
     dialogRef.afterClosed().subscribe(result => {
@@ -60,6 +66,9 @@ export class MessageComponent implements OnInit {
     });
   }
 
+  /**
+   * Modifie le statut du message
+   */
   public updateMessage(message: Message): void {
     message.client = null;
     message.vu = true;

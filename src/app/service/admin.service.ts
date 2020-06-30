@@ -17,7 +17,7 @@ export class AdminService {
   }
 
   /**
-   * Requête : Afficher la liste des administrateur
+   * Affiche la liste des administrateurs
    */
   getAllAdmins(): Observable<Admin[]> {
     return this.http.get<Admin[]>(`${this.BASE_URL}`);
@@ -25,7 +25,7 @@ export class AdminService {
 
 
   /**
-   * Requête : Enregistrer un nouvel administrateur
+   * Enregistre un nouvel administrateur
    * @param admin L'objet admin à enregistrer
    */
   registerAdmin(admin: Admin): Observable<Admin> {
@@ -33,7 +33,7 @@ export class AdminService {
   }
 
   /**
-   * Requête : Modifier un administrateur
+   * Modifie un administrateur
    * @param admin L'objet admin à modifier
    */
   updatedAdmin(admin: Admin): Observable<Admin> {
@@ -43,7 +43,7 @@ export class AdminService {
 
 
   /**
-   * Requête : Vérifier si le login existe
+   * Vérifie si le login existe
    * @param login Le login à vérifier
    */
   checkIfLoginExists(login: string) {

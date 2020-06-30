@@ -30,6 +30,9 @@ export class PopUpCreaAdminComponent implements OnInit {
     this.formCreaAdmin();
   }
 
+  /**
+   * Crée un formulaire admin
+   */
   public formCreaAdmin() {
     this.formBody = this.fb.group({
         prenom: ["", [Validators.required]],
@@ -49,6 +52,9 @@ export class PopUpCreaAdminComponent implements OnInit {
       });
   }
 
+  /**
+   * Crée un nouvel admin via un formulaire
+   */
   public onSubmit() {
     this.adminService.registerAdmin(this.formBody.value)
       .subscribe(admin => {

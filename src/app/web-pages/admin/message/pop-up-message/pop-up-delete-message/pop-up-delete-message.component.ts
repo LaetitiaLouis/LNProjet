@@ -19,6 +19,9 @@ export class PopUpDeleteMessageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Supprime message
+   */
   onSubmitDelete() {
     this.messageService.deleteMessage(this.data.message.id).subscribe(result =>{
       this.es.handleSuccess("Message supprimé");
@@ -27,6 +30,9 @@ export class PopUpDeleteMessageComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+   * Ferme la popup
+   */
   closePopUp() {
     this.dialogRef.close();
   }

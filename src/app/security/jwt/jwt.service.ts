@@ -110,7 +110,6 @@ export class JwtService {
 
   /**
    * Décode le token
-   * @param token
    */
   private userFromToken(token: string): any {
     const decodedToken = jwt_decode(token);
@@ -118,7 +117,7 @@ export class JwtService {
   }
 
   /**
-   * met les infos de l'admin dans le session storage
+   * Met les infos de l'admin dans le session storage
    */
     private storeAdmin(){
     const admin = this.getAdmin();
@@ -126,53 +125,9 @@ export class JwtService {
     }
 
   /**
-   * récupère l'admin dans le session storage
+   * Récupère l'admin dans le session storage
    */
   public getStoredAdmin(): Admin {
       return JSON.parse(sessionStorage.getItem("admin"));
     }
-  // /**
-  //  *
-  //  */
-  // public isUnactived(): boolean {
-  //   return Boolean(!this.getToken());
-  // }
-
-  // /**
-  //  *
-  //  */
-  // public getPhoto(): string {
-  //   if (this.isLogged()) {
-  //     return this.userFromToken(this.getToken()).photo;
-  //   }
-  //   return undefined;
-  // }
-  //
-  // /**
-  //  *
-  //  */
-  // public getPrenom(): string {
-  //   if (this.isLogged()) {
-  //     return this.userFromToken(this.getToken()).prenom;
-  //   }
-  //   return undefined;
-  // }
-  //
-  // /**
-  //  *
-  //  */
-  // public getPresentation(): string {
-  //   if (this.isLogged()) {
-  //     return this.userFromToken(this.getToken()).presentation;
-  //   }
-  //   return undefined;
-  // }
-
-  // public register(name: string, password: string) {
-  //   const user = {name: name, password: password};
-  //
-  //   this.httpClient.post<{ access_token: string }>(`${environment.apiUrl}/admins/sign-up`, user).pipe(tap(_ => {
-  //     this.login(name, password);
-  //   }));
-  // }
 }

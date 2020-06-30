@@ -40,7 +40,9 @@ export class AdminProjetComponent implements OnInit {
     this.selection.changed.subscribe(change => { this.selected = change.added[0]});
   }
 
-  /** Indique si le nombre d'éléments sélectionnés correspond au nombre total de lignes */
+  /**
+   * Indique si le nombre d'éléments sélectionnés correspond au nombre total de lignes
+   */
   public isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.projets.length;
@@ -48,7 +50,9 @@ export class AdminProjetComponent implements OnInit {
 
   }
 
-  /** Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon supprime sélection */
+  /**
+   * Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon supprime sélection
+   */
   public masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
@@ -67,12 +71,16 @@ export class AdminProjetComponent implements OnInit {
   }
 
   /**
-   * appelle les projets
+   * Appelle les projets
    */
   public getAllProjets() {
     this.projetService.getAllProjets().subscribe(projets => this.projets = projets);
   };
 
+  /**
+   * Ouvre la popup correspondant au PopUpProjetComponent et récupère le projet à modifier si update
+   * Passe le login admin en paramètre
+   */
   public openDialog(update: boolean, projet?: Projet): void {
     const p = projet?projet:this.selected;
     this.selection.clear();
@@ -83,6 +91,9 @@ export class AdminProjetComponent implements OnInit {
     });
   }
 
+  /**
+   * Ouvre la popup correspondant au PopUpDeleteProjetcomponent et récupère le projet à supprimer
+   */
   public openDialogDelete(projet?: Projet): void {
     const p = projet?projet:this.selected;
     this.selection.clear();
@@ -92,16 +103,15 @@ export class AdminProjetComponent implements OnInit {
     });
   }
 
+  /**
+   * Recherche un projet par son intitulé ou par son type
+   */
   public search(): void {
     this.projetService.getProjetsByTypeOrIntitule(this.searchBy).subscribe(projets => {
       this.projets = projets;
       this.searchBy = '';
     });
   };
-
-  public edit(){
-    console.log(this.selection.selected);
-  }
 }
 
 

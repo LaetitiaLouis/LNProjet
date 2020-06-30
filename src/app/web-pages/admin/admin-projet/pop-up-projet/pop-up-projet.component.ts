@@ -40,10 +40,16 @@ export class PopUpProjetComponent implements OnInit {
     this.initPhotos();
   }
 
+  /**
+   * Affiche la liste de projets
+   */
   public getTypesProjets() {
     this.typeService.getAllTypes().subscribe(types => this.typesProjets = types);
   }
 
+  /**
+   * Crée le formulaire d'un projet
+   */
   public formProjet(): void {
     this.formBody = this.fb.group({
       intitule: [this.data.update ? this.data.projet.intitule : ''],
@@ -53,11 +59,16 @@ export class PopUpProjetComponent implements OnInit {
     });
   }
 
-  //affiche le mat-select type
+  /**
+   * Affiche le mat-select type
+   */
   public compareFunction(type1: any, type2: any) {
     return type1.id === type2.id;
   }
 
+  /**
+   * Pré remplit le formaulaire avec les photos existantes
+   */
   public initPhotos() {
     if (this.data && this.data.update) {
       this.data.projet.photos.forEach(photo => {
@@ -67,6 +78,9 @@ export class PopUpProjetComponent implements OnInit {
     }
   }
 
+  /**
+   * Crée un formulaire photos
+   */
   public createPhotoForm(photo?: Photo) {
     return this.fb.group({
       nom: [photo ? photo.nom : ''],
@@ -77,16 +91,26 @@ export class PopUpProjetComponent implements OnInit {
     });
   }
 
+  /**
+   * Ajoute un formulaire photo
+   */
   addPhotoForm() {
     this.photoFormArray.push(this.createPhotoForm());
   }
 
+  /**
+   * Supprime le champ du formulaire qui contient le formulaire
+   * @param index
+   */
   removePhotos(index: number) {
     this.photoFormArray.removeAt(index);
     this.formBody.controls.photos.setValue(this.photoFormArray);
     console.log(index)
   }
 
+  /**
+   * Soumet le formulaire de création
+   */
   public onSubmitCreate(): void {
     const projet = {
       admin: {login: this.jwtService.getAdmin().login, role: "ADMIN"}, ...this.formBody.value,
@@ -94,7 +118,6 @@ export class PopUpProjetComponent implements OnInit {
       type: this.formBody.controls.type.value
     };
     this.projetService.saveProjetInfos(projet)
-      // .pipe(tap(this.es.handleSuccess("Projet créé")))
       .subscribe(projet => {
         this.es.handleSuccess("Projet créé");
         this.dialogRef.close(projet);},
@@ -102,6 +125,9 @@ export class PopUpProjetComponent implements OnInit {
       );
   }
 
+  /**
+   * Réactive le champ du formulaire
+   */
   public enable(champ: string) {
     if (this.data.update) {
       this.formBody.get(champ).enable();
@@ -109,6 +135,9 @@ export class PopUpProjetComponent implements OnInit {
     }
   }
 
+  /**
+   * Modifie un projet via le formulaire
+   */
   public onSubmitUpdate() {
     const projet = {
       id: this.data.projet.id,
@@ -125,6 +154,9 @@ export class PopUpProjetComponent implements OnInit {
       );
   }
 
+  /**
+   * Ferme la popup
+   */
   public closePopUp() {
     this.dialogRef.close();
   }

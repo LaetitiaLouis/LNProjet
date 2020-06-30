@@ -17,36 +17,36 @@ export class MessageService {
               private es: ErrorService) {
   }
   /**
-   * Requête : Obtenir la liste des messages
+   * Obtient la liste des messages
    */
   getAllMessages(): Observable<Message[]> {
     return this.http.get<Message[]>(`${this.BASE_URL}`);
   }
 
   /**
-   * Requête : Enregistrer un nouveau Message
-   * @param client L'objet message à enregistrer
+   * Enregistre un nouveau Message
    */
   saveNewMessage(message: Message): Observable<Message> {
     return this.http.post<Message>(`${this.BASE_URL}`, message);
   }
 
   /**
-   * Requête : Modifier un message
-   * @param message L'objet message à modifier
+   * Modifie un message
    */
   updateMessage(message: Message): Observable<Message> {
     return this.http.put<Message>(`${this.BASE_URL}`, message);
   }
 
   /**
-   * Requête : Supprimer un message
-   * @param id L'id du message à supprimer
+   * Supprime un message
    */
   deleteMessage(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
 
+  /**
+   * Recherche un message via son id
+   */
   getMessageById(id:number): Observable<Message> {
       return this.http.get<Message>(`${this.BASE_URL}/${id}`)
         // .pipe(catchError(this.es.handleError('Erreur Id')))

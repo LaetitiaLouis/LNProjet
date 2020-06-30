@@ -33,7 +33,7 @@ export class ClientComponent implements OnInit {
   }
 
   /**
-   * Afficher la liste des clients
+   * Affiche la liste des clients
    */
   public getAllClients() {
     this.clients = [];
@@ -50,8 +50,6 @@ export class ClientComponent implements OnInit {
 
   /**
    * Ouvre la popup client
-   * @param update
-   * @param client
    */
   public openDialog(update: boolean, client?: Client): void {
     const c = client?client:this.selected;
@@ -64,7 +62,6 @@ export class ClientComponent implements OnInit {
 
   /**
    * Ouvre la popup delete client
-   * @param client
    */
   public openDialogDelete(client?: Client): void {
     const c = client?client:this.selected;
@@ -75,7 +72,9 @@ export class ClientComponent implements OnInit {
     });
   }
 
-  /** Indique si le nombre d'éléments sélectionnés correspond au nombre total de lignes */
+  /**
+   * Indique si le nombre d'éléments sélectionnés correspond au nombre total de lignes
+   */
   public isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.clients.length;
@@ -83,7 +82,9 @@ export class ClientComponent implements OnInit {
 
   }
 
-  /** Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon supprime sélection */
+  /**
+   * Sélectionne toutes les lignes si elles ne sont pas toutes sélectionnées; sinon supprime sélection
+   */
   public masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
@@ -93,7 +94,9 @@ export class ClientComponent implements OnInit {
     }
   }
 
-  /** Case à cocher sur la ligne passée */
+  /**
+   * Case à cocher sur la ligne passée
+   */
   public checkboxLabel(row?: Client): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;

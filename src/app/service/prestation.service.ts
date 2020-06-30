@@ -21,45 +21,23 @@ export class PrestationService {
   }
 
   /**
-   * Requête : Enregistrer une nouvelle prestation
-   * @param prestation L'objet prestation à enregistrer
+   * Enregistre une nouvelle prestation
    */
   saveNewPrestation(prestation: Prestation): Observable<Prestation> {
     return this.http.post<Prestation>(`${this.BASE_URL}`, prestation);
   }
 
   /**
-   * Requête : Modifier une prestation
-   * @param prestation L'objet prestation à modifier
+   * Modifie une prestation
    */
   updatePrestation(prestation: Prestation): Observable<Prestation> {
     return this.http.put<Prestation>(`${this.BASE_URL}`, prestation);
   }
 
   /**
-   * Requête : Supprimer une prestation
-   * @param id L'id de la prestation à supprimer
+   * Supprime une prestation
    */
   deletePrestation(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
-
-  // /**
-  //  * Requête : Obtenir une liste de prestations par projet
-  //  * @param projet L'objet projet recherché
-  //  */
-  // getAllPrestationsByProjet(projet: Projet): Observable<Prestation[]> {
-  //   return this.http.get<Prestation[]>(`${this.BASE_URL}/findByProjet?projet=${projet}`)
-  //     .pipe(catchError(this.es.handleError('Aucune prestation trouvée pour ce projet'))
-  //     );
-  // }
-  //   /**
-  //    * Requête : Obtenir une liste de prestations par client
-  //    * @param client L'objet client recherché
-  //    */
-  //   getAllPrestationsByClient(client: Client): Observable<Prestation[]> {
-  //     return this.http.get<Prestation[]>(`${this.BASE_URL}/findByClient?client=${client}`)
-  //       .pipe(catchError(this.es.handleError('Aucune prestation trouvée pour ce projet'))
-  //       );
-  // }
 }

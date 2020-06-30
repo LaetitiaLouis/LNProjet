@@ -18,6 +18,9 @@ export class PopUpDeleteProjetComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  /**
+   * Supprime un projet et renvoie un message succès ou error
+   */
   public onSubmitDelete() {
     this.projetService.deleteProjet(this.data.projet.id).subscribe( result => {
       this.es.handleSuccess("Projet supprimé");
@@ -26,6 +29,9 @@ export class PopUpDeleteProjetComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+   * Ferme la popup
+   */
   public closePopUp() {
     this.dialogRef.close();
   }

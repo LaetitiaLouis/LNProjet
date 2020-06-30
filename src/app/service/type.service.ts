@@ -17,29 +17,28 @@ export class TypeService {
   }
 
   /**
-   * Obtenir la liste de tous les types
+   * Obtient la liste de tous les types
    */
   public getAllTypes(): Observable<Type[]> {
     return this.http.get<Type[]>(`${this.BASE_URL}`);
   }
 
   /**
-   * Enregistrer un nouveau type
-   * @param  type L'objet type à enregistrer
+   * Enregistre un nouveau type
    */
   public saveNewType(type: Type): Observable<Type> {
     return this.http.post<Type>(`${this.BASE_URL}`, type);
   }
 
   /**
-   * Modifier un type
+   * Modifie un type
    */
   public updateType(type: Type): Observable<Type> {
     return this.http.put<Type>(`${this.BASE_URL}`, type);
   }
 
   /**
-   * Supprimer un type
+   * Supprime un type
    */
   public deleteType(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});

@@ -17,50 +17,44 @@ export class ClientService {
   }
 
   /**
-   * Requête : Obtenir la liste des clients
-   *
+   * Obtient la liste des clients
    */
   getAllClients(): Observable<Client[]> {
     return this.http.get<Client[]>(`${this.BASE_URL}`);
   }
 
   /**
-   * Requête : Enregistrer un nouveau client
-   * @param client L'objet client à enregistrer
+   * Enregistre un nouveau client
    */
   saveNewClient(client: Client): Observable<Client> {
     return this.http.post<Client>(`${this.BASE_URL}`, client);
   }
 
   /**
-   * Requête : Modifier un client
-   * @param client L'objet client à modifier
+   * Modifie un client
    */
   updateClient(client: Client): Observable<Client> {
     return this.http.put<Client>(`${this.BASE_URL}`, client)
   }
 
   /**
-   * Requête : Supprimer un client
-   * @param id L'id du client à supprimer
+   * Supprime un client
    */
   deleteClient(id: number) {
     return this.http.delete(`${this.BASE_URL}/${id}`, {responseType: 'text'});
   }
 
   /**
-   * Requête : Obtenir un client via son Id
-   * @param id l'id du client à afficher
-   */
-  getClientById(id: number): Observable<Client> {
-    return this.http.get<Client>(`${this.BASE_URL}/${id}`);
-  }
-
-  /**
-   * Requête : Obtenir un client via son prénom ou son nom via une saisie partielle
+   * Obtient un client via son prénom ou son nom via une saisie partielle
    */
   getClientsByNomOrPrenom(recherche: string): Observable<Client[]>{
     return this.http.get<Client[]>(`${this.BASE_URL}/findByNomOrPrenom?recherche=${recherche}`);
+  }
 
+  /**
+   * Obtient un client via son Id
+   */
+  getClientById(id: number): Observable<Client> {
+    return this.http.get<Client>(`${this.BASE_URL}/${id}`);
   }
 }
