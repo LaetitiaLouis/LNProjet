@@ -17,7 +17,7 @@
   <!-- pour les écran <600px-->
   <div class="buttons" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" fxHide.gt-xs="true">
     <div class="mat-elevation-z2" fxLayoutAlign="start center">
-      <mat-icon class="add">add_circle</mat-icon>
+      <mat-icon class="add"(click)="openDialog(false, projet)">add_circle</mat-icon>
       <mat-icon class="update" (click)="openDialog(true, projet)">edit</mat-icon>
       <mat-icon class="delete" (click)="openDialogDelete(projet)">delete</mat-icon>
       <input class="rechercheInput" matInput type="text" [(ngModel)]="searchBy">

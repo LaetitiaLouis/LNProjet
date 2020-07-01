@@ -12,9 +12,7 @@ export class AdminGuard implements CanActivate {
   }
 
   /**
-   *
-   * @param next
-   * @param state
+   *Vérifie le rôle de l'utilisateur
    */
   public canActivate(
     next: ActivatedRouteSnapshot,
